@@ -1,0 +1,64 @@
+body,
+.account-masthead,
+.masthead,
+[role="main"],
+.main,
+.site-footer {
+  background-image: none;
+}
+
+body {
+  font-family: var(--font-family-base);
+  background-color: var(--body-bg);
+  color: var(--body-color);
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+[role="main"],
+.main {
+  padding: 0;
+  min-height:0;
+}
+
+[role="main"] {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  & > .container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    & > .wrapper {
+      flex: 1;
+      margin-bottom: 0;
+    }
+  }
+}
+
+input,
+button,
+select,
+textarea {
+  font-family: var(--font-family-base);
+}
+
+.navbar .nav > .active {
+  & > a,
+  & > a:hover,
+  & > a:focus {
+    box-shadow: none;
+  }
+}
+
+.wrapper {
+  box-shadow: none;
+  background-image: none;
+  border-radius: 0;
+  border: none;
+  background-color: transparent;
+}

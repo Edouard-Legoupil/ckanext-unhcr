@@ -1,0 +1,146 @@
+[role=main] {
+  background-color: var(--body-bg);
+
+  & .pill {
+    background-color: var(--black-80);
+  }
+
+  & .toolbar {
+    padding: 0;
+    margin: 0;
+
+    & .breadcrumb {
+      display: none;
+    }
+  }
+
+  & .primary {
+    @media (--landscape-tablet-up) {
+      width: 675px;
+    }
+
+    & .module-content {
+      @media (--portrait-tablet-up) {
+        padding-left: 5px;
+        padding-right: 0;
+      }
+    }
+  }
+
+  & .secondary {
+
+    & .nav-item {
+      border-bottom-style: solid;
+
+      &:not(.active) > a:hover {
+        &::after {
+          display: none;
+        }
+      }
+
+      &.active > a {
+        background-color: var(--primary-colour);
+
+        &::before {
+          background-image: none;
+        }
+      }
+    }
+
+    & .module-footer {
+      border-top-style: solid;
+    }
+
+    @media (--landscape-tablet-up) {
+      background-color: var(--primary-colour);
+      color: var(--white);
+      width: 240px;
+
+      & .empty {
+        color: rgba(255, 255, 255, 0.4);
+      }
+
+      & .module-heading {
+        background-color: var(--primary-colour);
+        color: var(--white);
+        border-color: rgba(255, 255, 255, 0.2);
+
+        & .fa {
+          width: 1em;
+          margin-left: -1.2em;
+        }
+      }
+
+      & .nav-item {
+        border-color: rgba(255, 255, 255, 0.2);
+
+        & > a {
+          color: var(--white);
+
+          &:hover {
+            background-color: rgba(255,255,255,0.2);
+          }
+        }
+
+        &.active {
+          border-bottom: solid 1px color(var(--primary-colour) shade(10%));
+          margin-top: -1px;
+
+          & > a {
+            background-color: var(--white);
+            color: var(--primary-colour);
+            border-top: solid 1px var(--white);
+
+            &:after {
+              width: 16px;
+              height: 16px;
+              background-color: var(--primary-colour);
+              background-image: url(../../../remove.png);
+              background-size: 16px 16px;
+              background-position: center;
+              right: 10px;
+            }
+          }
+        }
+      }
+
+      & .module-footer {
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+    }
+  }
+
+  & .wrapper {
+    position: relative;
+    z-index: 1;
+
+    &:not(.no-nav) {
+      @media (--landscape-tablet-up) {
+        &::before {
+          content: '';
+          position: absolute;
+          background-color: var(--primary-colour);
+          width: 50vw;
+          top: 0;
+          bottom: 0;
+          right: 700px;
+          z-index: -1;
+          display: block;
+        }
+      }
+    }
+  }
+
+  & .search-form {
+    & .search-input.search-giant {
+      & button {
+        top: auto;
+        bottom: 10px;
+
+        & i {
+          color: var(--black-60);
+        }
+      }
+    }
+  }
+}
