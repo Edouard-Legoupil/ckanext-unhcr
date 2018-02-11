@@ -17,12 +17,15 @@
   & .primary {
     @media (--landscape-tablet-up) {
       width: 675px;
-    }
 
-    & .module-content {
-      @media (--portrait-tablet-up) {
+      & .page-header {
+        margin-left: 0;
+      }
+
+      & .module-content {
         padding-left: 5px;
         padding-right: 0;
+        background-color: var(--white);
       }
     }
   }
@@ -57,8 +60,28 @@
       color: var(--white);
       width: 240px;
 
+      & h1,
+      & h2,
+      & h3,
+      & h4,
+      & h5,
+      & h6 {
+        color: var(--white);
+      }
+
       & .empty {
         color: rgba(255, 255, 255, 0.4);
+      }
+
+      & .context-info {
+        & .module-content {
+          padding-left: 0;
+          padding-right: 0;
+
+          & .heading {
+            padding-right: 20px;
+          }
+        }
       }
 
       & .module-heading {
@@ -69,6 +92,15 @@
         & .fa {
           width: 1em;
           margin-left: -1.2em;
+        }
+      }
+
+      & .nums {
+        border-top-style: solid;
+        border-top-color: rgba(255, 255, 255, 0.2);
+
+        & dl {
+          color: var(--white);
         }
       }
 

@@ -92,13 +92,141 @@ a:hover {
   color: #0072BC;
 }
 
-.account-masthead .account .notifications a:hover span.text {
-  background-color: transparent;
+.btn {
+  background-image: none;
+  text-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background-color: #FFF;
+  color: rgb(51, 51, 51);
+  border-color: rgb(204, 204, 204);
+}
+
+.btn:hover,
+  .btn:focus,
+  .btn:active,
+  .btn.active,
+  .btn.disabled,
+  .btn[disabled] {
+  background-color: rgb(255, 255, 255);
+  color: rgb(51, 51, 51);
+  border-color: rgb(204, 204, 204);
+}
+
+.btn-primary {
+  background-color: #0072BC;
+  color: #fff;
+  border-color: #0072BC;
+}
+
+.btn-primary:hover,
+  .btn-primary:focus,
+  .btn-primary:active,
+  .btn-primary.active,
+  .btn-primary.disabled,
+  .btn-primary[disabled] {
+  background-color: rgb(51, 142, 201);
+  color: #fff;
+  border-color: #0072BC;
+}
+
+.btn-success {
+  background-color: #FAEB00;
+  color: #000;
+  border-color: #FAEB00;
+}
+
+.btn-success:hover,
+  .btn-success:focus,
+  .btn-success:active,
+  .btn-success.active,
+  .btn-success.disabled,
+  .btn-success[disabled] {
+  background-color: rgb(251, 239, 51);
+  color: #000;
+  border-color: #FAEB00;
+}
+
+.btn-info {
+  background-color: #0072BC;
+  color: #fff;
+  border-color: #0072BC;
+}
+
+.btn-info:hover,
+  .btn-info:focus,
+  .btn-info:active,
+  .btn-info.active,
+  .btn-info.disabled,
+  .btn-info[disabled] {
+  background-color: rgb(51, 142, 201);
+  color: #fff;
+  border-color: #0072BC;
+}
+
+.btn-warning {
+  background-color: #FAEB00;
+  color: #000;
+  border-color: #FAEB00;
+}
+
+.btn-warning:hover,
+  .btn-warning:focus,
+  .btn-warning:active,
+  .btn-warning.active,
+  .btn-warning.disabled,
+  .btn-warning[disabled] {
+  background-color: rgb(251, 239, 51);
+  color: #000;
+  border-color: #FAEB00;
+}
+
+.btn-danger {
+  background-color: rgb(51, 51, 51);
+  color: #fff;
+  border-color: rgb(51, 51, 51);
+}
+
+.btn-danger:hover,
+  .btn-danger:focus,
+  .btn-danger:active,
+  .btn-danger.active,
+  .btn-danger.disabled,
+  .btn-danger[disabled] {
+  background-color: rgb(92, 92, 92);
+  color: #fff;
+  border-color: rgb(51, 51, 51);
+}
+
+.btn-group.open .btn-primary.dropdown-toggle {
+  background-color: rgb(51, 142, 201);
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus,
+.dropdown-submenu:hover > a,
+.dropdown-submenu:focus > a {
+  background-color: rgb(51, 142, 201);
+  background-image: none;
+}
+
+@media (min-width: 768px) {
+
+  .navbar .container {
+    width: 724px;
+  }
+}
+
+@media (min-width: 980px) {
+
+  .navbar .container {
+    width: 940px;
+  }
 }
 
 .navbar .nav > .active > a,
-  .navbar .nav > .active > a:hover,
-  .navbar .nav > .active > a:focus {
+    .navbar .nav > .active > a:hover,
+    .navbar .nav > .active > a:focus {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
@@ -114,6 +242,10 @@ a:hover {
 
 .label {
   text-shadow: none;
+}
+
+.account-masthead .account .notifications a:hover span.text {
+  background-color: transparent;
 }
 
 .account-masthead,
@@ -467,13 +599,15 @@ a:hover {
   [role=main] .primary {
     width: 675px;
   }
-}
 
-@media (min-width: 768px) {
+  [role=main] .primary .page-header {
+    margin-left: 0;
+  }
 
   [role=main] .primary .module-content {
     padding-left: 5px;
     padding-right: 0;
+    background-color: #FFF;
   }
 }
 
@@ -509,8 +643,26 @@ a:hover {
     width: 240px;
   }
 
+  [role=main] .secondary h1,
+      [role=main] .secondary h2,
+      [role=main] .secondary h3,
+      [role=main] .secondary h4,
+      [role=main] .secondary h5,
+      [role=main] .secondary h6 {
+    color: #FFF;
+  }
+
   [role=main] .secondary .empty {
     color: rgba(255, 255, 255, 0.4);
+  }
+
+  [role=main] .secondary .context-info .module-content {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  [role=main] .secondary .context-info .module-content .heading {
+    padding-right: 20px;
   }
 
   [role=main] .secondary .module-heading {
@@ -522,6 +674,15 @@ a:hover {
   [role=main] .secondary .module-heading .fa {
     width: 1em;
     margin-left: -1.2em;
+  }
+
+  [role=main] .secondary .nums {
+    border-top-style: solid;
+    border-top-color: rgba(255, 255, 255, 0.2);
+  }
+
+  [role=main] .secondary .nums dl {
+    color: #FFF;
   }
 
   [role=main] .secondary .nav-item {
