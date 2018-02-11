@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('../../../fonts/icomoon.eot?xwxcuk');
-  src:  url('../../../fonts/icomoon.eot?xwxcuk#iefix') format('embedded-opentype'),
-    url('../../../fonts/icomoon.ttf?xwxcuk') format('truetype'),
-    url('../../../fonts/icomoon.woff?xwxcuk') format('woff'),
-    url('../../../fonts/icomoon.svg?xwxcuk#icomoon') format('svg');
+  src:  url('../../../fonts/icomoon.eot?jkp7ax');
+  src:  url('../../../fonts/icomoon.eot?jkp7ax#iefix') format('embedded-opentype'),
+    url('../../../fonts/icomoon.ttf?jkp7ax') format('truetype'),
+    url('../../../fonts/icomoon.woff?jkp7ax') format('woff'),
+    url('../../../fonts/icomoon.svg?jkp7ax#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -92,6 +92,10 @@ a:hover {
   color: #0072BC;
 }
 
+.account-masthead .account .notifications a:hover span.text {
+  background-color: transparent;
+}
+
 .navbar .nav > .active > a,
   .navbar .nav > .active > a:hover,
   .navbar .nav > .active > a:focus {
@@ -140,18 +144,111 @@ a:hover {
     pointer-events: none;
   }
 
-  .account-masthead .account {
+  .account-masthead .account,
+    .account-masthead .account.authed {
     pointer-events: auto;
-    margin-top: 34px;
+    margin-top: 20px;
+    position: relative;
   }
 
-  .account-masthead .account ul li a {
+  .account-masthead .account::before, .account-masthead .account.authed::before {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: "\f02f";
+    color: rgb(51, 51, 51);
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    padding: 7px;
+    height: 46px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 26px;
+    cursor: pointer;
+  }
+
+  .account-masthead .account.active > ul, .account-masthead .account.authed.active > ul {
+    display: block;
+  }
+
+  .account-masthead .account ul, .account-masthead .account.authed ul {
+    position: absolute;
+    right: 0;
+    top: 46px;
+    background-color: #FFF;
+    -webkit-box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    padding: 0.5em 0;
+    display: none;
+  }
+
+  .account-masthead .account ul li, .account-masthead .account.authed ul li {
+    float: none;
+    border-style: solid;
+    border-color: rgb(204, 204, 204);
+    border-width: 1px 0 0 0;
+  }
+
+  .account-masthead .account ul li a, .account-masthead .account.authed ul li a {
     color: rgb(102, 102, 102);
     font-size: 16px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0.1em 1em;
   }
 
-  .account-masthead .account ul li:first-child {
+  .account-masthead .account ul li a.image, .account-masthead .account.authed ul li a.image {
+    padding: 0.1em 1em;
+  }
+
+  .account-masthead .account ul li a span.text, .account-masthead .account.authed ul li a span.text {
+    position: static;
+  }
+
+  .account-masthead .account ul li a .fa,
+            .account-masthead .account ul li a .gravatar,
+            .account-masthead .account.authed ul li a .fa,
+            .account-masthead .account.authed ul li a .gravatar {
+    display: none;
+  }
+
+  .account-masthead .account ul li a:hover, .account-masthead .account.authed ul li a:hover {
+    background-color: rgb(51, 142, 201);
+    color: #FFF;
+  }
+
+  .account-masthead .account ul li:first-child, .account-masthead .account.authed ul li:first-child {
     border: none;
+  }
+
+  .account-masthead .account ul li.notifications a span.badge, .account-masthead .account.authed ul li.notifications a span.badge {
+    height: 1em;
+    min-width: 1em;
+    text-align: center;
+    padding: 0.2em;
+    border-radius: 1px;
+    display: none;
+  }
+
+  .account-masthead .account ul li.notifications.notifications-important a span.badge, .account-masthead .account.authed ul li.notifications.notifications-important a span.badge {
+    background-color: #FAEB00;
+    color: rgb(51, 51, 51);
+    display: inline-block;
   }
 }
 
@@ -223,6 +320,19 @@ a:hover {
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  content: "\f011";
+}
+
+.masthead .nav > li > a[href="/dataset"]::before {
+  content: "\f096";
+}
+
+.masthead .nav > li > a[href="/organization"]::before {
+  content: "\f0c4";
+}
+
+.masthead .nav > li > a[href="/group"]::before {
+  content: "\f016";
 }
 
 @media (min-width: 980px) {
@@ -244,14 +354,6 @@ a:hover {
   .masthead .nav > li > a::before {
     font-size: 28px;
   }
-}
-
-.masthead .nav > li:nth-child(1) a::before {
-  content: "\f096";
-}
-
-.masthead .nav > li:nth-child(2) a::before {
-  content: "\f0c4";
 }
 
 .masthead .navigation .nav-pills li.active a,
@@ -333,6 +435,13 @@ a:hover {
     height: 100px;
     right: 50%;
     z-index: -1;
+  }
+}
+
+@media (min-width: 980px) {
+
+  html:not(.js) .account:hover > ul {
+    display: block;
   }
 }
 

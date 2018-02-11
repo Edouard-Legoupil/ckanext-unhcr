@@ -60,6 +60,10 @@ a {
   }
 }
 
+.account-masthead .account .notifications a:hover span.text {
+  background-color: transparent;
+}
+
 .navbar .nav > .active {
   & > a,
   & > a:hover,

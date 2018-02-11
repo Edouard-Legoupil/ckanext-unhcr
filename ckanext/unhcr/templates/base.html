@@ -4,3 +4,8 @@
   {{ super() }}
   {% resource 'unhcr/theme.css' %}
 {% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  {% resource 'unhcr/theme.js' %}
+{% endblock %}

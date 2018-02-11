@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('../../../fonts/icomoon.eot?xwxcuk');
-  src:  url('../../../fonts/icomoon.eot?xwxcuk#iefix') format('embedded-opentype'),
-    url('../../../fonts/icomoon.ttf?xwxcuk') format('truetype'),
-    url('../../../fonts/icomoon.woff?xwxcuk') format('woff'),
-    url('../../../fonts/icomoon.svg?xwxcuk#icomoon') format('svg');
+  src:  url('../../../fonts/icomoon.eot?jkp7ax');
+  src:  url('../../../fonts/icomoon.eot?jkp7ax#iefix') format('embedded-opentype'),
+    url('../../../fonts/icomoon.ttf?jkp7ax') format('truetype'),
+    url('../../../fonts/icomoon.woff?jkp7ax') format('woff'),
+    url('../../../fonts/icomoon.svg?jkp7ax#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -32,4 +32,13 @@
 }
 @define-mixin icon-search {
   content: "\f02e";
+}
+@define-mixin icon-directory {
+  content: "\f016";
+}
+@define-mixin icon-file {
+  content: "\f011";
+}
+@define-mixin icon-gear {
+  content: "\f02f";
 }
