@@ -48,7 +48,7 @@
   color: var(--white);
 
   @media (--landscape-tablet-up) {
-    color: var(--body-color);
+    color: var(--black-80);
   }
 
   & .btn-navbar,

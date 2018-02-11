@@ -28,6 +28,7 @@
   }
 
   & .secondary {
+    font-size: 14px;
 
     & .nav-item {
       border-bottom-style: solid;
@@ -132,6 +133,9 @@
   }
 
   & .search-form {
+    & h2 {
+      color: var(--heading-colour);
+    }
     & .search-input.search-giant {
       & button {
         top: auto;
@@ -141,6 +145,31 @@
           color: var(--black-60);
         }
       }
+    }
+  }
+
+  & .dataset-heading {
+    font-size: 20px;
+
+    & a {
+      color: var(--heading-colour);
+    }
+  }
+
+  & .dataset-resources {
+    & .label {
+      height: 32px;
+      min-width: 32px;
+      box-sizing: border-box;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0.5em 0.5em 0 0;
+      font-size: 11px;
+      background-color: var(--white);
+      border: solid 2px var(--black-80);
+      color: var(--black-80);
     }
   }
 }

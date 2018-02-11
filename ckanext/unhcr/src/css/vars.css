@@ -13,6 +13,7 @@
   --black-40: color(var(--black) tint(60%));
   --black-20: color(var(--black) tint(80%));
   --body-colour: var(--black-60);
+  --heading-colour: var(--black-80);
 
   --font-family-base: 'proxima_nova', 'Lato', Arial, sans-serif;
 }

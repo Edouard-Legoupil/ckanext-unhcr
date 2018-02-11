@@ -15,6 +15,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  font-size: 15px;
 }
 
 [role="main"],
@@ -47,6 +48,18 @@ textarea {
   font-family: var(--font-family-base);
 }
 
+h1, h2, h3, h4, h5, h6 {
+  color: var(--heading-colour);
+}
+
+a {
+  color: var(--primary-colour);
+
+  &:hover {
+    color: var(--primary-colour);
+  }
+}
+
 .navbar .nav > .active {
   & > a,
   & > a:hover,
@@ -61,4 +74,8 @@ textarea {
   border-radius: 0;
   border: none;
   background-color: transparent;
+}
+
+.label {
+  text-shadow: none;
 }
