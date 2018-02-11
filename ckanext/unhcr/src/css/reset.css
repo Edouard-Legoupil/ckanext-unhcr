@@ -41,6 +41,10 @@ body {
   }
 }
 
+code {
+  color: inherit;
+}
+
 input,
 button,
 select,

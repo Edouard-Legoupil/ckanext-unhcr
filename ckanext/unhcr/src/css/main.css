@@ -3,6 +3,22 @@
 
   & .pill {
     background-color: var(--black-80);
+
+    &.filtered {
+      border-right: solid 24px var(--black-60);
+      position: relative;
+
+      & a.remove {
+        color: #fff;
+        display: inline-block;
+        position: absolute;
+        top: 1px;
+        right: -24px;
+        width: 20px;
+        text-align: center;
+        padding-right: 4px;
+      }
+    }
   }
 
   & .toolbar {
@@ -14,7 +30,102 @@
     }
   }
 
+  & > .container > .wrapper {
+    & .module-resource {
+      @media (--landscape-tablet-up) {
+        position: relative;
+        border: none;
+
+        &::before {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          width: 100vw;
+          z-index: -1;
+          background-color: #fff;
+        }
+      }
+    }
+  }
+
+  & .wrapper {
+    position: relative;
+    z-index: 1;
+
+    &:not(.no-nav) {
+      @media (--landscape-tablet-up) {
+        &::before {
+          content: '';
+          position: absolute;
+          background-color: var(--primary-colour);
+          width: 50vw;
+          top: 0;
+          bottom: 0;
+          right: 700px;
+          z-index: -1;
+          display: block;
+        }
+      }
+    }
+  }
+
+  & h1 {
+    font-size: 38px;
+    color: var(--primary-colour);
+  }
+
+  & h2 {
+    font-size: 19px;
+  }
+
+  & .search-form {
+    & h2 {
+      color: var(--heading-colour);
+    }
+    & .search-input.search-giant {
+      & button {
+        top: auto;
+        bottom: 10px;
+
+        & i {
+          color: var(--black-60);
+        }
+      }
+    }
+  }
+
+  & .dataset-heading {
+    font-size: 19px;
+
+    & a {
+      color: var(--heading-colour);
+    }
+  }
+
+  & .dataset-resources {
+    & .label {
+      height: 32px;
+      min-width: 32px;
+      box-sizing: border-box;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0.5em 0.5em 0 0;
+      font-size: 11px;
+      background-color: var(--black-40);
+      border-radius: 0;
+    }
+  }
+
   & .primary {
+    & .module-content {
+      background-color: var(--white);
+    }
+
     @media (--landscape-tablet-up) {
       width: 675px;
 
@@ -25,7 +136,6 @@
       & .module-content {
         padding-left: 5px;
         padding-right: 0;
-        background-color: var(--white);
       }
     }
   }
@@ -51,6 +161,10 @@
       }
     }
 
+    & .module-heading {
+      font-size: 16px;
+    }
+
     & .module-footer {
       border-top-style: solid;
     }
@@ -67,6 +181,14 @@
       & h5,
       & h6 {
         color: var(--white);
+      }
+
+      & .label {
+        background-color: var(--primary-60);
+      }
+
+      & .gravatar {
+        border: solid 4px #fff;
       }
 
       & .empty {
@@ -140,68 +262,6 @@
       & .module-footer {
         border-color: rgba(255, 255, 255, 0.2);
       }
-    }
-  }
-
-  & .wrapper {
-    position: relative;
-    z-index: 1;
-
-    &:not(.no-nav) {
-      @media (--landscape-tablet-up) {
-        &::before {
-          content: '';
-          position: absolute;
-          background-color: var(--primary-colour);
-          width: 50vw;
-          top: 0;
-          bottom: 0;
-          right: 700px;
-          z-index: -1;
-          display: block;
-        }
-      }
-    }
-  }
-
-  & .search-form {
-    & h2 {
-      color: var(--heading-colour);
-    }
-    & .search-input.search-giant {
-      & button {
-        top: auto;
-        bottom: 10px;
-
-        & i {
-          color: var(--black-60);
-        }
-      }
-    }
-  }
-
-  & .dataset-heading {
-    font-size: 20px;
-
-    & a {
-      color: var(--heading-colour);
-    }
-  }
-
-  & .dataset-resources {
-    & .label {
-      height: 32px;
-      min-width: 32px;
-      box-sizing: border-box;
-      text-transform: uppercase;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0.5em 0.5em 0 0;
-      font-size: 11px;
-      background-color: var(--white);
-      border: solid 2px var(--black-80);
-      color: var(--black-80);
     }
   }
 }
