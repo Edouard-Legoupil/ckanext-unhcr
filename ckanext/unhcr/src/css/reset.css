@@ -10,7 +10,7 @@ body,
 body {
   font-family: var(--font-family-base);
   background-color: var(--body-bg);
-  color: var(--body-color);
+  color: var(--body-colour);
   overflow-x: hidden;
   display: flex;
   flex-direction: column;

@@ -32,7 +32,7 @@
 
       & ul li {
         & a {
-          color: var(--body-color);
+          color: var(--body-colour);
           font-size: 16px;
         }
 
