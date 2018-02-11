@@ -1,6 +1,6 @@
 :root {
   --header-height: 100px;
-  --nav-height: 46px;
+  --nav-height: 40px;
 }
 
 .account-masthead,
@@ -38,7 +38,7 @@
         @mixin icon-gear;
         color: var(--black-80);
         display: inline-flex;
-        padding: 7px;
+        padding: 10px 0;
         height: var(--nav-height);
         align-items: center;
         font-size: 26px;

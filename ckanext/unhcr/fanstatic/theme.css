@@ -168,8 +168,8 @@ a:hover {
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;
     display: inline-flex;
-    padding: 7px;
-    height: 46px;
+    padding: 10px 0;
+    height: 40px;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
@@ -184,7 +184,7 @@ a:hover {
   .account-masthead .account ul, .account-masthead .account.authed ul {
     position: absolute;
     right: 0;
-    top: 46px;
+    top: 40px;
     background-color: #FFF;
     -webkit-box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.5);
     box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.5);
@@ -340,7 +340,7 @@ a:hover {
   .masthead .nav > li > a {
     font-size: 16px;
     padding: 6px 20px;
-    height: 46px;
+    height: 40px;
     border: solid 1px rgb(204, 204, 204);
     margin-right: 20px;
     display: -webkit-box;
