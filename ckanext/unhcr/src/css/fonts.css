@@ -42,3 +42,16 @@
 @define-mixin icon-gear {
   content: "\f02f";
 }
+@define-mixin icon-list {
+  content: "\f061";
+}
+
+.fa-filter:before {
+  @mixin icon-font;
+  @mixin icon-list;
+}
+
+.fa-search:before {
+  @mixin icon-font;
+  @mixin icon-search;
+}
