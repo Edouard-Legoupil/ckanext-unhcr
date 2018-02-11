@@ -627,4 +627,10 @@ a:hover {
 
 .site-footer {
   background-color: #000;
+  color: rgba(255,255,255, 0.8)
+}
+
+.site-footer a,
+  .site-footer label {
+  color: inherit;
 }
