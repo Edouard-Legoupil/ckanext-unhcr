@@ -697,6 +697,10 @@ a:hover {
   color: rgb(51, 51, 51);
 }
 
+[role=main] .search-form .search-input.search-giant .search {
+  height: 54px;
+}
+
 [role=main] .search-form .search-input.search-giant button {
   top: auto;
   bottom: 10px;

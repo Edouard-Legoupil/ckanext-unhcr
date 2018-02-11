@@ -86,6 +86,11 @@
       color: var(--heading-colour);
     }
     & .search-input.search-giant {
+
+      & .search {
+        height: 54px;
+      }
+
       & button {
         top: auto;
         bottom: 10px;
