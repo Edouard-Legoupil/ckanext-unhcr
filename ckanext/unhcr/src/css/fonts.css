@@ -55,3 +55,18 @@
   @mixin icon-font;
   @mixin icon-search;
 }
+
+.fa-sitemap:before {
+  @mixin icon-font;
+  @mixin icon-database;
+}
+
+.fa-building-o:before {
+  @mixin icon-font;
+  @mixin icon-package;
+}
+
+.fa-users:before {
+  @mixin icon-font;
+  @mixin icon-directory;
+}
