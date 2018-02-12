@@ -714,6 +714,11 @@ a:hover {
   z-index: 1;
 }
 
+[role=main] .wrapper.no-nav .page-header {
+  background-color: #FFF;
+  margin-top: 20px;
+}
+
 @media (min-width: 980px) {
 
   [role=main] .wrapper:not(.no-nav)::before {

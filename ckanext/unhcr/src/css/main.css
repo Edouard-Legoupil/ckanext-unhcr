@@ -55,6 +55,13 @@
     position: relative;
     z-index: 1;
 
+    &.no-nav {
+      & .page-header {
+        background-color: var(--body-bg);
+        margin-top: 20px;
+      }
+    }
+
     &:not(.no-nav) {
       @media (--landscape-tablet-up) {
         &::before {
