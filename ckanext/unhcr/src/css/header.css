@@ -1,0 +1,273 @@
+:root {
+  --header-height: 100px;
+  --nav-height: 40px;
+}
+
+.account-masthead,
+.masthead {
+  background-color: var(--primary-colour);
+
+  @media (--landscape-tablet-up) {
+    background-color: var(--white);
+  }
+}
+
+.account-masthead {
+  & .account ul li {
+    & a,
+    & a.sub {
+      font-weight: normal;
+    }
+  }
+
+  @media (--landscape-tablet-up) {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    background-color: transparent;
+    pointer-events: none;
+
+    & .account,
+    & .account.authed {
+      pointer-events: auto;
+      margin-top: 20px;
+      position: relative;
+
+      &::before {
+        @mixin icon-font;
+        @mixin icon-gear;
+        color: var(--black-80);
+        display: inline-flex;
+        padding: 10px 0;
+        height: var(--nav-height);
+        align-items: center;
+        font-size: 26px;
+        cursor: pointer;
+      }
+
+      &.active {
+        & > ul {
+          display: block;
+        }
+      }
+
+      & ul {
+        position: absolute;
+        right: 0;
+        top: var(--nav-height);
+        background-color: var(--white);
+        box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+        padding: 0.5em 0;
+        display: none;
+
+        & li {
+          float: none;
+          border-style: solid;
+          border-color: var(--black-20);
+          border-width: 1px 0 0 0;
+
+          & a {
+            color: var(--body-colour);
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            padding: 0.1em 1em;
+
+            &.image {
+              padding: 0.1em 1em;
+            }
+
+            & span.text {
+              position: static;
+            }
+
+            & .fa,
+            & .gravatar {
+              display: none;
+            }
+
+            &:hover {
+              background-color: var(--primary-80);
+              color: var(--white);
+            }
+          }
+
+          &:first-child {
+            border: none;
+          }
+
+          &.notifications {
+            & a span.badge {
+              height: 1em;
+              min-width: 1em;
+              text-align: center;
+              padding: 0.2em;
+              border-radius: 1px;
+              display: none;
+            }
+
+            &.notifications-important {
+              & a span.badge {
+                background-color: var(--secondary-colour);
+                color: var(--black-80);
+                display: inline-block;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.masthead {
+  color: var(--white);
+
+  @media (--landscape-tablet-up) {
+    color: var(--black-80);
+  }
+
+  & .btn-navbar,
+  & .btn-navbar:hover,
+  & .btn-navbar:focus {
+    background-color: var(--primary-colour);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 32px;
+    height: 32px;
+    padding: 5px;
+    margin: 32px 0 0 0;
+    outline: none;
+
+    & .fa-bar {
+      background-color: var(--white);
+      height: 4px;
+      width: 22px;
+    }
+
+    @media (--landscape-tablet-up) {
+      display: none;
+    }
+  }
+
+  & .container {
+    z-index: 1;
+  }
+
+  & .nav > li {
+    & > a {
+      color: inherit;
+
+      &::before {
+        margin-right: 0.3em;
+        @mixin icon-font;
+        @mixin icon-file;
+      }
+
+      &[href="/dataset"] {
+        &::before {
+          @mixin icon-database;
+        }
+      }
+
+      &[href="/organization"] {
+        &::before {
+          @mixin icon-package;
+        }
+      }
+
+      &[href="/group"] {
+        &::before {
+          @mixin icon-directory;
+        }
+      }
+
+      @media (--landscape-tablet-up) {
+        font-size: 16px;
+        padding: 6px 20px;
+        height: var(--nav-height);
+        border: solid 1px var(--black-20);
+        margin-right: 20px;
+        display: flex;
+        align-items: center;
+
+        &::before {
+          font-size: 28px;
+        }
+      }
+    }
+  }
+
+  & .navigation .nav-pills li.active a,
+  & .navigation .nav-pills li.active a:hover {
+    background-color: var(--white);
+    color: var(--primary-colour);
+    border-color: var(--primary-colour);
+
+    @media (--landscape-tablet-up) {
+      background-color: var(--primary-colour);
+      color: var(--white);
+    }
+  }
+  & .navigation .nav-pills li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+
+    @media (--landscape-tablet-up) {
+      background-color: var(--primary-80);
+      border-color: var(--primary-80);
+    }
+  }
+
+  & .nav-collapse {
+    padding: 0;
+
+    @media (--landscape-tablet-up) {
+      background-color: var(--white);
+      width: 700px;
+      height: var(--header-height);
+      display: flex;
+      align-items: center;
+      padding-left: 30px;
+      box-sizing: border-box;
+    }
+  }
+
+  & .site-search {
+    display: none;
+  }
+
+  & .logo {
+    background-color: var(--primary-colour);
+    display: flex;
+    height: var(--header-height);
+    align-items: center;
+
+    & img {
+      height: 40px;
+    }
+
+    @media (--landscape-tablet-up) {
+      &::before {
+        content: '';
+        position: absolute;
+        background-color: var(--primary-colour);
+        width: 50vw;
+        height: var(--header-height);
+        right: 50%;
+        z-index: -1;
+      }
+    }
+  }
+}
+
+html:not(.js) {
+  @media (--landscape-tablet-up) {
+    & .account:hover {
+      & > ul {
+        display: block;
+      }
+    }
+  }
+}

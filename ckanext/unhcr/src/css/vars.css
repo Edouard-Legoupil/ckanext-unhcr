@@ -1,0 +1,29 @@
+:root {
+  --primary-colour: #0072BC;
+  --primary-80: color(var(--primary-colour) tint(20%));
+  --primary-60: color(var(--primary-colour) tint(40%));
+  --primary-40: color(var(--primary-colour) tint(60%));
+  --primary-20: color(var(--primary-colour) tint(80%));
+  --secondary-colour: #FAEB00;
+  --black: #000;
+  --white: #FFF;
+  --body-bg: var(--white);
+  --black-80: color(var(--black) tint(20%));
+  --black-60: color(var(--black) tint(40%));
+  --black-40: color(var(--black) tint(60%));
+  --black-20: color(var(--black) tint(80%));
+  --body-colour: var(--black-60);
+  --heading-colour: var(--black-80);
+  --success-colour: var(--secondary-colour);
+  --warning-colour: var(--secondary-colour);
+  --info-colour: var(--primary-colour);
+  --danger-colour: var(--black-80);
+
+  --font-family-base: 'proxima_nova', 'Lato', Arial, sans-serif;
+}
+
+@custom-media --phone-only (max-width: 480px);
+@custom-media --landscape-phone-up (min-width: 480px);
+@custom-media --portrait-tablet-up (min-width: 768px);
+@custom-media --landscape-tablet-up (min-width: 980px);
+@custom-media --desktop-up (min-width: 1200px);
