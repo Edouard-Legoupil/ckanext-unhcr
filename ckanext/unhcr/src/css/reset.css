@@ -143,8 +143,10 @@ a {
   background-color: transparent;
 }
 
-.label {
+.label,
+.badge {
   text-shadow: none;
+  font-weight: normal;
 }
 
 .account-masthead .account .notifications a:hover span.text {

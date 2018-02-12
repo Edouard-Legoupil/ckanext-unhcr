@@ -319,8 +319,10 @@ a:hover {
   background-color: transparent;
 }
 
-.label {
+.label,
+.badge {
   text-shadow: none;
+  font-weight: normal;
 }
 
 .account-masthead .account .notifications a:hover span.text {
@@ -841,6 +843,11 @@ a:hover {
   display: none;
 }
 
+[role=main] .secondary .badge {
+  font-size: 11px;
+  margin-left: 0.5em;
+}
+
 @media (min-width: 980px) {
 
   [role=main] .secondary {
@@ -858,7 +865,8 @@ a:hover {
     color: #FFF;
   }
 
-  [role=main] .secondary .label {
+  [role=main] .secondary .label,
+      [role=main] .secondary .badge {
     background-color: rgb(102, 170, 215);
   }
 

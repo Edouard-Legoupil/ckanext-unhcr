@@ -185,6 +185,11 @@
       display: none;
     }
 
+    & .badge {
+      font-size: 11px;
+      margin-left: 0.5em;
+    }
+
     @media (--landscape-tablet-up) {
       background-color: var(--primary-colour);
       color: var(--white);
@@ -199,7 +204,8 @@
         color: var(--white);
       }
 
-      & .label {
+      & .label,
+      & .badge {
         background-color: var(--primary-60);
       }
 
