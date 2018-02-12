@@ -540,7 +540,7 @@ a:hover {
   content: "\f096";
 }
 
-.masthead .nav > li > a[href="/organization"]::before {
+.masthead .nav > li > a[href="/organization"]::before, .masthead .nav > li > a[href="/data-container"]::before {
   content: "\f0c4";
 }
 
@@ -883,7 +883,8 @@ a:hover {
     padding-right: 0;
   }
 
-  [role=main] .secondary .context-info .module-content .heading {
+  [role=main] .secondary .context-info .module-content .heading,
+          [role=main] .secondary .context-info .module-content p {
     padding-right: 20px;
   }
 

@@ -222,7 +222,8 @@
           padding-left: 0;
           padding-right: 0;
 
-          & .heading {
+          & .heading,
+          & p {
             padding-right: 20px;
           }
         }

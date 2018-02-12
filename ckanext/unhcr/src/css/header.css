@@ -172,7 +172,8 @@
         }
       }
 
-      &[href="/organization"] {
+      &[href="/organization"],
+      &[href="/data-container"] {
         &::before {
           @mixin icon-package;
         }
