@@ -174,6 +174,10 @@
       border-top-style: solid;
     }
 
+    & .image {
+      display: none;
+    }
+
     @media (--landscape-tablet-up) {
       background-color: var(--primary-colour);
       color: var(--white);
@@ -267,6 +271,27 @@
       & .module-footer {
         border-color: rgba(255, 255, 255, 0.2);
       }
+
+      & .image {
+        display: block;
+      }
     }
+  }
+}
+
+.media-grid {
+  background: none;
+  border: none;
+
+  & .media-item {
+    width: 183px;
+  }
+
+  & .media-image {
+    background-color: var(--black-20);
+  }
+
+  @media (--landscape-tablet-up) {
+    margin:0 0 0 -15px;
   }
 }

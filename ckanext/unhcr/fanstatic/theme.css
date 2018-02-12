@@ -787,6 +787,10 @@ a:hover {
   border-top-style: solid;
 }
 
+[role=main] .secondary .image {
+  display: none;
+}
+
 @media (min-width: 980px) {
 
   [role=main] .secondary {
@@ -880,6 +884,30 @@ a:hover {
 
   [role=main] .secondary .module-footer {
     border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  [role=main] .secondary .image {
+    display: block;
+  }
+}
+
+.media-grid {
+  background: none;
+  border: none
+}
+
+.media-grid .media-item {
+  width: 183px;
+}
+
+.media-grid .media-image {
+  background-color: rgb(204, 204, 204);
+}
+
+@media (min-width: 980px) {
+
+  .media-grid {
+    margin:0 0 0 -15px;
   }
 }
 
