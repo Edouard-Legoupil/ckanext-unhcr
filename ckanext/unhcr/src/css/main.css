@@ -295,3 +295,49 @@
     margin:0 0 0 -15px;
   }
 }
+
+.stages {
+  color: #fff;
+  margin: -20px 0 20px 0;
+
+  & li {
+    background-color: var(--primary-60);
+
+    &:before {
+      background-color: #fff;
+      color: var(--primary-60);
+    }
+    &:after {
+      border-top-color: var(--primary-60);
+      border-bottom-color: var(--primary-60);
+    }
+    &.active {
+      &:after {
+        border-top-color: var(--primary-80);
+        border-bottom-color: var(--primary-80);
+      }
+      &:before {
+        color: var(--primary-80);
+      }
+
+      & .highlight {
+        background: var(--primary-80);
+      }
+    }
+    &.complete {
+      &:after {
+        border-top-color: var(--primary-colour);
+        border-bottom-color: var(--primary-colour);
+      }
+      &:before {
+        color: var(--primary-colour);
+        background: #fff;
+      }
+
+      & .highlight {
+        color: #eef6ed;
+        background: var(--primary-colour);
+      }
+    }
+  }
+}

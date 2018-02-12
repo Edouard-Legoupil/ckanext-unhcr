@@ -911,6 +911,53 @@ a:hover {
   }
 }
 
+.stages {
+  color: #fff;
+  margin: -20px 0 20px 0
+}
+
+.stages li {
+  background-color: rgb(102, 170, 215);
+}
+
+.stages li:before {
+  background-color: #fff;
+  color: rgb(102, 170, 215);
+}
+
+.stages li:after {
+  border-top-color: rgb(102, 170, 215);
+  border-bottom-color: rgb(102, 170, 215);
+}
+
+.stages li.active:after {
+  border-top-color: rgb(51, 142, 201);
+  border-bottom-color: rgb(51, 142, 201);
+}
+
+.stages li.active:before {
+  color: rgb(51, 142, 201);
+}
+
+.stages li.active .highlight {
+  background: rgb(51, 142, 201);
+}
+
+.stages li.complete:after {
+  border-top-color: #0072BC;
+  border-bottom-color: #0072BC;
+}
+
+.stages li.complete:before {
+  color: #0072BC;
+  background: #fff;
+}
+
+.stages li.complete .highlight {
+  color: #eef6ed;
+  background: #0072BC;
+}
+
 .site-footer {
   background-color: #000;
   color: rgba(255,255,255, 0.8)
