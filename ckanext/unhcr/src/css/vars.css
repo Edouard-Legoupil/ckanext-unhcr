@@ -19,7 +19,7 @@
   --info-colour: var(--primary-colour);
   --danger-colour: var(--black-80);
 
-  --font-family-base: 'proxima_nova', 'Lato', Arial, sans-serif;
+  --font-family-base: 'Lato', Arial, sans-serif;
 }
 
 @custom-media --phone-only (max-width: 480px);
