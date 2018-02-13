@@ -155,6 +155,11 @@
   & .secondary {
     font-size: 14px;
 
+    & hr {
+      border-top-color: rgba(255, 255, 255, 0.2);
+      border-bottom: none;
+    }
+
     & .nav-item {
       border-bottom-style: solid;
 

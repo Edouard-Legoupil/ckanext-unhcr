@@ -1,11 +1,4 @@
 $( document ).ready(function() {
-  // toggle account menu
-  $( ".account-masthead .account" ).click(function() {
-    $( this ).toggleClass( "active" );
-  });
-});
-
-$( document ).ready(function() {
 
   // set default state
   //$(".hierarchy-tree").parent("li").addClass( "open" ); // open

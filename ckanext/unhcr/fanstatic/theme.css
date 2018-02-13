@@ -815,6 +815,11 @@ a:hover {
   font-size: 14px;
 }
 
+[role=main] .secondary hr {
+  border-top-color: rgba(255, 255, 255, 0.2);
+  border-bottom: none;
+}
+
 [role=main] .secondary .nav-item {
   border-bottom-style: solid;
 }
@@ -1025,4 +1030,186 @@ a:hover {
 .site-footer a,
   .site-footer label {
   color: inherit;
+}
+
+ul.hierarchy-tree-top li.highlighted > a, ul.hierarchy-tree li.highlighted > a {
+  text-shadow: none;
+  font-weight: normal;
+  background-color: #0072BC;
+  border-color: #0072BC;
+  color: #FFF;
+}
+
+ul.hierarchy-tree-top li.highlighted > a:hover,
+    ul.hierarchy-tree-top li.highlighted > a:focus,
+    ul.hierarchy-tree li.highlighted > a:hover,
+    ul.hierarchy-tree li.highlighted > a:focus {
+  background-color: #0072BC;
+  color: #FFF;
+}
+
+.secondary ul.hierarchy-tree-top > li a, .secondary ul.hierarchy-tree > li a {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.secondary ul.hierarchy-tree-top > li.highlighted > a, .secondary ul.hierarchy-tree > li.highlighted > a {
+  color: #0072BC;
+  background-color: #fff;
+  border-color: #fff;
+}
+
+ul.hierarchy-tree {
+  background: none;
+  background-image: url(../../hierarchy/images/vline.png);
+  background-repeat: repeat-y
+}
+
+ul.hierarchy-tree li {
+  background: none;
+  background-image: url(../../hierarchy/images/node.png);
+  background-repeat: no-repeat;
+}
+
+ul.hierarchy-tree li:last-child {
+  background: none;
+  background-image: url(../../hierarchy/images/lastnode.png);
+  background-repeat: no-repeat;
+  background-color: #FFF;
+}
+
+.secondary ul.hierarchy-tree li:last-child {
+  background-color: #0072BC;
+}
+
+ul.hierarchy-tree-top {
+  margin: 0
+}
+
+.secondary ul.hierarchy-tree-top {
+  padding-right: 20px;
+  mix-blend-mode: luminosity;
+}
+
+ul.hierarchy-tree-top li {
+  display: block;
+  padding-right: 0;
+}
+
+ul.hierarchy-tree-top li a {
+  background-color: #FFF;
+  margin-top: 4px;
+  color: rgb(102, 102, 102);
+  -webkit-box-shadow: 0px -4px 0px 0px #FFF;
+  box-shadow: 0px -4px 0px 0px #FFF;
+  border: solid 1px rgb(204, 204, 204);
+  border-radius: 3px;
+  padding: 0.4em;
+  display: block;
+}
+
+ul.hierarchy-tree-top li a:hover,
+      ul.hierarchy-tree-top li a:focus {
+  background-color: rgb(204, 227, 242);
+  text-decoration: none;
+}
+
+.secondary ul.hierarchy-tree-top li a {
+  background-color: rgb(51, 142, 201);
+  -webkit-box-shadow: 0px -4px 0px 0px #0072BC;
+  box-shadow: 0px -4px 0px 0px #0072BC;
+  border-color: rgb(51, 142, 201);
+}
+
+ul.hierarchy-tree-top.has-toggle a {
+  padding-left: 2.5em;
+}
+
+ul.hierarchy-tree-top.has-toggle .hierarchy-toggle {
+  background: none;
+  border: none;
+  padding: 0.5em 0.6em 0.4em 0.6em;
+  outline: none;
+  float: left;
+  margin: 1px 0 0 1px;
+  line-height: 1;
+}
+
+ul.hierarchy-tree-top.has-toggle .hierarchy-toggle span {
+  display: none;
+}
+
+ul.hierarchy-tree-top.has-toggle .hierarchy-toggle::before {
+  font-size: 1.3em;
+}
+
+ul.hierarchy-tree-top.has-toggle .closed > .hierarchy-toggle::before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\f06b";
+  color: rgb(102, 102, 102);
+}
+
+.secondary ul.hierarchy-tree-top.has-toggle .closed > .hierarchy-toggle::before {
+  color: #fff;
+}
+
+ul.hierarchy-tree-top.has-toggle .closed > .hierarchy-toggle:hover::before {
+  color: #0072BC;
+}
+
+.secondary ul.hierarchy-tree-top.has-toggle .closed > .hierarchy-toggle:hover::before {
+  color: #fff;
+}
+
+ul.hierarchy-tree-top.has-toggle .closed.highlighted > .hierarchy-toggle::before {
+  color: #fff;
+}
+
+.secondary ul.hierarchy-tree-top.has-toggle .closed.highlighted > .hierarchy-toggle::before {
+  color: #0072BC;
+}
+
+ul.hierarchy-tree-top.has-toggle .open > .hierarchy-toggle::before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\f06c";
+  color: rgb(153, 153, 153);
+}
+
+.secondary ul.hierarchy-tree-top.has-toggle .open > .hierarchy-toggle::before {
+  color: #fff;
+}
+
+ul.hierarchy-tree-top.has-toggle .open > .hierarchy-toggle:hover::before {
+  color: #0072BC;
+}
+
+.secondary ul.hierarchy-tree-top.has-toggle .open > .hierarchy-toggle:hover::before {
+  color: #fff;
+}
+
+ul.hierarchy-tree-top.has-toggle .open.highlighted > .hierarchy-toggle::before {
+  color: #fff;
+}
+
+.secondary ul.hierarchy-tree-top.has-toggle .open.highlighted > .hierarchy-toggle::before {
+  color: #0072BC;
 }

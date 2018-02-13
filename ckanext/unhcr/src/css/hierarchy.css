@@ -1,0 +1,199 @@
+:root {
+  --main-bg: var(--body-bg);
+  --aside-bg: var(--primary-colour);
+  --main-colour: var(--body-colour);
+  --aside-colour: #fff;
+  --item-bg: var(--body-bg);
+  --aside-item-bg: var(--primary-80);
+  --item-border: var(--black-20);
+  --aside-item-border: var(--primary-80);
+  --item-border-rad: 3px;
+}
+
+
+ul.hierarchy-tree-top,
+ul.hierarchy-tree {
+  & li.highlighted > a {
+    text-shadow: none;
+    font-weight: normal;
+    background-color: var(--primary-colour);
+    border-color: var(--primary-colour);
+    color: var(--main-bg);
+
+    &:hover,
+    &:focus {
+      background-color: var(--primary-colour);
+      color: var(--main-bg);
+    }
+  }
+
+  @nest .secondary & {
+    & > li {
+
+      & a {
+        color: color(var(--aside-colour) a(80%));
+      }
+
+      &.highlighted > a {
+        color: var(--aside-bg);
+        background-color: var(--aside-colour);
+        border-color: var(--aside-colour);
+      }
+    }
+  }
+}
+
+
+ul.hierarchy-tree {
+  background: none;
+  background-image: url(../../hierarchy/images/vline.png);
+  background-repeat: repeat-y;
+
+  & li {
+    background: none;
+    background-image: url(../../hierarchy/images/node.png);
+    background-repeat: no-repeat;
+
+    &:last-child {
+      background: none;
+      background-image: url(../../hierarchy/images/lastnode.png);
+      background-repeat: no-repeat;
+      background-color: var(--main-bg);
+
+      @nest .secondary & {
+        background-color: var(--aside-bg);
+      }
+    }
+  }
+}
+
+
+ul.hierarchy-tree-top {
+  margin: 0;
+
+  @nest .secondary & {
+    padding-right: 20px;
+    mix-blend-mode: luminosity;
+  }
+
+  & li {
+    display: block;
+    padding-right: 0;
+
+    & a {
+      background-color: var(--item-bg);
+      margin-top: 4px;
+      color: var(--main-colour);
+      box-shadow: 0px -4px 0px 0px var(--main-bg);
+      border: solid 1px var(--item-border);
+      border-radius: var(--item-border-rad);
+      padding: 0.4em;
+      display: block;
+
+      &:hover,
+      &:focus {
+        background-color: var(--primary-20);
+        text-decoration: none;
+      }
+
+      @nest .secondary & {
+        background-color: var(--aside-item-bg);
+        box-shadow: 0px -4px 0px 0px var(--aside-bg);
+        border-color: var(--aside-item-border);
+      }
+    }
+  }
+
+  &.has-toggle {
+
+    & a {
+      padding-left: 2.5em;
+    }
+
+    & .hierarchy-toggle {
+      background: none;
+      border: none;
+      padding: 0.5em 0.6em 0.4em 0.6em;
+      outline: none;
+      float: left;
+      margin: 1px 0 0 1px;
+      line-height: 1;
+
+      & span {
+        display: none;
+      }
+
+      &::before {
+        font-size: 1.3em;
+      }
+    }
+
+    & .closed {
+      & > .hierarchy-toggle {
+        &::before {
+          @mixin icon-font;
+          @mixin icon-add;
+          color: var(--main-colour);
+
+          @nest .secondary & {
+            color: var(--aside-colour);
+          }
+        }
+        &:hover {
+          &::before {
+            color: var(--primary-colour);
+
+            @nest .secondary & {
+              color: var(--aside-colour);
+            }
+          }
+        }
+      }
+      &.highlighted {
+        & > .hierarchy-toggle {
+          &::before {
+            color: #fff;
+
+            @nest .secondary & {
+              color: var(--aside-bg);
+            }
+          }
+        }
+      }
+    }
+
+    & .open {
+      & > .hierarchy-toggle {
+        &::before {
+          @mixin icon-font;
+          @mixin icon-remove;
+          color: var(--black-40);
+
+          @nest .secondary & {
+            color: var(--aside-colour);
+          }
+        }
+        &:hover {
+          &::before {
+            color: var(--primary-colour);
+
+            @nest .secondary & {
+              color: var(--aside-colour);
+            }
+          }
+        }
+      }
+      &.highlighted {
+        & > .hierarchy-toggle {
+          &::before {
+            color: #fff;
+
+            @nest .secondary & {
+              color: var(--aside-bg);
+            }
+          }
+        }
+      }
+    }
+  }
+}

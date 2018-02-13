@@ -45,6 +45,12 @@
 @define-mixin icon-list {
   content: "\f061";
 }
+@define-mixin icon-add {
+  content: "\f06b";
+}
+@define-mixin icon-remove {
+  content: "\f06c";
+}
 
 .fa-filter:before {
   @mixin icon-font;
