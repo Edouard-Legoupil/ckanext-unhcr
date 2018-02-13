@@ -342,6 +342,10 @@ a:hover {
   }
 }
 
+.account-masthead .account ul li {
+  border-left-color: rgba(255,255,255,0.2);
+}
+
 .account-masthead .account ul li a,
     .account-masthead .account ul li a.sub {
   font-weight: normal;
@@ -493,7 +497,7 @@ a:hover {
   width: 32px;
   height: 32px;
   padding: 5px;
-  margin: 32px 0 0 0;
+  margin: 16px 0;
   outline: none;
 }
 
@@ -625,17 +629,13 @@ a:hover {
 
 .masthead .logo {
   background-color: #0072BC;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   height: 100px;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .masthead .logo img {
+  display: block;
   height: 40px;
+  margin-top: 10px;
 }
 
 @media (min-width: 980px) {
@@ -648,6 +648,10 @@ a:hover {
     height: 100px;
     right: 50%;
     z-index: -1;
+  }
+
+  .masthead .logo img {
+    margin-top: 27px;
   }
 }
 
@@ -1024,7 +1028,11 @@ a:hover {
 
 .site-footer {
   background-color: #000;
-  color: rgba(255,255,255, 0.8)
+  color: rgba(255,255,255, 0.8);
+  margin-left: -20px;
+  margin-right: -20px;
+  padding-left: 20px;
+  padding-right: 20px
 }
 
 .site-footer a,
