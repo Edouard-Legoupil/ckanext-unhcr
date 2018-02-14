@@ -45,6 +45,12 @@
 @define-mixin icon-list {
   content: "\f061";
 }
+@define-mixin icon-add {
+  content: "\f06b";
+}
+@define-mixin icon-remove {
+  content: "\f06c";
+}
 
 .fa-filter:before {
   @mixin icon-font;
@@ -54,4 +60,19 @@
 .fa-search:before {
   @mixin icon-font;
   @mixin icon-search;
+}
+
+.fa-sitemap:before {
+  @mixin icon-font;
+  @mixin icon-database;
+}
+
+.fa-building-o:before {
+  @mixin icon-font;
+  @mixin icon-package;
+}
+
+.fa-users:before {
+  @mixin icon-font;
+  @mixin icon-directory;
 }

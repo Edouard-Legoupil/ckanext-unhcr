@@ -55,6 +55,13 @@
     position: relative;
     z-index: 1;
 
+    &.no-nav {
+      & .page-header {
+        background-color: var(--body-bg);
+        margin-top: 20px;
+      }
+    }
+
     &:not(.no-nav) {
       @media (--landscape-tablet-up) {
         &::before {
@@ -148,6 +155,11 @@
   & .secondary {
     font-size: 14px;
 
+    & hr {
+      border-top-color: rgba(255, 255, 255, 0.2);
+      border-bottom: none;
+    }
+
     & .nav-item {
       border-bottom-style: solid;
 
@@ -174,6 +186,15 @@
       border-top-style: solid;
     }
 
+    & .image {
+      display: none;
+    }
+
+    & .badge {
+      font-size: 11px;
+      margin-left: 0.5em;
+    }
+
     @media (--landscape-tablet-up) {
       background-color: var(--primary-colour);
       color: var(--white);
@@ -188,7 +209,8 @@
         color: var(--white);
       }
 
-      & .label {
+      & .label,
+      & .badge {
         background-color: var(--primary-60);
       }
 
@@ -205,7 +227,8 @@
           padding-left: 0;
           padding-right: 0;
 
-          & .heading {
+          & .heading,
+          & p {
             padding-right: 20px;
           }
         }
@@ -266,6 +289,73 @@
 
       & .module-footer {
         border-color: rgba(255, 255, 255, 0.2);
+      }
+
+      & .image {
+        display: block;
+      }
+    }
+  }
+}
+
+.media-grid {
+  background: none;
+  border: none;
+
+  & .media-item {
+    width: 183px;
+  }
+
+  & .media-image {
+    background-color: var(--black-20);
+  }
+
+  @media (--landscape-tablet-up) {
+    margin:0 0 0 -15px;
+  }
+}
+
+.stages {
+  color: #fff;
+  margin: -20px 0 20px 0;
+
+  & li {
+    background-color: var(--primary-60);
+
+    &:before {
+      background-color: #fff;
+      color: var(--primary-60);
+    }
+    &:after {
+      border-top-color: var(--primary-60);
+      border-bottom-color: var(--primary-60);
+    }
+    &.active {
+      &:after {
+        border-top-color: var(--primary-80);
+        border-bottom-color: var(--primary-80);
+      }
+      &:before {
+        color: var(--primary-80);
+      }
+
+      & .highlight {
+        background: var(--primary-80);
+      }
+    }
+    &.complete {
+      &:after {
+        border-top-color: var(--primary-colour);
+        border-bottom-color: var(--primary-colour);
+      }
+      &:before {
+        color: var(--primary-colour);
+        background: #fff;
+      }
+
+      & .highlight {
+        color: #eef6ed;
+        background: var(--primary-colour);
       }
     }
   }
