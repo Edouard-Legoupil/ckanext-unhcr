@@ -22,10 +22,24 @@ module.exports = function(grunt) {
       }
     },
 
+    concat: {
+      options: {
+        separator: '\n',
+      },
+      dist: {
+        src: ['ckanext/unhcr/src/js/main.js', 'ckanext/unhcr/src/js/hierarchy.js'],
+        dest: 'ckanext/unhcr/fanstatic/theme.js',
+      },
+    },
+
     watch: {
       css: {
         files: 'ckanext/unhcr/src/css/*.css',
         tasks: ['postcss']
+      },
+      js: {
+        files: 'ckanext/unhcr/src/js/*.js',
+        tasks: ['concat']
       }
     }
 
@@ -33,6 +47,7 @@ module.exports = function(grunt) {
 
   // Load the plugins
   grunt.loadNpmTasks('grunt-postcss');
+  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('default',['watch']);

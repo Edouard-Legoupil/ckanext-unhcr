@@ -39,6 +39,51 @@
   content: "\f02e";
 }
 
+.fa-sitemap:before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\f096";
+}
+
+.fa-building-o:before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\f0c4";
+}
+
+.fa-users:before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\f016";
+}
+
 body,
 .account-masthead,
 .masthead,
@@ -49,18 +94,10 @@ body,
 }
 
 body {
-  font-family: 'proxima_nova', 'Lato', Arial, sans-serif;
+  font-family: 'Lato', Arial, sans-serif;
   background-color: #FFF;
   color: rgb(102, 102, 102);
   overflow-x: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  min-height: 100vh;
   font-size: 15px;
 }
 
@@ -70,36 +107,7 @@ body {
   min-height:0;
 }
 
-[role="main"] {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1
-}
-
-[role="main"] > .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
-
 [role="main"] > .container > .wrapper {
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
   margin-bottom: 0;
 }
 
@@ -111,7 +119,7 @@ input,
 button,
 select,
 textarea {
-  font-family: 'proxima_nova', 'Lato', Arial, sans-serif;
+  font-family: 'Lato', Arial, sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -274,12 +282,65 @@ a:hover {
   background-color: transparent;
 }
 
-.label {
+.label,
+.badge {
   text-shadow: none;
+  font-weight: normal;
 }
 
 .account-masthead .account .notifications a:hover span.text {
   background-color: transparent;
+}
+
+body {
+  /* for IE */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+[role="main"] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1
+}
+
+[role="main"] > .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+[role="main"] > .container > .wrapper {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
 }
 
 .account-masthead,
@@ -293,6 +354,10 @@ a:hover {
 .masthead {
     background-color: #FFF;
   }
+}
+
+.account-masthead .account ul li {
+  border-left-color: rgba(255,255,255,0.2);
 }
 
 .account-masthead .account ul li a,
@@ -446,7 +511,7 @@ a:hover {
   width: 32px;
   height: 32px;
   padding: 5px;
-  margin: 32px 0 0 0;
+  margin: 16px 0;
   outline: none;
 }
 
@@ -493,7 +558,7 @@ a:hover {
   content: "\f096";
 }
 
-.masthead .nav > li > a[href="/organization"]::before {
+.masthead .nav > li > a[href="/organization"]::before, .masthead .nav > li > a[href="/data-container"]::before {
   content: "\f0c4";
 }
 
@@ -578,17 +643,13 @@ a:hover {
 
 .masthead .logo {
   background-color: #0072BC;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   height: 100px;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .masthead .logo img {
+  display: block;
   height: 40px;
+  margin-top: 10px;
 }
 
 @media (min-width: 980px) {
@@ -601,6 +662,10 @@ a:hover {
     height: 100px;
     right: 50%;
     z-index: -1;
+  }
+
+  .masthead .logo img {
+    margin-top: 27px;
   }
 }
 
@@ -667,6 +732,11 @@ a:hover {
 [role=main] .wrapper {
   position: relative;
   z-index: 1;
+}
+
+[role=main] .wrapper.no-nav .page-header {
+  background-color: #FFF;
+  margin-top: 20px;
 }
 
 @media (min-width: 980px) {
@@ -763,6 +833,11 @@ a:hover {
   font-size: 14px;
 }
 
+[role=main] .secondary hr {
+  border-top-color: rgba(255, 255, 255, 0.2);
+  border-bottom: none;
+}
+
 [role=main] .secondary .nav-item {
   border-bottom-style: solid;
 }
@@ -787,6 +862,15 @@ a:hover {
   border-top-style: solid;
 }
 
+[role=main] .secondary .image {
+  display: none;
+}
+
+[role=main] .secondary .badge {
+  font-size: 11px;
+  margin-left: 0.5em;
+}
+
 @media (min-width: 980px) {
 
   [role=main] .secondary {
@@ -804,7 +888,8 @@ a:hover {
     color: #FFF;
   }
 
-  [role=main] .secondary .label {
+  [role=main] .secondary .label,
+      [role=main] .secondary .badge {
     background-color: rgb(102, 170, 215);
   }
 
@@ -821,7 +906,8 @@ a:hover {
     padding-right: 0;
   }
 
-  [role=main] .secondary .context-info .module-content .heading {
+  [role=main] .secondary .context-info .module-content .heading,
+          [role=main] .secondary .context-info .module-content p {
     padding-right: 20px;
   }
 
@@ -881,14 +967,271 @@ a:hover {
   [role=main] .secondary .module-footer {
     border-color: rgba(255, 255, 255, 0.2);
   }
+
+  [role=main] .secondary .image {
+    display: block;
+  }
+}
+
+.media-grid {
+  background: none;
+  border: none
+}
+
+.media-grid .media-item {
+  width: 183px;
+}
+
+.media-grid .media-image {
+  background-color: rgb(204, 204, 204);
+}
+
+@media (min-width: 980px) {
+
+  .media-grid {
+    margin:0 0 0 -15px;
+  }
+}
+
+.stages {
+  color: #fff;
+  margin: -20px 0 20px 0
+}
+
+.stages li {
+  background-color: rgb(102, 170, 215);
+}
+
+.stages li:before {
+  background-color: #fff;
+  color: rgb(102, 170, 215);
+}
+
+.stages li:after {
+  border-top-color: rgb(102, 170, 215);
+  border-bottom-color: rgb(102, 170, 215);
+}
+
+.stages li.active:after {
+  border-top-color: rgb(51, 142, 201);
+  border-bottom-color: rgb(51, 142, 201);
+}
+
+.stages li.active:before {
+  color: rgb(51, 142, 201);
+}
+
+.stages li.active .highlight {
+  background: rgb(51, 142, 201);
+}
+
+.stages li.complete:after {
+  border-top-color: #0072BC;
+  border-bottom-color: #0072BC;
+}
+
+.stages li.complete:before {
+  color: #0072BC;
+  background: #fff;
+}
+
+.stages li.complete .highlight {
+  color: #eef6ed;
+  background: #0072BC;
 }
 
 .site-footer {
   background-color: #000;
-  color: rgba(255,255,255, 0.8)
+  color: rgba(255,255,255, 0.8);
+  margin-left: -20px;
+  margin-right: -20px;
+  padding-left: 20px;
+  padding-right: 20px
 }
 
 .site-footer a,
   .site-footer label {
   color: inherit;
+}
+
+ul.hierarchy-tree-top li.highlighted > a, ul.hierarchy-tree li.highlighted > a {
+  text-shadow: none;
+  font-weight: normal;
+  background-color: #0072BC;
+  border-color: #0072BC;
+  color: #FFF;
+}
+
+ul.hierarchy-tree-top li.highlighted > a:hover,
+    ul.hierarchy-tree-top li.highlighted > a:focus,
+    ul.hierarchy-tree li.highlighted > a:hover,
+    ul.hierarchy-tree li.highlighted > a:focus {
+  background-color: #0072BC;
+  color: #FFF;
+}
+
+.secondary ul.hierarchy-tree-top > li a, .secondary ul.hierarchy-tree > li a {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.secondary ul.hierarchy-tree-top > li.highlighted > a, .secondary ul.hierarchy-tree > li.highlighted > a {
+  color: #0072BC;
+  background-color: #fff;
+  border-color: #fff;
+}
+
+ul.hierarchy-tree {
+  background: none;
+  background-image: url(../../hierarchy/images/vline.png);
+  background-repeat: repeat-y
+}
+
+ul.hierarchy-tree li {
+  background: none;
+  background-image: url(../../hierarchy/images/node.png);
+  background-repeat: no-repeat;
+}
+
+ul.hierarchy-tree li:last-child {
+  background: none;
+  background-image: url(../../hierarchy/images/lastnode.png);
+  background-repeat: no-repeat;
+  background-color: #FFF;
+}
+
+.secondary ul.hierarchy-tree li:last-child {
+  background-color: #0072BC;
+}
+
+ul.hierarchy-tree-top {
+  margin: 0
+}
+
+.secondary ul.hierarchy-tree-top {
+  padding-right: 20px;
+  mix-blend-mode: luminosity;
+}
+
+ul.hierarchy-tree-top li {
+  display: block;
+  padding-right: 0;
+}
+
+ul.hierarchy-tree-top li a {
+  background-color: #FFF;
+  margin-top: 4px;
+  color: rgb(102, 102, 102);
+  -webkit-box-shadow: 0px -4px 0px 0px #FFF;
+  box-shadow: 0px -4px 0px 0px #FFF;
+  border: solid 1px rgb(204, 204, 204);
+  border-radius: 3px;
+  padding: 0.4em;
+  display: block;
+}
+
+ul.hierarchy-tree-top li a:hover,
+      ul.hierarchy-tree-top li a:focus {
+  background-color: rgb(204, 227, 242);
+  text-decoration: none;
+}
+
+.secondary ul.hierarchy-tree-top li a {
+  background-color: rgb(51, 142, 201);
+  -webkit-box-shadow: 0px -4px 0px 0px #0072BC;
+  box-shadow: 0px -4px 0px 0px #0072BC;
+  border-color: rgb(51, 142, 201);
+}
+
+ul.hierarchy-tree-top.has-toggle a {
+  padding-left: 2.5em;
+}
+
+ul.hierarchy-tree-top.has-toggle .hierarchy-toggle {
+  background: none;
+  border: none;
+  padding: 0.5em 0.6em 0.4em 0.6em;
+  outline: none;
+  float: left;
+  margin: 1px 0 0 1px;
+  line-height: 1;
+}
+
+ul.hierarchy-tree-top.has-toggle .hierarchy-toggle span {
+  display: none;
+}
+
+ul.hierarchy-tree-top.has-toggle .hierarchy-toggle::before {
+  font-size: 1.3em;
+}
+
+ul.hierarchy-tree-top.has-toggle .closed > .hierarchy-toggle::before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\f06b";
+  color: rgb(102, 102, 102);
+}
+
+.secondary ul.hierarchy-tree-top.has-toggle .closed > .hierarchy-toggle::before {
+  color: #fff;
+}
+
+ul.hierarchy-tree-top.has-toggle .closed > .hierarchy-toggle:hover::before {
+  color: #0072BC;
+}
+
+.secondary ul.hierarchy-tree-top.has-toggle .closed > .hierarchy-toggle:hover::before {
+  color: #fff;
+}
+
+ul.hierarchy-tree-top.has-toggle .closed.highlighted > .hierarchy-toggle::before {
+  color: #fff;
+}
+
+.secondary ul.hierarchy-tree-top.has-toggle .closed.highlighted > .hierarchy-toggle::before {
+  color: #0072BC;
+}
+
+ul.hierarchy-tree-top.has-toggle .open > .hierarchy-toggle::before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\f06c";
+  color: rgb(153, 153, 153);
+}
+
+.secondary ul.hierarchy-tree-top.has-toggle .open > .hierarchy-toggle::before {
+  color: #fff;
+}
+
+ul.hierarchy-tree-top.has-toggle .open > .hierarchy-toggle:hover::before {
+  color: #0072BC;
+}
+
+.secondary ul.hierarchy-tree-top.has-toggle .open > .hierarchy-toggle:hover::before {
+  color: #fff;
+}
+
+ul.hierarchy-tree-top.has-toggle .open.highlighted > .hierarchy-toggle::before {
+  color: #fff;
+}
+
+.secondary ul.hierarchy-tree-top.has-toggle .open.highlighted > .hierarchy-toggle::before {
+  color: #0072BC;
 }

@@ -9,6 +9,7 @@
   "devDependencies": {
     "autoprefixer": "^7.2.5",
     "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-postcss": "^0.9.0",
     "postcss-color-function": "^4.0.1",

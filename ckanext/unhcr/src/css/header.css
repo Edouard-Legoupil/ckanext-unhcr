@@ -14,6 +14,8 @@
 
 .account-masthead {
   & .account ul li {
+    border-left-color: rgba(255,255,255,0.2);
+    
     & a,
     & a.sub {
       font-weight: normal;
@@ -138,7 +140,7 @@
     width: 32px;
     height: 32px;
     padding: 5px;
-    margin: 32px 0 0 0;
+    margin: 16px 0;
     outline: none;
 
     & .fa-bar {
@@ -172,7 +174,8 @@
         }
       }
 
-      &[href="/organization"] {
+      &[href="/organization"],
+      &[href="/data-container"] {
         &::before {
           @mixin icon-package;
         }
@@ -240,12 +243,12 @@
 
   & .logo {
     background-color: var(--primary-colour);
-    display: flex;
     height: var(--header-height);
-    align-items: center;
 
     & img {
+      display: block;
       height: 40px;
+      margin-top: 10px;
     }
 
     @media (--landscape-tablet-up) {
@@ -257,6 +260,10 @@
         height: var(--header-height);
         right: 50%;
         z-index: -1;
+      }
+
+      & img {
+        margin-top: 27px;
       }
     }
   }
