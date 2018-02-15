@@ -67,7 +67,6 @@
             ]
         }
     ],
-    "dataset_type": "dataset",
     "resource_fields": [
         {
             "field_name": "url",
