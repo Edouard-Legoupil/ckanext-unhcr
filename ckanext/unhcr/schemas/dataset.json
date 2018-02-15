@@ -52,6 +52,19 @@
             "label": "Source organization(s)"
         },
         {
+            "field_name": "date_range_data_collected",
+            "help_text": "Date range on which the data was gathered",
+            "label": "Date range data collected"
+        },
+            "field_name": "metadata_created",
+            "help_text": "System generated field for date when this record was created in the RIDL database",
+            "label": "Date file created"
+        },
+            "field_name": "metadata_modified",
+            "help_text": "System generated field for date on which the RIDL record was last modified",
+            "label": "Date modified"
+        },
+        {
             "field_name": "process_status",
             "help_text": "Indicates the processing stage of the data. 'Raw' means that the data has not been cleaned since collection. 'In process' means that it is being cleaned. 'Final' means that the dataset is final and ready for use in analytical products",
             "label": "Dataset Process Status",
