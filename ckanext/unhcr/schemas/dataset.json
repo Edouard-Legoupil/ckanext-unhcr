@@ -47,6 +47,11 @@
             "label": "Source"
         },
         {
+            "field_name": "source_organization",
+            "help_text": "Which organization owns / collected the data",
+            "label": "Source organization(s)"
+        },
+        {
             "field_name": "process_status",
             "help_text": "Indicates the processing stage of the data. 'Raw' means that the data has not been cleaned since collection. 'In process' means that it is being cleaned. 'Final' means that the dataset is final and ready for use in analytical products",
             "label": "Dataset Process Status",
