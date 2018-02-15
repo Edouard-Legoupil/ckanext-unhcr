@@ -49,7 +49,8 @@
         {
             "field_name": "source_organization",
             "help_text": "Which organization owns / collected the data",
-            "label": "Source organization(s)"
+            "label": "Source organization(s)",
+            "required": true
         },
         {
             "field_name": "date_range_data_collected",
@@ -60,9 +61,16 @@
             "help_text": "System generated field for date when this record was created in the RIDL database",
             "label": "Date file created"
         },
+        {
             "field_name": "metadata_modified",
             "help_text": "System generated field for date on which the RIDL record was last modified",
             "label": "Date modified"
+        },
+        {
+            "field_name": "linked_datasets",
+            "help_text": "Links to other RIDL datasets; user can pick one or many datasets that are related to this one",
+            "label": "Linked Datasets",
+            "preset": "multiple_select"
         },
         {
             "field_name": "process_status",
