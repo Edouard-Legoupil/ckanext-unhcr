@@ -35,10 +35,12 @@
             "label": "Source"
         },
         {
-            "field_name": "source_organization",
+            "field_name": "source_organizations",
             "help_text": "Which organization owns / collected the data",
-            "label": "Source organization(s)",
-            "required": true
+            "label": "Source organizations",
+            "preset": "multiple_select",
+            "required": true,
+            "choices": []
         },
         {
             "field_name": "linked_datasets",
