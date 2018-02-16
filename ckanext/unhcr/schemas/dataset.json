@@ -421,6 +421,33 @@
             "label": "Name"
         },
         {
+            "field_name": "version",
+            "form_placeholder": "0",
+            "label": "Version",
+            "required": true
+        },
+        {
+            "field_name": "file_type",
+            "help_text": "Indicates what is contained in the file",
+            "label": "File Type",
+            "preset": "select",
+            "required": true,
+            "choices": [
+                {
+                    "label": "Microdata",
+                    "value": "microdata"
+                },
+                {
+                    "label": "Questionnaire",
+                    "value": "questionnaire"
+                },
+                {
+                    "label": "Analytical product",
+                    "value": "analytical_product"
+                }
+            ]
+        },
+        {
             "field_name": "description",
             "form_placeholder": "Some useful notes about the data",
             "form_snippet": "markdown.html",
@@ -430,6 +457,60 @@
             "field_name": "format",
             "label": "Format",
             "preset": "resource_format_autocomplete"
+        },
+        {
+            "field_name": "hxl-ated",
+            "help_text": "Indicates if the resource has HXL hashtags",
+            "label": "HXL-ated",
+            "preset": "select",
+            "choices": [
+                {
+                    "label": "No",
+                    "value": false
+                },
+                {
+                    "label": "Yes",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "field_name": "process_status",
+            "help_text": "Indicates the processing stage of the data. 'Raw' means that the data has not been cleaned since collection. 'In process' means that it is being cleaned. 'Final' means that the dataset is final and ready for use in analytical products",
+            "label": "Dataset Process Status",
+            "preset": "select",
+            "required": true,
+            "choices": [
+                {
+                    "label": "Raw",
+                    "value": "raw"
+                },
+                {
+                    "label": "In Process",
+                    "value": "in_process"
+                },
+                {
+                    "label": "Final",
+                    "value": "final"
+                }
+            ]
+        },
+        {
+            "field_name": "identifiability",
+            "help_text": "Indicates if personally identifiable data is contained in the dataset",
+            "label": "Identifiability",
+            "preset": "select",
+            "required": true,
+            "choices": [
+                {
+                    "label": "Anonymized",
+                    "value": "anonymized"
+                },
+                {
+                    "label": "Personally identifiable",
+                    "value": "personally_identifiable"
+                }
+            ]
         }
     ],
     "scheming_version": 1
