@@ -1,0 +1,25 @@
+{% ckan_extends %}
+
+{% block organizations_list %}
+   {% if c.page.items or request.params %}
+     {% if c.page.items %}
+		{{ h.render_tree()|safe }}
+     {% endif %}
+   {% else %}
+     <p class="empty">
+       {{ _('There are currently no organizations for this site') }}.
+       {% if h.check_access('organization_create') %}
+         {% link_for _('How about creating one?'), controller='organization', action='new' %}</a>.
+       {% endif %}
+     </p>
+   {% endif %}
+{% endblock %}
+
+
+
+<!-- JSTree is included, but so far does nothing. Need to encapsulate it in a
+     'javascript module' -->
+{% block scripts %}
+  {{ super() }}
+  {% resource 'jstree/jquery.jstree.js' %}
+{% endblock %}
