@@ -40,7 +40,12 @@
             "label": "Source organizations",
             "preset": "multiple_select",
             "required": true,
-            "choices": []
+            "choices": [
+                {
+                    "label": "UN",
+                    "value": "un"
+                }
+            ]
         },
         {
             "field_name": "linked_datasets",
@@ -195,17 +200,7 @@
             "field_name": "hxl-ated",
             "help_text": "Indicates if the dataset has HXL hashtags",
             "label": "HXL-ated",
-            "preset": "select",
-            "choices": [
-                {
-                    "label": "No",
-                    "value": false
-                },
-                {
-                    "label": "Yes",
-                    "value": true
-                }
-            ]
+            "form_snippet": null
         },
         {
             "field_name": "raw_access_data_level",
@@ -227,22 +222,7 @@
             "field_name": "process_status",
             "help_text": "Indicates the processing stage of the data. 'Raw' means that the data has not been cleaned since collection. 'In process' means that it is being cleaned. 'Final' means that the dataset is final and ready for use in analytical products",
             "label": "Dataset Process Status",
-            "preset": "select",
-            "required": true,
-            "choices": [
-                {
-                    "label": "Raw",
-                    "value": "raw"
-                },
-                {
-                    "label": "In Process",
-                    "value": "in_process"
-                },
-                {
-                    "label": "Final",
-                    "value": "final"
-                }
-            ]
+            "form_snippet": null
         },
         {
             "field_name": "project_url",
@@ -274,18 +254,7 @@
             "field_name": "identifiability",
             "help_text": "Indicates if personally identifiable data is contained in the dataset",
             "label": "Identifiability",
-            "preset": "select",
-            "required": true,
-            "choices": [
-                {
-                    "label": "Anonymized",
-                    "value": "anonymized"
-                },
-                {
-                    "label": "Personally identifiable",
-                    "value": "personally_identifiable"
-                }
-            ]
+            "form_snippet": null
         },
         {
             "field_name": "admin_notes",
