@@ -8,8 +8,15 @@ $( document ).ready(function() {
 $( document ).ready(function() {
 
   // set default state
-  //$(".hierarchy-tree").parent("li").addClass( "open" ); // open
-  $(".hierarchy-tree").addClass('collapse').parent("li").addClass( "closed" ); // closed
+  if (
+    (window.location.href.indexOf('/organization/') !== -1) ||
+    (window.location.href.indexOf('/data-container/') !== -1)
+    ) {
+    $(".hierarchy-tree").parent("li").addClass( "open" ); // open
+  } else {
+    $(".hierarchy-tree").addClass('collapse').parent("li").addClass( "closed" ); // closed
+  }
+
 
   // add toggle button
   $( ".hierarchy-tree" ).prev().before(
