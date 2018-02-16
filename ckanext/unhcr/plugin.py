@@ -2,11 +2,14 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from ckan.lib.plugins import DefaultTranslation
 
+from ckanext.unhcr import helpers
+
 
 class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.ITranslation)
     plugins.implements(plugins.IFacets)
+    plugins.implements(plugins.ITemplateHelpers)
 
     # IConfigurer
 
@@ -31,3 +34,10 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
     def organization_facets(self, facets_dict, organization_type,
                             package_type):
         return self._facets(facets_dict)
+
+    # ITemplateHelpers
+
+    def get_helpers(self):
+        return {
+            'render_tree': helpers.render_tree
+        }
