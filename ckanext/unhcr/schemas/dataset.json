@@ -55,7 +55,7 @@
             "choices": []
         },
         {
-            "field_name": "tags",
+            "field_name": "keywords",
             "help_text": "Tags useful for searching for the datasets",
             "label": "Keywords",
             "preset": "multiple_select",
