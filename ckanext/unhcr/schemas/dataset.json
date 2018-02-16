@@ -41,24 +41,6 @@
             "required": true
         },
         {
-            "field_name": "date_range_data_collected",
-            "help_text": "Date range on which the data was gathered",
-            "label": "Date range data collected",
-            "form_snippet": null
-        },
-        {
-            "field_name": "metadata_created",
-            "help_text": "System generated field for date when this record was created in the RIDL database",
-            "label": "Date file created",
-            "form_snippet": null
-        },
-        {
-            "field_name": "metadata_modified",
-            "help_text": "System generated field for date on which the RIDL record was last modified",
-            "label": "Date modified",
-            "form_snippet": null
-        },
-        {
             "field_name": "linked_datasets",
             "help_text": "Links to other RIDL datasets; user can pick one or many datasets that are related to this one",
             "label": "Linked Datasets",
@@ -206,12 +188,6 @@
                     "value": "coordination_data"
                 }
             ]
-        },
-        {
-            "field_name": "author",
-            "help_text": "User ID of person who uploaded the data",
-            "label": "Uploader",
-            "form_snippet": null
         },
         {
             "field_name": "hxl-ated",
