@@ -298,6 +298,22 @@
             "preset": "resource_url_upload"
         },
         {
+            "field_name": "data_sensitivity",
+            "help_text": "Apply to both Anonymized and  Personally identifiable data",
+            "label": "Data sensitivity",
+            "preset": "select",
+            "choices": [
+                {
+                    "label": "Yes",
+                    "value": "yes"
+                },
+                {
+                    "label": "No",
+                    "value": "no"
+                }
+            ]
+        },
+        {
             "field_name": "original_id",
             "help_text": "If the dataset already has an ID from the source org, DDI, etc...",
             "label": "Original ID"
