@@ -1054,6 +1054,83 @@ body {
   color: inherit;
 }
 
+.format-label {
+  background-size: auto 93px;
+  width:  37.38318px;
+  height: 40px;
+  background-position: -1005px -11px
+}
+
+.format-label[data-format=rdf],
+  .format-label[data-format*=rdf] {
+  width:  37.38318px;
+  height: 40px;
+  background-position: -695px -11px;
+}
+
+.format-label[data-format=pdf],
+  .format-label[data-format*=pdf] {
+  width:  37.38318px;
+  height: 40px;
+  background-position: -633px -11px;
+}
+
+.format-label[data-format=api],
+  .format-label[data-format*=api] {
+  width:  37.38318px;
+  height: 40px;
+  background-position: -571px -11px;
+}
+
+.format-label[data-format=zip],
+  .format-label[data-format*=zip] {
+  width:  37.38318px;
+  height: 40px;
+  background-position: -509px -11px;
+}
+
+.format-label[data-format=xls],
+  .format-label[data-format*=xls] {
+  width:  37.38318px;
+  height: 40px;
+  background-position: -447px -11px;
+}
+
+.format-label[data-format=csv],
+  .format-label[data-format*=csv] {
+  width:  37.38318px;
+  height: 40px;
+  background-position: -385px -11px;
+}
+
+.format-label[data-format=txt],
+  .format-label[data-format*=txt] {
+  width:  37.38318px;
+  height: 40px;
+  background-position: -199px -11px;
+}
+
+.format-label[data-format=xml],
+  .format-label[data-format*=xml] {
+  width:  37.38318px;
+  height: 40px;
+  background-position: -137px -11px;
+}
+
+.format-label[data-format=json],
+  .format-label[data-format*=json] {
+  width:  37.38318px;
+  height: 40px;
+  background-position: -75px -11px;
+}
+
+.format-label[data-format=html],
+  .format-label[data-format*=html] {
+  width:  37.38318px;
+  height: 40px;
+  background-position: -13px -11px;
+}
+
 ul.hierarchy-tree-top li.highlighted > a, ul.hierarchy-tree li.highlighted > a {
   text-shadow: none;
   font-weight: normal;
