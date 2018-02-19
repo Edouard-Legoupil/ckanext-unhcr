@@ -219,10 +219,11 @@
             ]
         },
         {
-            "field_name": "process_status",
+            "field_name": "dataset_process_status",
             "help_text": "Indicates the processing stage of the data. 'Raw' means that the data has not been cleaned since collection. 'In process' means that it is being cleaned. 'Final' means that the dataset is final and ready for use in analytical products",
             "label": "Dataset Process Status",
-            "form_snippet": null
+            "form_snippet": null,
+            "validators": "dataset_process_status"
         },
         {
             "field_name": "project_url",
@@ -446,9 +447,9 @@
             ]
         },
         {
-            "field_name": "process_status",
+            "field_name": "file_process_status",
             "help_text": "Indicates the processing stage of the data. 'Raw' means that the data has not been cleaned since collection. 'In process' means that it is being cleaned. 'Final' means that the dataset is final and ready for use in analytical products",
-            "label": "Dataset Process Status",
+            "label": "File Process Status",
             "preset": "select",
             "required": true,
             "choices": [

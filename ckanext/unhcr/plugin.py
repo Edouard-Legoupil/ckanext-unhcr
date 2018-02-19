@@ -3,7 +3,7 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from ckan.lib.plugins import DefaultTranslation
 
-from ckanext.unhcr import helpers
+from ckanext.unhcr import helpers, validators
 
 
 class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
@@ -12,6 +12,7 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
     plugins.implements(plugins.IFacets)
     plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.IPackageController, inherit=True)
+    plugins.implements(plugins.IValidators)
 
     # IConfigurer
 
@@ -50,3 +51,10 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
         pkg_dict.pop('admin_notes', None)
         pkg_dict.pop('extras_admin_notes', None)
         return pkg_dict
+
+    # IValidators
+
+    def get_validators(self):
+        return {
+            'dataset_process_status': validators.dataset_process_status,
+        }
