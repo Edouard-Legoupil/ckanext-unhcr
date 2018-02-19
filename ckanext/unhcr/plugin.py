@@ -1,3 +1,4 @@
+import json
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from ckan.lib.plugins import DefaultTranslation
@@ -10,6 +11,7 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
     plugins.implements(plugins.ITranslation)
     plugins.implements(plugins.IFacets)
     plugins.implements(plugins.ITemplateHelpers)
+    plugins.implements(plugins.IPackageController, inherit=True)
 
     # IConfigurer
 
@@ -41,3 +43,10 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
         return {
             'render_tree': helpers.render_tree
         }
+
+    # IPackageController
+
+    def before_index(self, pkg_dict):
+        pkg_dict.pop('admin_notes', None)
+        pkg_dict.pop('extras_admin_notes', None)
+        return pkg_dict
