@@ -12,6 +12,7 @@ module.exports = function(grunt) {
           require('postcss-custom-media'),
           require('postcss-mixins'),
           require('postcss-custom-properties'),
+          require('postcss-calc'),
           require('postcss-nesting'),
           require('postcss-color-function')
         ]

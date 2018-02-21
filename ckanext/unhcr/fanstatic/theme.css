@@ -1040,6 +1040,42 @@ body {
   background: #0072BC;
 }
 
+.flash-messages {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  left: 0;
+  top: 0
+}
+
+.flash-messages .alert {
+  border-radius: 0;
+  border: none;
+  text-shadow: none;
+  -webkit-box-shadow: 0px 1px 1px 0px rgba(50, 50, 50, 0.3);
+  box-shadow: 0px 1px 1px 0px rgba(50, 50, 50, 0.3);
+}
+
+.flash-messages .alert .close {
+  text-shadow: none;
+}
+
+.flash-messages .alert.alert-success,
+    .flash-messages .alert.alert-info {
+  background-color: #FAEB00;
+  color: rgb(51, 51, 51);
+}
+
+.flash-messages .alert.alert-danger,
+    .flash-messages .alert.alert-error {
+  background-color: rgb(51, 51, 51);
+  color: #fff;
+}
+
+.flash-messages .alert.alert-danger .close, .flash-messages .alert.alert-error .close {
+  color: #fff;
+}
+
 .site-footer {
   background-color: #000;
   color: rgba(255,255,255, 0.8);
@@ -1052,6 +1088,83 @@ body {
 .site-footer a,
   .site-footer label {
   color: inherit;
+}
+
+.format-label {
+  background-size: auto 93px;
+  width:  37.38318px;
+  height: 40px;
+  background-position: -1005px -11px
+}
+
+.format-label[data-format=rdf],
+  .format-label[data-format*=rdf] {
+  width:  37.38318px;
+  height: 40px;
+  background-position: -695px -11px;
+}
+
+.format-label[data-format=pdf],
+  .format-label[data-format*=pdf] {
+  width:  37.38318px;
+  height: 40px;
+  background-position: -633px -11px;
+}
+
+.format-label[data-format=api],
+  .format-label[data-format*=api] {
+  width:  37.38318px;
+  height: 40px;
+  background-position: -571px -11px;
+}
+
+.format-label[data-format=zip],
+  .format-label[data-format*=zip] {
+  width:  37.38318px;
+  height: 40px;
+  background-position: -509px -11px;
+}
+
+.format-label[data-format=xls],
+  .format-label[data-format*=xls] {
+  width:  37.38318px;
+  height: 40px;
+  background-position: -447px -11px;
+}
+
+.format-label[data-format=csv],
+  .format-label[data-format*=csv] {
+  width:  37.38318px;
+  height: 40px;
+  background-position: -385px -11px;
+}
+
+.format-label[data-format=txt],
+  .format-label[data-format*=txt] {
+  width:  37.38318px;
+  height: 40px;
+  background-position: -199px -11px;
+}
+
+.format-label[data-format=xml],
+  .format-label[data-format*=xml] {
+  width:  37.38318px;
+  height: 40px;
+  background-position: -137px -11px;
+}
+
+.format-label[data-format=json],
+  .format-label[data-format*=json] {
+  width:  37.38318px;
+  height: 40px;
+  background-position: -75px -11px;
+}
+
+.format-label[data-format=html],
+  .format-label[data-format*=html] {
+  width:  37.38318px;
+  height: 40px;
+  background-position: -13px -11px;
 }
 
 ul.hierarchy-tree-top li.highlighted > a, ul.hierarchy-tree li.highlighted > a {

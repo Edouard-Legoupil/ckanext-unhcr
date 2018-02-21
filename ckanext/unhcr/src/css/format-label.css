@@ -1,0 +1,67 @@
+:root {
+  --format-icon-height: 40px;
+  --format-icon-scale: 0.31;
+  --rdf: 12;
+  --pdf: 11;
+  --api: 10;
+  --zip: 9;
+  --xls: 8;
+  --csv: 7;
+  --txt: 4;
+  --xml: 3;
+  --json: 2;
+  --html: 1;
+  --null: 17;
+}
+
+@define-mixin bgpos $type {
+  width:  calc(var(--format-icon-height) / 1.07);
+  height: var(--format-icon-height);
+  background-position: calc(calc(var(--$type) - 1) * calc(-200px * var(--format-icon-scale)) - 13px) -11px;
+}
+
+.format-label {
+  background-size: auto calc(300px * var(--format-icon-scale));
+  @mixin bgpos null;
+
+  &[data-format=rdf],
+  &[data-format*=rdf] {
+    @mixin bgpos rdf;
+  }
+  &[data-format=pdf],
+  &[data-format*=pdf] {
+    @mixin bgpos pdf;
+  }
+  &[data-format=api],
+  &[data-format*=api] {
+    @mixin bgpos api;
+  }
+  &[data-format=zip],
+  &[data-format*=zip] {
+    @mixin bgpos zip;
+  }
+  &[data-format=xls],
+  &[data-format*=xls] {
+    @mixin bgpos xls;
+  }
+  &[data-format=csv],
+  &[data-format*=csv] {
+    @mixin bgpos csv;
+  }
+  &[data-format=txt],
+  &[data-format*=txt] {
+    @mixin bgpos txt;
+  }
+  &[data-format=xml],
+  &[data-format*=xml] {
+    @mixin bgpos xml;
+  }
+  &[data-format=json],
+  &[data-format*=json] {
+    @mixin bgpos json;
+  }
+  &[data-format=html],
+  &[data-format*=html] {
+    @mixin bgpos html;
+  }
+}
