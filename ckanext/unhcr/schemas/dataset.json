@@ -48,6 +48,16 @@
             ]
         },
         {
+            "field_name": "date_range_start",
+            "label": "Date collection first date",
+            "form_snippet": null
+        },
+        {
+            "field_name": "date_range_end",
+            "label": "Date collection last date",
+            "form_snippet": null
+        },
+        {
             "field_name": "linked_datasets",
             "help_text": "Links to other RIDL datasets; user can pick one or many datasets that are related to this one",
             "label": "Linked Datasets",
@@ -207,6 +217,7 @@
             "help_text": "Indicates if the raw data is accessible to people who are not authorized to see private data in the DC",
             "label": "Raw Data Access Level",
             "preset": "select",
+            "required" : true,
             "choices": [
                 {
                     "label": "Private",
@@ -390,6 +401,18 @@
             "field_name": "name",
             "form_placeholder": "eg. January 2011 Gold Prices",
             "label": "Name"
+        },
+        {
+            "field_name": "date_range_start",
+            "label": "Date collection first date",
+            "preset": "date",
+            "required": true
+        },
+        {
+            "field_name": "date_range_end",
+            "label": "Date collection last date",
+            "preset": "date",
+            "required": true
         },
         {
             "field_name": "version",
