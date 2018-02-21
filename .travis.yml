@@ -1,0 +1,12 @@
+language: python
+python:
+    - "2.7"
+env:
+    - CKANVERSION=2.7
+install:
+    - bash bin/travis-build.bash
+services:
+    -postgresql
+script: sh bin/travis-run.sh
+after_success: coveralls
+sudo: required
