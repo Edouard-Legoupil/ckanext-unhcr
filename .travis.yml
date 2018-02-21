@@ -10,3 +10,6 @@ services:
 script: sh bin/travis-run.sh
 after_success: coveralls
 sudo: required
+cache:
+  directories:
+    - $HOME/.cache/pip
