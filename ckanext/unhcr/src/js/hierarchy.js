@@ -17,4 +17,7 @@ $( document ).ready(function() {
     $( this ).siblings(".hierarchy-tree").collapse('toggle');
     $( this ).parent("li").toggleClass( "open closed" )
   });
+
+  // auto expand parents of highlighted
+  $(".hierarchy-tree-top .highlighted").parents(".closed").removeClass("closed").addClass("open").children(".hierarchy-tree").removeClass("collapse");
 });
