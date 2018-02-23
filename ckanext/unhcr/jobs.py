@@ -5,14 +5,14 @@ def process_dataset_fields(package_id):
 
     # Get package
     package_show = toolkit.get_action('package_show')
-    package = package_show({}, {'id': package_id})
+    package = package_show({'job': True}, {'id': package_id})
 
     # Modify package
     package = _modify_package(package)
 
     # Update package
     package_update = toolkit.get_action('package_update')
-    package_update({}, package)
+    package_update({'job': True}, package)
 
 
 def _modify_package(package):
@@ -21,25 +21,16 @@ def _modify_package(package):
     package = _modify_date_range(package, 'date_range_start', 'date_range_end')
 
     # process_status
-    default = 'raw'
     weights = {'raw' : 3, 'in_process': 2, 'final': 1}
     package = _modify_weighted_field(package, 'process_status', weights)
-    package = _modify_required_field(package, 'process_status', default)
 
     # identifiability
-    default = 'personally_identifiable'
     weights = {'personally_identifiable' : 2, 'anonymized': 1}
     package = _modify_weighted_field(package, 'identifiability', weights)
-    package = _modify_required_field(package, 'identifiability', default)
-
-    # raw_access_data_level
-    default = 'private'
-    package = _modify_required_field(package, 'raw_access_data_level', default)
-    if package['identifiability'] == 'personally_identifiable':
-        package['raw_access_data_level'] = 'private'
 
     # private
-    package['private'] = package['raw_access_data_level'] == 'private'
+    if package['identifiability'] == 'personally_identifiable':
+        package['private'] = True
 
     return package
 
@@ -67,9 +58,4 @@ def _modify_weighted_field(package, key, weights):
         resource_weight = weights.get(resource[key], 0)
         if resource_weight > package_weight:
             package[key] = resource[key]
-    return package
-
-
-def _modify_required_field(package, key, default):
-    package[key] = package.get(key) or default
     return package

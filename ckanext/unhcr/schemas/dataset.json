@@ -25,14 +25,16 @@
         {
             "field_name": "owner_org",
             "label": "Organization",
-            "preset": "dataset_organization"
+            "preset": "dataset_organization",
+            "form_snippet": "owner_org.html"
         },
         {
             "display_property": "foaf:homepage",
             "display_snippet": "link.html",
             "field_name": "url",
             "form_placeholder": "http://example.com/dataset.json",
-            "label": "Source"
+            "help_text": "Website URL associated with this data project (if applicable)",
+            "label": "Project URL"
         },
         {
             "field_name": "source_organizations",
@@ -56,13 +58,6 @@
             "field_name": "date_range_end",
             "label": "Date collection last date",
             "form_snippet": null
-        },
-        {
-            "field_name": "linked_datasets",
-            "help_text": "Links to other RIDL datasets; user can pick one or many datasets that are related to this one",
-            "label": "Linked Datasets",
-            "preset": "multiple_select",
-            "choices": []
         },
         {
             "field_name": "keywords",
@@ -213,51 +208,25 @@
             "form_snippet": null
         },
         {
-            "field_name": "raw_access_data_level",
-            "help_text": "Indicates if the raw data is accessible to people who are not authorized to see private data in the DC",
-            "label": "Raw Data Access Level",
-            "preset": "select",
-            "required" : true,
-            "choices": [
-                {
-                    "label": "Private",
-                    "value": "private"
-                },
-                {
-                    "label": "Internally visible",
-                    "value": "internally_visible"
-                }
-            ]
-        },
-        {
             "field_name": "process_status",
             "help_text": "Indicates the processing stage of the data. 'Raw' means that the data has not been cleaned since collection. 'In process' means that it is being cleaned. 'Final' means that the dataset is final and ready for use in analytical products",
             "label": "Dataset Process Status",
             "form_snippet": null
         },
         {
-            "field_name": "project_url",
-            "help_text": "Website URL associated with this data project (if applicable)",
-            "label": "Project URL"
-        },
-        {
-            "field_name": "archive_status",
-            "help_text": "Allows users to indicate if the dataset is active, archived or deleted",
-            "label": "Archive status",
+            "field_name": "archived",
+            "help_text": "Allows users to indicate if the dataset is archived or active",
+            "label": "Archived",
             "preset": "select",
             "required": true,
             "choices": [
                 {
-                    "label": "Active",
-                    "value": "active"
+                    "label": "No",
+                    "value": "False"
                 },
                 {
-                    "label": "Archived",
-                    "value": "archived"
-                },
-                {
-                    "label": "Deleted",
-                    "value": "deleted"
+                    "label": "Yes",
+                    "value": "True"
                 }
             ]
         },
@@ -272,12 +241,6 @@
             "form_placeholder": "Internal notes about how the dataset has been cleaned or transformed",
             "form_snippet": "markdown.html",
             "label": "Admin Notes"
-        },
-        {
-            "field_name": "file_attachments",
-            "help_text": "Files associated with a dataset, such as analytical reports, PDFs, Word documents, etc.",
-            "label": "File Attachments",
-            "preset": "resource_url_upload"
         },
         {
             "field_name": "data_sensitivity",

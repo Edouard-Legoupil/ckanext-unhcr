@@ -52,7 +52,9 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
         return pkg_dict
 
     def after_create(self, context, data_dict):
-        toolkit.enqueue_job(jobs.process_dataset_fields, [data_dict['id']])
+        if not context.get('job'):
+            toolkit.enqueue_job(jobs.process_dataset_fields, [data_dict['id']])
 
     def after_update(self, context, data_dict):
-        toolkit.enqueue_job(jobs.process_dataset_fields, [data_dict['id']])
+        if not context.get('job'):
+            toolkit.enqueue_job(jobs.process_dataset_fields, [data_dict['id']])

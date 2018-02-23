@@ -77,7 +77,7 @@ def test_modify_package_process_status_no_resources():
         'process_status': 'final',
         'resources': [],
     })
-    assert package['process_status'] == 'raw'
+    assert package['process_status'] == None
 
 
 def test_modify_package_process_status_default():
@@ -85,7 +85,7 @@ def test_modify_package_process_status_default():
         'process_status': None,
         'resources': [],
     })
-    assert package['process_status'] == 'raw'
+    assert package['process_status'] == None
 
 
 # privacy
@@ -93,61 +93,57 @@ def test_modify_package_process_status_default():
 def test_modify_package_privacy():
     package = _modify_package({
         'identifiability': None,
-        'raw_access_data_level': None,
+        'private': False,
         'resources': [
             {'identifiability': 'anonymized'},
         ]
     })
     assert package['identifiability'] == 'anonymized'
-    assert package['raw_access_data_level'] == 'private'
-    assert package['private'] == True
+    assert package['private'] == False
 
 
 def test_modify_package_privacy_private_false():
     package = _modify_package({
         'identifiability': None,
-        'raw_access_data_level': 'internally_visible',
+        'private': False,
         'resources': [
             {'identifiability': 'anonymized'},
         ]
     })
     assert package['identifiability'] == 'anonymized'
-    assert package['raw_access_data_level'] == 'internally_visible'
     assert package['private'] == False
 
 
 def test_modify_package_privacy_resource_addition():
     package = _modify_package({
         'identifiability': 'anonymized',
-        'raw_access_data_level': 'internally_visible',
+        'private': False,
         'resources': [
             {'identifiability': 'anonymized'},
             {'identifiability': 'personally_identifiable'},
         ]
     })
     assert package['identifiability'] == 'personally_identifiable'
-    assert package['raw_access_data_level'] == 'private'
     assert package['private'] == True
 
 
 def test_modify_package_privacy_package_none():
     package = _modify_package({
         'identifiability': None,
-        'raw_access_data_level': 'internally_visible',
+        'private': False,
         'resources': [
-            {'identifiability': 'prioritized'},
+            {'identifiability': 'personally_identifiable'},
         ]
     })
     assert package['identifiability'] == 'personally_identifiable'
-    assert package['raw_access_data_level'] == 'private'
     assert package['private'] == True
 
 
 def test_modify_package_privacy_default():
     package = _modify_package({
         'identifiability': None,
+        'private': False,
         'resources': []
     })
-    assert package['identifiability'] == 'personally_identifiable'
-    assert package['raw_access_data_level'] == 'private'
-    assert package['private'] == True
+    assert package['identifiability'] == None
+    assert package['private'] == False
