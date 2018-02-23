@@ -3,7 +3,7 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from ckan.lib.plugins import DefaultTranslation
 
-from ckanext.unhcr import helpers
+from ckanext.unhcr import helpers, jobs
 
 
 class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
@@ -50,3 +50,11 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
         pkg_dict.pop('admin_notes', None)
         pkg_dict.pop('extras_admin_notes', None)
         return pkg_dict
+
+    def after_create(self, context, data_dict):
+        if not context.get('job'):
+            toolkit.enqueue_job(jobs.process_dataset_fields, [data_dict['id']])
+
+    def after_update(self, context, data_dict):
+        if not context.get('job'):
+            toolkit.enqueue_job(jobs.process_dataset_fields, [data_dict['id']])
