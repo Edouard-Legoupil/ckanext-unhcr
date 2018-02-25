@@ -300,6 +300,11 @@ a:hover {
   background-color: transparent;
 }
 
+a.tag:hover {
+  background-color: #0072BC;
+  border-color: #0072BC;
+}
+
 body {
   /* for IE */
   display: -webkit-box;
