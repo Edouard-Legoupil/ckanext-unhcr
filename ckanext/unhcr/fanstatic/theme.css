@@ -736,7 +736,7 @@ body {
 [role=main] .wrapper {
   position: relative;
   z-index: 1;
-  padding-bottom: 60px;
+  padding-bottom: 70px;
   /* space for footer attribution */
 }
 
@@ -1095,11 +1095,18 @@ body {
 .site-footer .attribution {
   position: absolute;
   bottom: 15px;
-  left: -10px;
+  left: 25px;
   z-index: 1;
-  background-color: #0072BC;
+  background-color: rgba(0,0,0,0.2);
   border-radius: 3px;
   padding: 10px;
+}
+
+@media (min-width: 768px) {
+
+  .site-footer .attribution {
+    left: 0;
+  }
 }
 
 .site-footer .attribution span {
