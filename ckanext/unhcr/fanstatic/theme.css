@@ -1272,6 +1272,25 @@ body {
   right: 0;
 }
 
+.module-resource .actions {
+  top: 10px;
+  right: auto;
+  float: none;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+
+  .module-resource .actions {
+    float: right;
+  }
+}
+
+.module-resource .actions ul {
+  padding: 0;
+  margin: 0;
+}
+
 .module-resource + .primary {
   width: auto;
 }
