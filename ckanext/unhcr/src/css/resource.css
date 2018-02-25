@@ -32,7 +32,6 @@
 }
 
 .resource-read {
-  @mixin alt-header;
 
   & [role=main] .wrapper::before {
     display: none;

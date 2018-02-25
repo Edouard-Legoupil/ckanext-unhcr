@@ -285,7 +285,8 @@ html:not(.js) {
   }
 }
 
-@define-mixin alt-header {
+.resource-read,
+.home {
   @media (--landscape-tablet-up) {
     & .account-masthead .account::before {
       color: #fff;
