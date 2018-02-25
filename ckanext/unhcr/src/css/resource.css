@@ -1,0 +1,22 @@
+.module-resource {
+  & + .primary {
+    width: auto;
+
+    & .module-content {
+      @media (--portrait-tablet-up) {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+
+    & + .secondary {
+      width: auto;
+    }
+  }
+}
+
+.resource-read {
+  & [role=main] .wrapper::before {
+    display: none;
+  }
+}

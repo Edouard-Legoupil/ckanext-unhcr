@@ -7,4 +7,6 @@
 @import "flash-messages";
 @import "footer";
 @import "format-label";
+@import "dropdowns";
+@import "resource";
 @import "hierarchy";
