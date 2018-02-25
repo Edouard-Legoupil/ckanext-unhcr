@@ -736,6 +736,8 @@ body {
 [role=main] .wrapper {
   position: relative;
   z-index: 1;
+  padding-bottom: 60px;
+  /* space for footer attribution */
 }
 
 [role=main] .wrapper.no-nav .page-header {
@@ -1085,13 +1087,36 @@ body {
   color: rgba(255,255,255, 0.8);
   margin-left: -20px;
   margin-right: -20px;
-  padding-left: 20px;
-  padding-right: 20px
+  padding: 0;
+  position: relative;
+  min-height: 0
 }
 
-.site-footer a,
-  .site-footer label {
-  color: inherit;
+.site-footer .attribution {
+  position: absolute;
+  bottom: 15px;
+  left: -10px;
+  z-index: 1;
+  background-color: #0072BC;
+  border-radius: 3px;
+  padding: 10px;
+}
+
+.site-footer .attribution span {
+  display: block;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.site-footer .attribution .ckan-footer-logo {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  opacity: 0.8;
+}
+
+.site-footer .attribution .ckan-footer-logo:hover {
+  opacity: 1;
 }
 
 .format-label {
