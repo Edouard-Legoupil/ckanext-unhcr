@@ -1288,6 +1288,38 @@ body {
   width: auto;
 }
 
+@media (min-width: 980px) {
+
+  .resource-read .account-masthead .account::before {
+    color: #fff;
+  }
+
+  .resource-read .masthead .nav-collapse {
+    background-color: #0072BC;
+  }
+
+  .resource-read .masthead .logo::after {
+    content: '';
+    position: absolute;
+    background-color: #0072BC;
+    width: 50vw;
+    height: 100px;
+    left: 50%;
+    top: 0;
+    z-index: -1;
+  }
+
+  .resource-read .masthead .nav > li > a {
+    color: #fff;
+    border-color: #fff;
+  }
+
+  .resource-read .masthead .nav > li.active a {
+    background-color: #fff;
+    color: #0072BC;
+  }
+}
+
 .resource-read [role=main] .wrapper::before {
   display: none;
 }
