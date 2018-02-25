@@ -51,6 +51,9 @@
 @define-mixin icon-remove {
   content: "\f06c";
 }
+@define-mixin icon-user {
+  content: "\f018";
+}
 
 .fa-filter:before {
   @mixin icon-font;

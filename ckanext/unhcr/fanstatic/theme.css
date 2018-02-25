@@ -481,6 +481,10 @@ body {
     color: rgb(51, 51, 51);
     display: inline-block;
   }
+
+  .account-masthead .account.authed::before {
+    content: "\f018";
+  }
 }
 
 .masthead {
