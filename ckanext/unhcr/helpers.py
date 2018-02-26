@@ -7,7 +7,7 @@ def render_tree():
     context = {'model': model, 'session': model.Session}
     top_nodes = toolkit.get_action('group_tree')(
         context,
-        data_dict={'type': 'organization'})
+        data_dict={'type': 'data-container'})
     return _render_tree(top_nodes)
 
 
@@ -19,7 +19,7 @@ def _render_tree(top_nodes):
 
 
 def _render_tree_node(node):
-    html = '<a href="/organization/{}">{}</a>'.format(
+    html = '<a href="/data-container/{}">{}</a>'.format(
         node['name'], node['title'])
     if node['highlighted']:
         html = '<strong>{}</strong>'.format(html)
