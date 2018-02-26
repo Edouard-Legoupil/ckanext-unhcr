@@ -658,12 +658,23 @@ body {
   display: none;
 }
 
-.masthead .logo {
+.masthead hgroup h1 {
+  margin: 0;
+  line-height: 100px;
+}
+
+.masthead hgroup h1 a {
+  color: #FFF;
+  text-decoration: none;
+}
+
+.masthead .logo,
+  .masthead h1 {
   background-color: #0072BC;
   height: 100px;
 }
 
-.masthead .logo img {
+.masthead .logo img, .masthead h1 img {
   display: block;
   height: 40px;
   margin-top: 10px;
@@ -671,7 +682,7 @@ body {
 
 @media (min-width: 980px) {
 
-  .masthead .logo::before {
+  .masthead .logo::before, .masthead h1::before {
     content: '';
     position: absolute;
     background-color: #0072BC;
@@ -681,7 +692,7 @@ body {
     z-index: -1;
   }
 
-  .masthead .logo img {
+  .masthead .logo img, .masthead h1 img {
     margin-top: 27px;
   }
 }
@@ -703,7 +714,7 @@ body {
     background-color: #0072BC;
   }
 
-  .resource-read .masthead .logo::after, .home .masthead .logo::after {
+  .resource-read .masthead .logo::after, .resource-read .masthead h1::after, .home .masthead .logo::after, .home .masthead h1::after {
     content: '';
     position: absolute;
     background-color: #0072BC;
