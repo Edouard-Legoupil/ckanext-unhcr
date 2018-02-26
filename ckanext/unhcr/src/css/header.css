@@ -15,7 +15,7 @@
 .account-masthead {
   & .account ul li {
     border-left-color: rgba(255,255,255,0.2);
-    
+
     & a,
     & a.sub {
       font-weight: normal;
@@ -118,6 +118,12 @@
             }
           }
         }
+      }
+    }
+
+    & .account.authed {
+      &::before {
+        @mixin icon-user;
       }
     }
   }
@@ -274,6 +280,45 @@ html:not(.js) {
     & .account:hover {
       & > ul {
         display: block;
+      }
+    }
+  }
+}
+
+.resource-read,
+.home {
+  @media (--landscape-tablet-up) {
+    & .account-masthead .account::before {
+      color: #fff;
+    }
+
+    & .masthead {
+
+      & .nav-collapse {
+        background-color: var(--primary-colour);
+      }
+
+      & .logo::after {
+        content: '';
+        position: absolute;
+        background-color: var(--primary-colour);
+        width: 50vw;
+        height: var(--header-height);
+        left: 50%;
+        top: 0;
+        z-index: -1;
+      }
+
+      & .nav > li {
+        & > a {
+          color: #fff;
+          border-color: #fff;
+        }
+
+        &.active a {
+          background-color: #fff;
+          color: var(--primary-colour);
+        }
       }
     }
   }

@@ -3,11 +3,38 @@
   color: rgba(255,255,255, 0.8);
   margin-left: -20px;
   margin-right: -20px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 0;
+  position: relative;
+  min-height: 0;
 
-  & a,
-  & label {
-    color: inherit;
+  & .attribution {
+    position: absolute;
+    bottom: 15px;
+    left: 25px;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 3px;
+    padding: 10px;
+
+    @media (--portrait-tablet-up) {
+      left: 0;
+    }
+
+    & span {
+      display: block;
+      font-size: 12px;
+      line-height: 1;
+    }
+
+    & .ckan-footer-logo {
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: left bottom;
+      opacity: 0.8;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
   }
 }

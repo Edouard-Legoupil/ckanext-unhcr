@@ -4,7 +4,10 @@
 @import "layout";
 @import "header";
 @import "main";
+@import "home";
 @import "flash-messages";
 @import "footer";
 @import "format-label";
+@import "dropdowns";
+@import "resource";
 @import "hierarchy";

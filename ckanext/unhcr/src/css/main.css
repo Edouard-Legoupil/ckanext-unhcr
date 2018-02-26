@@ -54,6 +54,7 @@
   & .wrapper {
     position: relative;
     z-index: 1;
+    padding-bottom: var(--attribution-height);
 
     &.no-nav {
       & .page-header {

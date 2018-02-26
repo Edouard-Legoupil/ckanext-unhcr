@@ -31,6 +31,13 @@ body {
   }
 }
 
+.module-content {
+  @media (--portrait-tablet-up) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
 code {
   color: inherit;
 }
@@ -141,4 +148,9 @@ a {
 
 .account-masthead .account .notifications a:hover span.text {
   background-color: transparent;
+}
+
+a.tag:hover {
+  background-color: var(--primary-colour);
+  border-color: var(--primary-colour);
 }

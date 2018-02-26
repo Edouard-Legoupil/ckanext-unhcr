@@ -1,0 +1,27 @@
+{% ckan_extends %}
+
+{% block bodytag %} {{ super() }} class="resource-read"{% endblock %}
+
+{% block resource_actions_inner %}
+  {{ super() }}
+  <li class="dropdown">
+    <a class="btn btn-primary" data-toggle="dropdown">
+      <i class="fa fa-medium fa-share-square-o"></i> {{ _('Share') }}
+    </a>
+    <span class="dropdown-menu" role="menu">
+      {% snippet "snippets/social.html" %}
+    </span>
+  </li>
+{% endblock %}
+
+{% block resource_read_title %}
+  <div class="heading dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown">{{ super() }} <span><b class="caret"></b></span></a>
+    <div class="dropdown-menu" role="menu">
+      {% snippet "package/snippets/resources.html", pkg=pkg, active=res.id %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block secondary_content %}
+{% endblock %}

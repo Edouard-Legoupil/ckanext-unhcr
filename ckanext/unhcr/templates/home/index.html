@@ -1,0 +1,14 @@
+{% ckan_extends %}
+
+{% block bodytag %} {{ super() }} class="resource-read"{% endblock %}
+
+{% block content %}
+  <div class="homepage layout-{{ homepage_style }}" role="main">
+    <div class="container">
+      {{ self.flash() }}
+    </div>
+    {% block primary_content %}
+      {# snippet "home/layout{0}.html".format(homepage_style) #}
+    {% endblock %}
+  </div>
+{% endblock %}
