@@ -423,18 +423,18 @@
             "choices": [
                 {
                     "label": "No",
-                    "value": false
+                    "value": "False"
                 },
                 {
                     "label": "Yes",
-                    "value": true
+                    "value": "True"
                 }
             ]
         },
         {
             "field_name": "process_status",
             "help_text": "Indicates the processing stage of the data. 'Raw' means that the data has not been cleaned since collection. 'In process' means that it is being cleaned. 'Final' means that the dataset is final and ready for use in analytical products",
-            "label": "Dataset Process Status",
+            "label": "File Process Status",
             "preset": "select",
             "required": true,
             "choices": [
