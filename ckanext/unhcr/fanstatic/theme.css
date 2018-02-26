@@ -945,7 +945,8 @@ body {
       [role=main] .secondary h3,
       [role=main] .secondary h4,
       [role=main] .secondary h5,
-      [role=main] .secondary h6 {
+      [role=main] .secondary h6,
+      [role=main] .secondary a {
     color: #FFF;
   }
 
