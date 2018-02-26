@@ -113,6 +113,20 @@ a {
   background-image: none;
 }
 
+.nav-item.active > a span,
+.nav-aside li.active a span {
+  display: inline;
+  overflow: inherit;
+
+  &.badge {
+    display: inline-block;
+  }
+
+  &.hidden {
+    display: none;
+  }
+}
+
 .navbar {
   & .container {
     @media (--portrait-tablet-up) {

@@ -260,6 +260,20 @@ a:hover {
   background-image: none;
 }
 
+.nav-item.active > a span,
+.nav-aside li.active a span {
+  display: inline;
+  overflow: inherit
+}
+
+.nav-item.active > a span.badge, .nav-aside li.active a span.badge {
+  display: inline-block;
+}
+
+.nav-item.active > a span.hidden, .nav-aside li.active a span.hidden {
+  display: none;
+}
+
 @media (min-width: 768px) {
 
   .navbar .container {
