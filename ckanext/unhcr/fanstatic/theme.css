@@ -119,6 +119,13 @@ body {
   }
 }
 
+.box {
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background-color: transparent;
+}
+
 code {
   color: inherit;
 }
@@ -258,6 +265,20 @@ a:hover {
 .dropdown-submenu:focus > a {
   background-color: rgb(51, 142, 201);
   background-image: none;
+}
+
+.nav-item.active > a span,
+.nav-aside li.active a span {
+  display: inline;
+  overflow: inherit
+}
+
+.nav-item.active > a span.badge, .nav-aside li.active a span.badge {
+  display: inline-block;
+}
+
+.nav-item.active > a span.hidden, .nav-aside li.active a span.hidden {
+  display: none;
 }
 
 @media (min-width: 768px) {
@@ -658,12 +679,23 @@ body {
   display: none;
 }
 
-.masthead .logo {
+.masthead hgroup h1 {
+  margin: 0;
+  line-height: 100px;
+}
+
+.masthead hgroup h1 a {
+  color: #FFF;
+  text-decoration: none;
+}
+
+.masthead .logo,
+  .masthead h1 {
   background-color: #0072BC;
   height: 100px;
 }
 
-.masthead .logo img {
+.masthead .logo img, .masthead h1 img {
   display: block;
   height: 40px;
   margin-top: 10px;
@@ -671,7 +703,7 @@ body {
 
 @media (min-width: 980px) {
 
-  .masthead .logo::before {
+  .masthead .logo::before, .masthead h1::before {
     content: '';
     position: absolute;
     background-color: #0072BC;
@@ -681,7 +713,7 @@ body {
     z-index: -1;
   }
 
-  .masthead .logo img {
+  .masthead .logo img, .masthead h1 img {
     margin-top: 27px;
   }
 }
@@ -703,7 +735,7 @@ body {
     background-color: #0072BC;
   }
 
-  .resource-read .masthead .logo::after, .home .masthead .logo::after {
+  .resource-read .masthead .logo::after, .resource-read .masthead h1::after, .home .masthead .logo::after, .home .masthead h1::after {
     content: '';
     position: absolute;
     background-color: #0072BC;
@@ -934,7 +966,8 @@ body {
       [role=main] .secondary h3,
       [role=main] .secondary h4,
       [role=main] .secondary h5,
-      [role=main] .secondary h6 {
+      [role=main] .secondary h6,
+      [role=main] .secondary a:not(.btn) {
     color: #FFF;
   }
 
@@ -1092,7 +1125,110 @@ body {
 
 .homepage {
   padding-bottom: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  background-color: #0072BC;
+  color: #FFF
 }
+
+.homepage [role="main"] > .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.homepage .module-search {
+  padding: 0;
+  margin: 5vh 0;
+}
+
+.homepage .module-search .search-giant {
+  margin: 0;
+}
+
+.homepage .module-search .search-giant input {
+  border-color: #FFF;
+}
+
+.homepage .module-search .module-content {
+  background-color: #0072BC;
+}
+
+.homepage .module-search .tags {
+  background-color: #0072BC;
+}
+
+.homepage .module-search .tags .tag {
+  background-color: #FFF;
+  border-color: #FFF;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.homepage .module-search .tags .tag:hover {
+  background-color: rgb(51, 51, 51);
+  border-color: rgb(51, 51, 51);
+}
+
+.homepage h2 {
+  font-size: 22px;
+}
+
+.homepage p {
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.homepage .hero {
+  background-color: #0072BC;
+  color: #FFF;
+  padding-top: 0;
+  margin-left: -20px;
+  margin-right: -20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.homepage .hero h1,
+    .homepage .hero h2,
+    .homepage .hero h3,
+    .homepage .hero a:not(.btn) {
+  color: inherit;
+  font-weight: normal;
+}
+
+.homepage .hero .search-form {
+  padding: 0;
+}
+
+.homepage .hero .search-form .search-input.search-giant button i {
+  color: #0072BC;
+}
+
+.homepage .hero .tags {
+  padding: 15px 0;
+}
+
+.homepage .hero .tags .tag:not(:hover) {
+  color: #0072BC;
+}
+
+.homepage .featured.media-overlay {}
 
 .flash-messages {
   position: fixed;

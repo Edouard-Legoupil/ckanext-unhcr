@@ -247,7 +247,18 @@
     display: none;
   }
 
-  & .logo {
+  & hgroup h1 {
+    margin: 0;
+    line-height: var(--header-height);
+
+    & a {
+      color: var(--white);
+      text-decoration: none;
+    }
+  }
+
+  & .logo,
+  & h1 {
     background-color: var(--primary-colour);
     height: var(--header-height);
 
@@ -298,15 +309,18 @@ html:not(.js) {
         background-color: var(--primary-colour);
       }
 
-      & .logo::after {
-        content: '';
-        position: absolute;
-        background-color: var(--primary-colour);
-        width: 50vw;
-        height: var(--header-height);
-        left: 50%;
-        top: 0;
-        z-index: -1;
+      & .logo,
+      & h1 {
+        &::after {
+          content: '';
+          position: absolute;
+          background-color: var(--primary-colour);
+          width: 50vw;
+          height: var(--header-height);
+          left: 50%;
+          top: 0;
+          z-index: -1;
+        }
       }
 
       & .nav > li {

@@ -38,6 +38,12 @@ body {
   }
 }
 
+.box {
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+}
+
 code {
   color: inherit;
 }
@@ -111,6 +117,20 @@ a {
 .dropdown-submenu:focus > a {
   background-color: color(var(--primary-colour) tint(20%));
   background-image: none;
+}
+
+.nav-item.active > a span,
+.nav-aside li.active a span {
+  display: inline;
+  overflow: inherit;
+
+  &.badge {
+    display: inline-block;
+  }
+
+  &.hidden {
+    display: none;
+  }
 }
 
 .navbar {

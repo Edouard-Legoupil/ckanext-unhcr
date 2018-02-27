@@ -1,14 +1,55 @@
 {% ckan_extends %}
+{% set stats = h.get_site_statistics() %}
+{% set intro = g.site_intro_text %}
 
-{% block bodytag %} {{ super() }} class="resource-read"{% endblock %}
+{% block bodytag %} {{ super() }} class="home"{% endblock %}
 
 {% block content %}
-  <div class="homepage layout-{{ homepage_style }}" role="main">
+  <div class="homepage layout-{{ homepage_style }}">
     <div class="container">
       {{ self.flash() }}
     </div>
     {% block primary_content %}
-      {# snippet "home/layout{0}.html".format(homepage_style) #}
+    <div role="main" class="hero">
+      <div class="container">
+        {% block search %}
+        {% set tags = h.get_facet_items_dict('tags', limit=3) %}
+
+        <div class="module module-search module-narrow module-shallow box">
+          <form class="module-content search-form" method="get" action="{% url_for controller='package', action='search' %}">
+            <h3 class="heading">{{ _("Search the library of") }} {{ h.SI_number_span(stats.dataset_count) }}
+          {{ _('dataset') if stats.dataset_count == 1 else _('datasets') }}</h3>
+            <div class="search-input form-group search-giant">
+              <input id="field-main-search" type="text" class="form-control" name="q" value="" autocomplete="off" placeholder="Search keywords, metadata, version data etc." />
+              <button type="submit">
+                <i class="fa fa-search"></i>
+                <span class="sr-only">{{ _('Search') }}</span>
+              </button>
+            </div>
+          </form>
+          <div class="tags">
+            <h3>{{ _('Popular tags') }}</h3>
+            {% for tag in tags %}
+              <a class="tag" href="{% url_for controller='package', action='search', tags=tag.name %}">{{ h.truncate(tag.display_name, 22) }}</a>
+            {% endfor %}
+          </div>
+        </div>
+        {% endblock %}
+
+        <div>
+          {% if intro %}
+            {{ h.render_markdown(intro) }}
+          {% else %}
+            <h2>{{ _("RIDL is UNHCR’s database for raw operational data built to store and share a wide variety of datasets from UNHCR and partners, from a wide variety of sources.") }}</h2>
+            <p>
+              {% trans %}RIDL enables you to Search the library via metadata, version data, upload and download data and offers access controls to datasets.
+              {% endtrans %}
+            </p>
+          {% endif %}
+        </div>
+
+      </div>
+    </div>
     {% endblock %}
   </div>
 {% endblock %}
