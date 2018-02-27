@@ -28,6 +28,103 @@
             "display_snippet": null,
             "form_snippet": "org_hierarchy.html",
             "validators": "ignore_missing"
+        },
+        {
+            "field_name": "country",
+            "label": "Country",
+            "preset": "multiple_select",
+            "required": true,
+            "choices": [
+                {
+                    "label": "South Africa",
+                    "value": "south_africa"
+                }
+            ]
+        },
+        {
+            "field_name": "geographic_area",
+            "label": "Geographic area referenced",
+            "help_text": "The geographic areas covered by the datasets included within",
+            "preset": "multiple_select",
+            "required": true,
+            "choices": [
+                {
+                    "label": "Southern Africa",
+                    "value": "southern_africa"
+                }
+            ]
+        },
+        {
+            "field_name": "sectoral_area",
+            "help_text": "The sectoral areas covered by the datasets included within",
+            "label": "Sectoral areas included",
+            "preset": "multiple_select",
+            "choices": [
+                {
+                    "label": "WASH",
+                    "value": "wash"
+                },
+                {
+                    "label": "Protection",
+                    "value": "protection"
+                },
+                {
+                    "label": "Shelter",
+                    "value": "shelter"
+                },
+                {
+                    "label": "Health",
+                    "value": "health"
+                },
+                {
+                    "label": "Nutrition",
+                    "value": "nutrition"
+                },
+                {
+                    "label": "Food",
+                    "value": "food"
+                },
+                {
+                    "label": "Livelihoods",
+                    "value": "livelihoods"
+                },
+                {
+                    "label": "Camp Management",
+                    "value": "camp_management"
+                },
+                {
+                    "label": "Cross-Operational",
+                    "value": "cross_operational"
+                },
+                {
+                    "label": "Sectoral",
+                    "value": "sectoral"
+                }
+            ]
+        },
+        {
+            "field_name": "population",
+            "form_placeholder": "Description of the population covered by the container",
+            "form_snippet": "markdown.html",
+            "label": "Population"
+        },
+        {
+            "field_name": "status",
+            "label": "Data Container Status",
+            "preset": "select",
+            "required": true,
+            "choices": [
+                {
+                    "label": "OK",
+                    "value": "ok"
+                }
+            ]
+        },
+        {
+            "field_name": "tag_string",
+            "form_placeholder": "eg. economy, mental health, government",
+            "label": "Tags",
+            "preset": "tag_string_autocomplete"
         }
     ]
 }
