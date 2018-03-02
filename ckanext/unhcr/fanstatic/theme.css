@@ -1202,6 +1202,8 @@ body {
   margin-right: -20px;
   padding-left: 20px;
   padding-right: 20px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .homepage .hero h1,
@@ -1273,7 +1275,9 @@ body {
   margin-right: -20px;
   padding: 0;
   position: relative;
-  min-height: 0
+  min-height: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale
 }
 
 .site-footer .attribution {
