@@ -106,6 +106,9 @@ a {
 .btn-danger {
   @mixin btn-colour var(--danger-colour);
 }
+.btn-inverse {
+  @mixin btn-colour var(--white), var(--primary-colour), var(--white);
+}
 
 .btn-group.open .btn-primary.dropdown-toggle {
   background-color: color(var(--primary-colour) tint(20%));

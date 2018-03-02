@@ -54,6 +54,9 @@
 @define-mixin icon-user {
   content: "\f018";
 }
+@define-mixin icon-question {
+  content: "\f02c";
+}
 
 .fa-filter:before {
   @mixin icon-font;
