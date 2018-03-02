@@ -40,10 +40,12 @@
           {% if intro %}
             {{ h.render_markdown(intro) }}
           {% else %}
-            <h2>{{ _("RIDL is UNHCR’s database for raw operational data built to store and share a wide variety of datasets from UNHCR and partners, from a wide variety of sources.") }}</h2>
+            <h2>{{ _("The Raw Internal Data Library is UNHCR’s secure globally-supported space for indexing, versioning and storing data that is collected or managed outside of the corporate data systems.") }}</h2>
             <p>
-              {% trans %}RIDL enables you to Search the library via metadata, version data, upload and download data and offers access controls to datasets.
-              {% endtrans %}
+              {% trans %}Keeping and reusing raw data is important to create baselines for indicators and population data, new analytical products, updating maps, monitoring partner data management capacity, developing targeting models, cleaning data, and auditing previous analysis results. This includes most of UNHCR’s protection assessment and monitoring data, as there are no corporate systems for anonymized or personally identifiable operational microdata.{% endtrans %}
+            </p>
+            <p>
+              {% trans %}RIDL supports datasets that are still changing and being versioned, in addition to those that are final and will no longer be changed and can be considered the “official” versions for a particular information management project.{% endtrans %}
             </p>
           {% endif %}
         </div>
