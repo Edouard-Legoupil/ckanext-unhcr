@@ -3469,7 +3469,7 @@ msgid ""
 "datasets. Users can have different roles within an Organization, depending "
 "on their level of authorisation to create, edit and publish. "
 msgstr ""
-" CKAN Data Containers are used to create, manage and publish collections of "
+" RIDL Data Containers are used to create, manage and publish collections of "
 "datasets. Users can have different roles within an Data Container, depending "
 "on their level of authorisation to create, edit and publish. "
 
