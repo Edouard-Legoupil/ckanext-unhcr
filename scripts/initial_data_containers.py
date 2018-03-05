@@ -56,7 +56,8 @@ def create_data_containers(url, api_key):
         try:
             ckan.action.organization_create(**org)
             print 'Created data container {}'.format(org['name'])
-        except ckanapi.errors.ValidationError:
+        except ckanapi.errors.ValidationError as e:
+            print str(e)
             pass
 
 if __name__ == '__main__':
