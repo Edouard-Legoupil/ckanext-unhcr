@@ -40,3 +40,8 @@ coverage.xml
 
 # Sphinx documentation
 docs/_build/
+
+# Extra
+.pytest_cache
+
+

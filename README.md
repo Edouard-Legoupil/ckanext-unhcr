@@ -1,5 +1,7 @@
 # ckanext-unhcr
 
+[![Build Status](https://travis-ci.org/okfn/ckanext-unhcr.svg?branch=master)](https://travis-ci.org/okfn/ckanext-unhcr)
+
 CKAN extension for the UNHCR RIDL project
 
 ## Requirements

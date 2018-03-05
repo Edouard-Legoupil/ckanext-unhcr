@@ -11,4 +11,6 @@ nosetests --ckan \
           --cover-package=ckanext.unhcr \
           --cover-inclusive \
           --cover-erase \
-          --cover-tests
+          --cover-tests \
+          ckanext/unhcr
+
