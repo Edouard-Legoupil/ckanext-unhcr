@@ -30,3 +30,12 @@ def _render_tree_node(node):
         html += '</ul>'
     html = '<li id="node_{}">{}</li>'.format(node['name'], html)
     return html
+
+
+def page_authorized():
+
+    # TODO: remove request_reset and perform_reset when LDAP is integrated
+    return (
+        toolkit.c.userobj or
+        (toolkit.c.controller == 'user' and
+            toolkit.c.action in ['login', 'request_reset', 'perform_reset']))

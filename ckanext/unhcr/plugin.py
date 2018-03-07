@@ -41,7 +41,8 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
 
     def get_helpers(self):
         return {
-            'render_tree': helpers.render_tree
+            'render_tree': helpers.render_tree,
+            'page_authorized': helpers.page_authorized,
         }
 
     # IPackageController
