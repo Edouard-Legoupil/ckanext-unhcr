@@ -20,6 +20,10 @@
     & img {
       margin-bottom: 20px;
     }
+
+    & h3 {
+      color: white;
+    }
   }
 
   & .info {
