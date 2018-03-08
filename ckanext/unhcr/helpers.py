@@ -38,4 +38,5 @@ def page_authorized():
     return (
         toolkit.c.userobj or
         (toolkit.c.controller == 'user' and
-            toolkit.c.action in ['login', 'request_reset', 'perform_reset']))
+            toolkit.c.action in [
+                'login', 'logged_in', 'request_reset', 'perform_reset']))
