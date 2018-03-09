@@ -5,6 +5,10 @@
   {% if h.page_authorized() %}
   {{ super() }}
   {% else %}
+    <div class="container">
+      {{ self.flash() }}
+    </div>
+
   <div class="login-splash">
     <div class="prompt">
       {% if g.site_logo %}
