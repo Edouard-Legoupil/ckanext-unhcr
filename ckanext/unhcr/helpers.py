@@ -34,9 +34,16 @@ def _render_tree_node(node):
 
 def page_authorized():
 
+    if (toolkit.c.controller == 'error' and
+            toolkit.c.action == 'document' and
+            toolkit.c.code and toolkit.c.code[0] != '403'):
+        return True
+
     # TODO: remove request_reset and perform_reset when LDAP is integrated
     return (
         toolkit.c.userobj or
         (toolkit.c.controller == 'user' and
             toolkit.c.action in [
-                'login', 'logged_in', 'request_reset', 'perform_reset']))
+                'login', 'logged_in', 'request_reset', 'perform_reset',
+                'logged_out', 'logged_out_page', 'logged_out_redirect'
+                ]))
