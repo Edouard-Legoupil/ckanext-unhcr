@@ -43,7 +43,8 @@ class TestAuthUI(AuthTestBase):
         ]
         for endpoint in endpoints:
             response = app.get(endpoint[0], status=endpoint[1])
-            assert_in('You must be logged in', response.body)
+            if endpoint[1] != 404:
+                assert_in('You must be logged in', response.body)
 
     def test_logged_in_users(self):
 
