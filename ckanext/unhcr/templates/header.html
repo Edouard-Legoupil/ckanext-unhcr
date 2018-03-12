@@ -1,9 +1,11 @@
 {% ckan_extends %}
 
 {% block header_site_navigation_tabs %}
-  {{ h.build_nav_main(
-      ('data-container_index', _('Organizations')),
-      ('search', _('Datasets')),
-     )
-  }}
+  {% if c.userobj %}
+    {{ h.build_nav_main(
+        ('data-container_index', _('Organizations')),
+        ('search', _('Datasets')),
+       )
+    }}
+  {% endif %}
 {% endblock %}

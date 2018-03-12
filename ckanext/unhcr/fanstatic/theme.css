@@ -1723,6 +1723,10 @@ ul.hierarchy-tree-top.has-toggle .open.highlighted > .hierarchy-toggle::before {
   margin-bottom: 20px;
 }
 
+.login-splash .prompt h2 {
+  color: white;
+}
+
 .login-splash .info {
   position: absolute;
   top: 0;

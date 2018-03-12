@@ -1,9 +1,9 @@
-import json
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from ckan.lib.plugins import DefaultTranslation
 
 from ckanext.unhcr import helpers, jobs
+from ckanext.unhcr import auth
 
 
 class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
@@ -12,6 +12,7 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
     plugins.implements(plugins.IFacets)
     plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.IPackageController, inherit=True)
+    plugins.implements(plugins.IAuthFunctions)
 
     # IConfigurer
 
@@ -41,7 +42,8 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
 
     def get_helpers(self):
         return {
-            'render_tree': helpers.render_tree
+            'render_tree': helpers.render_tree,
+            'page_authorized': helpers.page_authorized,
         }
 
     # IPackageController
@@ -58,3 +60,8 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
     def after_update(self, context, data_dict):
         if not context.get('job'):
             toolkit.enqueue_job(jobs.process_dataset_fields, [data_dict['id']])
+
+    # IAuthFunctions
+
+    def get_auth_functions(self):
+        return auth.restrict_access_to_get_auth_functions()
