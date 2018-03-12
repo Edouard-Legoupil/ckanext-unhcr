@@ -84,6 +84,36 @@
   content: "\f016";
 }
 
+.fa-caret-square-o-down:before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\f0a3";
+}
+
+.fa-caret-square-o-right:before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\f078";
+}
+
 body,
 .account-masthead,
 .masthead,
@@ -953,12 +983,24 @@ body {
   background-image: none;
 }
 
+[role=main] .secondary .module {
+  margin: 0;
+}
+
+[role=main] .secondary .module.collapsed .module-heading {
+  border-bottom-width: 0;
+}
+
+[role=main] .secondary .module.nothing-to-reveal .module-heading {
+  opacity: 0.5;
+}
+
 [role=main] .secondary .module-heading {
   font-size: 16px;
 }
 
 [role=main] .secondary .module-footer {
-  border-top-style: solid;
+  border-top-style: hidden;
 }
 
 [role=main] .secondary .image {
@@ -968,6 +1010,14 @@ body {
 [role=main] .secondary .badge {
   font-size: 11px;
   margin-left: 0.5em;
+}
+
+@media (min-width: 768px) {
+
+  [role=main] .secondary .module-heading .fa.toggle-icon {
+    float: right;
+    text-align: right;
+  }
 }
 
 @media (min-width: 980px) {
@@ -1020,6 +1070,10 @@ body {
   [role=main] .secondary .module-heading .fa {
     width: 1em;
     margin-left: -1.2em;
+  }
+
+  [role=main] .secondary .module-heading .fa.toggle-icon {
+    margin: 0;
   }
 
   [role=main] .secondary .nums {

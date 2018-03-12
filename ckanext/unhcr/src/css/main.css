@@ -179,12 +179,28 @@
       }
     }
 
+    & .module {
+      margin: 0;
+
+      &.collapsed {
+        & .module-heading {
+          border-bottom-width: 0;
+        }
+      }
+
+      &.nothing-to-reveal {
+        & .module-heading {
+          opacity: 0.5;
+        }
+      }
+    }
+
     & .module-heading {
       font-size: 16px;
     }
 
     & .module-footer {
-      border-top-style: solid;
+      border-top-style: hidden;
     }
 
     & .image {
@@ -194,6 +210,17 @@
     & .badge {
       font-size: 11px;
       margin-left: 0.5em;
+    }
+
+    @media (--portrait-tablet-up) {
+      & .module-heading {
+        & .fa {
+          &.toggle-icon {
+            float: right;
+            text-align: right;
+          }
+        }
+      }
     }
 
     @media (--landscape-tablet-up) {
@@ -244,6 +271,10 @@
         & .fa {
           width: 1em;
           margin-left: -1.2em;
+
+          &.toggle-icon {
+            margin: 0;
+          }
         }
       }
 

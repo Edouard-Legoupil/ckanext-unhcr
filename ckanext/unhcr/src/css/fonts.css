@@ -57,6 +57,12 @@
 @define-mixin icon-question {
   content: "\f02c";
 }
+@define-mixin icon-chevron-down {
+  content: "\f0a3";
+}
+@define-mixin icon-chevron-right {
+  content: "\f078";
+}
 
 .fa-filter:before {
   @mixin icon-font;
@@ -81,4 +87,14 @@
 .fa-users:before {
   @mixin icon-font;
   @mixin icon-directory;
+}
+
+.fa-caret-square-o-down:before {
+  @mixin icon-font;
+  @mixin icon-chevron-down;
+}
+
+.fa-caret-square-o-right:before {
+  @mixin icon-font;
+  @mixin icon-chevron-right;
 }
