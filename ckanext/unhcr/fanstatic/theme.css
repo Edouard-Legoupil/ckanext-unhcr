@@ -835,6 +835,12 @@ body {
 
 [role=main] .toolbar .breadcrumb {
   display: none;
+  font-size: 1em;
+  padding-top: 30px;
+}
+
+[role=main] .toolbar .breadcrumb .home {
+  display: none;
 }
 
 @media (min-width: 980px) {
@@ -1555,6 +1561,10 @@ body {
 
 .resource-read [role=main] .wrapper::before {
   display: none;
+}
+
+.resource-read [role=main] .toolbar .breadcrumb {
+  display: block;
 }
 
 ul.hierarchy-tree-top li.highlighted > a, ul.hierarchy-tree li.highlighted > a {

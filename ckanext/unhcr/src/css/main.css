@@ -27,6 +27,12 @@
 
     & .breadcrumb {
       display: none;
+      font-size: 1em;
+      padding-top: 30px;
+
+      & .home {
+        display: none;
+      }
     }
   }
 
