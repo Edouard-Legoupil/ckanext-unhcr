@@ -1567,6 +1567,11 @@ body {
   display: block;
 }
 
+.validation-badge {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
 ul.hierarchy-tree-top li.highlighted > a, ul.hierarchy-tree li.highlighted > a {
   text-shadow: none;
   font-weight: normal;
