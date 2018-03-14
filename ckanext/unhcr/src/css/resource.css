@@ -33,7 +33,15 @@
 
 .resource-read {
 
-  & [role=main] .wrapper::before {
-    display: none;
+  & [role=main] {
+    & .wrapper::before {
+      display: none;
+    }
+
+    & .toolbar {
+      & .breadcrumb {
+        display: block;
+      }
+    }
   }
 }
