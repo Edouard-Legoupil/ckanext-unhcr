@@ -361,6 +361,11 @@
             "preset": "resource_url_upload"
         },
         {
+            "field_name": "schema",
+            "label": "Schema",
+            "preset": "resource_schema"
+        },
+        {
             "field_name": "name",
             "form_placeholder": "eg. January 2011 Gold Prices",
             "label": "Name"
