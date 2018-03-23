@@ -12,7 +12,9 @@
       <a href="/data-container/{{ c.group_dict.id }}/reject" class="btn btn-danger">
         {% trans %}Reject Data Container{% endtrans %}
       </a>
-    {% endif %}
+     {% endif %}
+  {% else %}
+    {{ super() }}
   {% endif %}
 {% endblock %}
 
