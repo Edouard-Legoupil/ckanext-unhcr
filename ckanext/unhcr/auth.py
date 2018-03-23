@@ -1,5 +1,8 @@
+import logging
 from ckan.plugins import toolkit
+import ckan.logic.auth.create as auth_create_core
 from ckan.logic.auth import get as core_get
+log = logging.getLogger(__name__)
 
 
 def restrict_access_to_get_auth_functions():
@@ -43,6 +46,7 @@ def restrict_access_to_get_auth_functions():
     overriden_auth_functions['site_read'] = site_read
     overriden_auth_functions['organization_list_for_user'] = \
         organization_list_for_user
+    overriden_auth_functions['organization_create'] = organization_create
 
     return overriden_auth_functions
 
@@ -63,3 +67,37 @@ def organization_list_for_user(context, data_dict):
         return {'success': False}
     else:
         return core_get.organization_list_for_user(context, data_dict)
+
+
+def organization_create(context, data_dict):
+    user_orgs = toolkit.get_action('organization_list_for_user')(context, {})
+
+    # Allow to see `Request data container` button if user is an admin for an org
+    if not data_dict:
+        for user_org in user_orgs:
+            if user_org['capacity'] == 'admin':
+                return {'success': True}
+
+    # Base access check
+    result = auth_create_core.organization_create(context, data_dict)
+    if not result['success']:
+        return result
+
+    # Check parent organization access
+    if data_dict:
+        for user_org in user_orgs:
+
+            # Looking for orgs only where user is admin
+            if user_org['capacity'] != 'admin':
+                continue
+
+            # Looking for only approved orgs
+            if user_org['state'] != 'active':
+                continue
+
+            # Allow if parent matches
+            for group in data_dict.get('groups', []):
+                if group['name'] == user_org['name']:
+                    return {'success': True}
+
+    return {'success': False, 'msg': 'Not allowed to create a data container'}

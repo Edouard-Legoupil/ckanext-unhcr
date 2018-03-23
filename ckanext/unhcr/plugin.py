@@ -2,8 +2,7 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from ckan.lib.plugins import DefaultTranslation
 
-from ckanext.unhcr import helpers, jobs
-from ckanext.unhcr import auth
+from ckanext.unhcr import actions, auth, helpers, jobs
 
 
 class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
@@ -13,6 +12,8 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
     plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.IPackageController, inherit=True)
     plugins.implements(plugins.IAuthFunctions)
+    plugins.implements(plugins.IActions)
+    plugins.implements(plugins.IRoutes, inherit=True)
 
     # IConfigurer
 
@@ -20,6 +21,19 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
         toolkit.add_template_directory(config_, 'templates')
         toolkit.add_public_directory(config_, 'public')
         toolkit.add_resource('fanstatic', 'unhcr')
+
+    # IRoutes
+
+    def before_map(self, _map):
+        controller = 'ckanext.unhcr.controllers:DataContainer'
+        _map.connect('/data-container/{id}/approve',
+                     controller=controller,
+                     action='approve')
+        _map.connect('/data-container/{id}/reject',
+                     controller=controller,
+                     action='reject')
+
+        return _map
 
     # IFacets
 
@@ -64,4 +78,12 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
     # IAuthFunctions
 
     def get_auth_functions(self):
+
         return auth.restrict_access_to_get_auth_functions()
+
+    # IActions
+
+    def get_actions(self):
+        return {
+            'organization_create': actions.organization_create,
+        }

@@ -24,7 +24,7 @@
         },
         {
             "field_name": "not_used",
-            "label": "Parent organization",
+            "label": "Parent",
             "display_snippet": null,
             "form_snippet": "org_hierarchy.html",
             "validators": "ignore_missing"

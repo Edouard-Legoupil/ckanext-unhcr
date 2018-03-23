@@ -1,0 +1,20 @@
+{% ckan_extends %}
+
+{% block page_heading %}
+  {% if not h.check_access('sysadmin') %}
+    Request a Data Container
+  {% else %}
+    Create a Data Container
+  {% endif %}
+{% endblock %}
+
+{% block form %}
+  {% if not h.check_access('sysadmin') %}
+    <div class="alert alert-warning" role="alert">
+        {% trans %}<b>Note:</b> This data container will be created in a pending state until
+        a site administrator reviews the request. During this time, no datasets can be added
+        to it, and it will not appear in search results.{% endtrans %}
+    </div>
+  {% endif %}
+  {{ super() }}
+{% endblock %}
