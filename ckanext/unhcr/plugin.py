@@ -2,7 +2,7 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from ckan.lib.plugins import DefaultTranslation
 
-from ckanext.unhcr import actions, auth, helpers, jobs
+from ckanext.unhcr import actions, auth, helpers, jobs, validators
 
 
 class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
@@ -13,6 +13,7 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
     plugins.implements(plugins.IPackageController, inherit=True)
     plugins.implements(plugins.IAuthFunctions)
     plugins.implements(plugins.IActions)
+    plugins.implements(plugins.IValidators)
     plugins.implements(plugins.IRoutes, inherit=True)
 
     # IConfigurer
@@ -86,4 +87,11 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
     def get_actions(self):
         return {
             'organization_create': actions.organization_create,
+        }
+
+    # IValidators
+
+    def get_validators(self):
+        return {
+            'ignore_if_attachement': validators.ignore_if_attachement,
         }
