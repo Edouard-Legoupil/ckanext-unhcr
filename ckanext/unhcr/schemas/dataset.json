@@ -17,6 +17,13 @@
             "preset": "dataset_slug"
         },
         {
+            "field_name": "notes",
+            "form_placeholder": "User-generated description of what the dataset is",
+            "form_snippet": "markdown.html",
+            "label": "Description",
+            "required": true
+        },
+        {
             "field_name": "tag_string",
             "form_placeholder": "eg. economy, mental health, government",
             "label": "Tags",
@@ -35,6 +42,18 @@
             "form_placeholder": "http://example.com/dataset.json",
             "help_text": "Website URL associated with this data project (if applicable)",
             "label": "Project URL"
+        },
+        {
+            "field_name": "admin_notes",
+            "form_placeholder": "Internal notes about how the dataset has been cleaned or transformed",
+            "form_snippet": "markdown.html",
+            "label": "Admin Notes"
+        },
+        {
+            "field_name": "license_id",
+            "form_snippet": "license.html",
+            "help_text": "License definitions and additional information can be found at http://opendefinition.org/",
+            "label": "License"
         },
         {
             "field_name": "source_organizations",
@@ -146,13 +165,6 @@
             ]
         },
         {
-            "field_name": "notes",
-            "form_placeholder": "User-generated description of what the dataset is",
-            "form_snippet": "markdown.html",
-            "label": "Description",
-            "required": true
-        },
-        {
             "field_name": "operational_purpose_of_data",
             "help_text": "Classification of the type of data contained in the file",
             "label": "Operational purpose of data",
@@ -235,12 +247,6 @@
             "help_text": "Indicates if personally identifiable data is contained in the dataset",
             "label": "Identifiability",
             "form_snippet": null
-        },
-        {
-            "field_name": "admin_notes",
-            "form_placeholder": "Internal notes about how the dataset has been cleaned or transformed",
-            "form_snippet": "markdown.html",
-            "label": "Admin Notes"
         },
         {
             "field_name": "data_sensitivity",
@@ -346,12 +352,6 @@
                     "value": "other"
                 }
             ]
-        },
-        {
-            "field_name": "license_id",
-            "form_snippet": "license.html",
-            "help_text": "License definitions and additional information can be found at http://opendefinition.org/",
-            "label": "License"
         }
     ],
     "resource_fields": [
@@ -380,6 +380,17 @@
             "field_name": "name",
             "form_placeholder": "eg. January 2011 Gold Prices",
             "label": "Name"
+        },
+        {
+            "field_name": "description",
+            "form_placeholder": "Some useful notes about the data",
+            "form_snippet": "markdown.html",
+            "label": "Description"
+        },
+        {
+            "field_name": "format",
+            "label": "Format",
+            "preset": "resource_format_autocomplete"
         },
         {
             "field_name": "date_range_start",
@@ -423,17 +434,6 @@
                     "value": "analytical_product"
                 }
             ]
-        },
-        {
-            "field_name": "description",
-            "form_placeholder": "Some useful notes about the data",
-            "form_snippet": "markdown.html",
-            "label": "Description"
-        },
-        {
-            "field_name": "format",
-            "label": "Format",
-            "preset": "resource_format_autocomplete"
         },
         {
             "field_name": "hxl-ated",
