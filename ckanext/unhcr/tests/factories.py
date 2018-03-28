@@ -15,6 +15,5 @@ class DataContainer(factories.Organization):
 
     type = 'data-container'
 
-    country = 'south_africa'
+    country = ['SVN']
     geographic_area = 'southern_africa'
-    status = 'ok'
