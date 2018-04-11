@@ -48,4 +48,7 @@
 
 .validation-badge {
   margin-left: 20px;
+  & img {
+    vertical-align: baseline;
+  }
 }
