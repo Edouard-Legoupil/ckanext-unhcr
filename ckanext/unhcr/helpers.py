@@ -47,3 +47,7 @@ def page_authorized():
                 'login', 'logged_in', 'request_reset', 'perform_reset',
                 'logged_out', 'logged_out_page', 'logged_out_redirect'
                 ]))
+
+
+def get_linked_datasets():
+    return 'test'
