@@ -2,4 +2,15 @@
 
 {% set value = data[field.field_name] %}
 
-<div>linked datasets</div>
+<div>
+  {# Schema Upload #}
+  {{ form.input(
+      'lined_datasets',
+      label='Linked Datasets',
+      id='field-lined-datasets',
+      type='text',
+      error='',
+      classes=['control-full']
+      )
+   }}
+</div>
