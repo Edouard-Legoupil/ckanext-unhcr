@@ -516,6 +516,12 @@
             "form_snippet": "license.html",
             "help_text": "License definitions and additional information can be found at http://opendefinition.org/",
             "label": "License"
+        },
+        {
+            "field_name": "linked_datasets",
+            "preset": "linked_datasets",
+            "help_text": "help text",
+            "label": "Linked Datasets"
         }
     ],
     "resource_fields": [
