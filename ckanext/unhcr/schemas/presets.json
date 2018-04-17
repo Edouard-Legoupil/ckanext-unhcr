@@ -7,7 +7,7 @@
       "preset_name": "linked_datasets",
       "values": {
         "validators": "ignore_missing linked_datasets_validator",
-        "form_snippet": "resource_schema.html",
+        "form_snippet": "linked_datasets.html",
         "display_snippet": "json.html"
       }
     }
