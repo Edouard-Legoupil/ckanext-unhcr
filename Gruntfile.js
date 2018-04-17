@@ -28,7 +28,11 @@ module.exports = function(grunt) {
         separator: '\n',
       },
       dist: {
-        src: ['ckanext/unhcr/src/js/main.js', 'ckanext/unhcr/src/js/hierarchy.js'],
+        src: [
+          'ckanext/unhcr/src/js/main.js',
+          'ckanext/unhcr/src/js/hierarchy.js',
+          'ckanext/unhcr/src/js/linked-datasets.js',
+        ],
         dest: 'ckanext/unhcr/fanstatic/theme.js',
       },
     },
