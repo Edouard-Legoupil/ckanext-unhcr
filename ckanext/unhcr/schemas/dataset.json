@@ -375,7 +375,23 @@
             "field_name": "process_status",
             "help_text": "Indicates the processing stage of the data. 'Raw' means that the data has not been cleaned since collection. 'In process' means that it is being cleaned. 'Final' means that the dataset is final and ready for use in analytical products",
             "label": "Dataset Process Status",
-            "form_snippet": null
+            "form_snippet": null,
+            "display_snippet": "select.html",
+            "choices": [
+                {
+                    "label": "Raw",
+                    "value": "raw"
+                },
+                {
+                    "label": "In Process",
+                    "value": "in_process"
+                },
+                {
+                    "label": "Final",
+                    "value": "final"
+                }
+            ]
+
         },
         {
             "field_name": "archived",
@@ -398,7 +414,19 @@
             "field_name": "identifiability",
             "help_text": "Indicates if personally identifiable data is contained in the dataset",
             "label": "Identifiability",
-            "form_snippet": null
+            "form_snippet": null,
+            "display_snippet": "select.html",
+            "choices": [
+                {
+                    "label": "Anonymized",
+                    "value": "anonymized"
+                },
+                {
+                    "label": "Personally identifiable",
+                    "value": "personally_identifiable"
+                }
+            ]
+
         },
         {
             "field_name": "admin_notes",
