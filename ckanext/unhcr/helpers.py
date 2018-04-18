@@ -1,5 +1,7 @@
+import logging
 from ckan import model
 from ckan.plugins import toolkit
+log = logging.getLogger(__name__)
 
 
 def render_tree():
@@ -49,5 +51,14 @@ def page_authorized():
                 ]))
 
 
-def get_linked_datasets():
-    return 'test'
+def get_user_datasets():
+    datasets = []
+    context = {'model': model}
+    get_containers = toolkit.get_action('organization_list_for_user')
+    get_container = toolkit.get_action('organization_show')
+    containers = get_containers(context, {'id': toolkit.c.userobj.id})
+    for container in containers:
+        container = get_container(context, {'id': container['id'], 'include_datasets': True})
+        for package in container['packages']:
+            datasets.append({'name': package['id'], 'value': package['name']})
+    return datasets

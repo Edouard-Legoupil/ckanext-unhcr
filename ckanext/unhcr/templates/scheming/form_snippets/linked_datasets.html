@@ -1,18 +1,14 @@
 {% import 'macros/form.html' as form %}
 
-{% set value = data[field.field_name] %}
-{% set datasets = h.get_linked_datasets() %}
-
-{{ datasets }}
+{% set datasets = h.get_user_datasets() %}
 
 <div>
-  {# Schema Upload #}
-  {{ form.input(
-      'lined_datasets',
+  {{ form.select(
+      'linked_datasets',
       label='Linked Datasets',
-      id='field-lined-datasets',
-      type='text',
-      error='',
+      id='field-linked-datasets',
+      options=datasets,
+      attrs={'multiple': 'multiple'},
       classes=['control-full']
       )
    }}
