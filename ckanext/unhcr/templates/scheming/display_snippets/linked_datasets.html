@@ -1,1 +1,3 @@
-<div>linked datasets</div>
+{% for name in h.get_linked_datasets_names(data[field.field_name]) %}
+<div>{{ name }}</div>
+{% endfor %}

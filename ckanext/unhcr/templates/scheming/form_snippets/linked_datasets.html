@@ -1,13 +1,12 @@
 {% import 'macros/form.html' as form %}
 
-{% set datasets = h.get_user_datasets() %}
-
 <div>
   {{ form.select(
       'linked_datasets',
       label='Linked Datasets',
       id='field-linked-datasets',
-      options=datasets,
+      options=h.get_linked_datasets_options(),
+      selected=data[field.field_name],
       attrs={'multiple': 'multiple'},
       classes=['control-full']
       )

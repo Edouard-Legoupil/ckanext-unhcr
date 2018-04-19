@@ -59,7 +59,8 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
         return {
             'render_tree': helpers.render_tree,
             'page_authorized': helpers.page_authorized,
-            'get_user_datasets': helpers.get_user_datasets,
+            'get_linked_datasets_options': helpers.get_linked_datasets_options,
+            'get_linked_datasets_names': helpers.get_linked_datasets_names,
         }
 
     # IPackageController

@@ -51,8 +51,8 @@ def page_authorized():
                 ]))
 
 
-def get_user_datasets(user_id=None):
-    # TODO: handle selected datasets
+def get_linked_datasets_options(user_id=None):
+    context = {'model': model}
 
     # Get user
     if not user_id:
@@ -60,7 +60,6 @@ def get_user_datasets(user_id=None):
 
     # Get datasets
     datasets = []
-    context = {'model': model}
     get_containers = toolkit.get_action('organization_list_for_user')
     get_container = toolkit.get_action('organization_show')
     containers = get_containers(context, {'id': user_id})
@@ -70,3 +69,16 @@ def get_user_datasets(user_id=None):
             datasets.append({'text': package['name'], 'value': package['id']})
 
     return datasets
+
+
+def get_linked_datasets_names(ids):
+    context = {'model': model}
+
+    # Get names
+    names = []
+    ids = ids if isinstance(ids, list) else ids.strip('{}').split(',')
+    for id in ids:
+        dataset = toolkit.get_action('package_show')(context, {'id': id})
+        names.append(dataset['name'])
+
+    return names
