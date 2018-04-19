@@ -8,7 +8,7 @@
       "values": {
         "validators": "ignore_missing linked_datasets_validator",
         "form_snippet": "linked_datasets.html",
-        "display_snippet": "lined_datasets.html"
+        "display_snippet": "linked_datasets.html"
       }
     }
   ]

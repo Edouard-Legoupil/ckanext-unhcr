@@ -51,14 +51,22 @@ def page_authorized():
                 ]))
 
 
-def get_user_datasets():
+def get_user_datasets(user_id=None):
+    # TODO: handle selected datasets
+
+    # Get user
+    if not user_id:
+        user_id = toolkit.c.userobj.id
+
+    # Get datasets
     datasets = []
     context = {'model': model}
     get_containers = toolkit.get_action('organization_list_for_user')
     get_container = toolkit.get_action('organization_show')
-    containers = get_containers(context, {'id': toolkit.c.userobj.id})
+    containers = get_containers(context, {'id': user_id})
     for container in containers:
         container = get_container(context, {'id': container['id'], 'include_datasets': True})
         for package in container['packages']:
-            datasets.append({'name': package['id'], 'value': package['name']})
+            datasets.append({'text': package['name'], 'value': package['id']})
+
     return datasets
