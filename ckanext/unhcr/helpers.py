@@ -58,17 +58,25 @@ def page_authorized():
 def get_linked_datasets_for_form(exclude_id=None):
     context = {'model': model}
 
-    # Get datasets
-    datasets = []
+    # Prepare search query
+    fq_list = []
     get_containers = toolkit.get_action('organization_list_for_user')
-    get_container = toolkit.get_action('organization_show')
     containers = get_containers(context, {'id': toolkit.c.userobj.id})
     for container in containers:
-        container = get_container(context, {'id': container['id'], 'include_datasets': True})
-        for package in container['packages']:
-            if package['id'] == exclude_id:
-                continue
-            datasets.append({'text': package['title'], 'value': package['id']})
+        fq_list.append('owner_org:{}'.format(container['id']))
+
+    # Get search results
+    search_datasets = toolkit.get_action('package_search')
+    search = search_datasets(context, {
+        'fq': ' OR '.join(fq_list),
+        'include_private': True})
+
+    # Get datasets
+    datasets = []
+    for package in search['results']:
+        if package['id'] == exclude_id:
+            continue
+        datasets.append({'text': package['title'], 'value': package['id']})
 
     return datasets
 
