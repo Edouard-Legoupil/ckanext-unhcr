@@ -5,7 +5,7 @@
       'linked_datasets',
       label='Linked Datasets',
       id='field-linked-datasets',
-      options=h.get_linked_datasets_options(),
+      options=h.get_linked_datasets_options(exclude_id=data.get('id')),
       selected=data[field.field_name],
       attrs={'multiple': 'multiple'},
       classes=['control-full']

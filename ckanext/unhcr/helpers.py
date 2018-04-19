@@ -51,24 +51,22 @@ def page_authorized():
                 ]))
 
 
-def get_linked_datasets_options(user_id=None):
+def get_linked_datasets_options(exclude_id=None):
     context = {'model': model}
 
-    # Get user
-    if not user_id:
-        user_id = toolkit.c.userobj.id
-
-    # Get datasets
-    datasets = []
+    # Get options
+    options = []
     get_containers = toolkit.get_action('organization_list_for_user')
     get_container = toolkit.get_action('organization_show')
-    containers = get_containers(context, {'id': user_id})
+    containers = get_containers(context, {'id': toolkit.c.userobj.id})
     for container in containers:
         container = get_container(context, {'id': container['id'], 'include_datasets': True})
         for package in container['packages']:
-            datasets.append({'text': package['name'], 'value': package['id']})
+            if package['id'] == exclude_id:
+                continue
+            options.append({'text': package['name'], 'value': package['id']})
 
-    return datasets
+    return options
 
 
 def get_linked_datasets_names(ids):

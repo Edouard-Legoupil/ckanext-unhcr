@@ -8,7 +8,7 @@ def linked_datasets(value, context):
 
     # Check if the user has access to the linked datasets
     selected = value if isinstance(value, list) else value.strip('{}').split(',')
-    allowed = [d['value'] for d in get_linked_datasets_options(user_id=context['user'])]
+    allowed = [d['value'] for d in get_linked_datasets_options()]
     for id in selected:
         if id not in allowed:
             raise Invalid('Invalid linked datasets')
