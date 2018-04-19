@@ -34,62 +34,11 @@ $( document ).ready(function() {
   $(".hierarchy-tree-top .highlighted").parents(".closed").removeClass("closed").addClass("open").children(".hierarchy-tree").removeClass("collapse");
 });
 
-this.ckan.module('linked-datasets', function (jQuery) {
-  return {
+$( document ).ready(function() {
 
-    /* holds the loaded lightbox */
-    modal: null,
+  // Activate select2 widget
+  $('#field-linked-datasets').select2({
+    placeholder: 'Click to get a drop-down list or start typing a dataset title'
+  });
 
-    options: {
-      /* id of the modal dialog div */
-      div: null
-    },
-
-    /* Sets up the module.
-     *
-     * Returns nothing.
-     */
-    initialize: function () {
-      console.log('!!!')
-      jQuery.proxyAll(this, /_on/);
-
-      this.el.on('click', this._onClick);
-      this.modal = $('#' + this.options.div)
-    },
-
-    /* Displays the API info box.
-     *
-     * Examples
-     *
-     *   module.show()
-     *
-     * Returns nothing.
-     */
-    show: function () {
-
-      if (this.modal) {
-        return this.modal.modal('show');
-      }
-    },
-
-    /* Hides the modal.
-     *
-     * Examples
-     *
-     *   module.hide();
-     *
-     * Returns nothing.
-     */
-    hide: function () {
-      if (this.modal) {
-        this.modal.modal('hide');
-      }
-    },
-
-    /* Event handler for clicking on the element */
-    _onClick: function (event) {
-      event.preventDefault();
-      this.show();
-    }
-  };
 });

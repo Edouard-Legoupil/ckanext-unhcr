@@ -1,16 +1,14 @@
-{% import 'macros/form.html' as form %}
-
-<div>
-  {{ form.select(
-      'linked_datasets',
-      label='Linked Datasets',
-      id='field-linked-datasets',
-      options=h.get_linked_datasets_for_form(exclude_id=data.get('id')),
-      selected=data[field.field_name],
-      attrs={'multiple': 'multiple'},
-      classes=['control-full']
-      )
-   }}
+<div class="control-group control-full">
+  <label class="control-label" for="field-linked-datasets">Linked Datasets</label>
+  <div class="controls ">
+    <select name="linked_datasets" id="field-linked-datasets" multiple="multiple" style="width: 100%">
+    {% for dataset in h.get_linked_datasets_for_form(selected_ids=data.get(field.field_name, []), exclude_ids=[data.get('id')]) %}
+      <option value={{ dataset.value }} {% if dataset.selected %}selected{% endif %}>{{ dataset.text }}</option>
+    {% endfor %}
+    </select>
+    <div class="info-block ">
+      <i class="fa fa-info-circle"></i>
+      {{ field.help_text }}
+    </div>
+  </div>
 </div>
-
-<div id="test" data-module="linked-datasets"></div>

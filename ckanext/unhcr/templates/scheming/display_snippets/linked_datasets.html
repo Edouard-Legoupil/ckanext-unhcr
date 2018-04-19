@@ -1,5 +1,5 @@
 <ul>
   {% for dataset in h.get_linked_datasets_for_display(data[field.field_name]) %}
-    <li><a href="{{ dataset['url'] }}">{{ dataset['text'] }}</a></li>
+    <li><a href="{{ dataset.href }}">{{ dataset.text }}</a></li>
   {% endfor %}
 </ul>

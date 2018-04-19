@@ -55,7 +55,7 @@ def page_authorized():
                 ]))
 
 
-def get_linked_datasets_for_form(exclude_id=None):
+def get_linked_datasets_for_form(selected_ids=[], exclude_ids=[]):
     context = {'model': model}
 
     # Prepare search query
@@ -69,14 +69,19 @@ def get_linked_datasets_for_form(exclude_id=None):
     search_datasets = toolkit.get_action('package_search')
     search = search_datasets(context, {
         'fq': ' OR '.join(fq_list),
-        'include_private': True})
+        'include_private': True,
+    })
 
     # Get datasets
     datasets = []
+    selected_ids = selected_ids if isinstance(selected_ids, list) else selected_ids.strip('{}').split(',')
     for package in search['results']:
-        if package['id'] == exclude_id:
+        if package['id'] in exclude_ids:
             continue
-        datasets.append({'text': package['title'], 'value': package['id']})
+        dataset = {'text': package['title'], 'value': package['id']}
+        if package['id'] in selected_ids:
+            dataset['selected'] = 'selected'
+        datasets.append(dataset)
 
     return datasets
 
@@ -89,9 +94,7 @@ def get_linked_datasets_for_display(value):
     ids = value if isinstance(value, list) else value.strip('{}').split(',')
     for id in ids:
         dataset = toolkit.get_action('package_show')(context, {'id': id})
-        datasets.append({
-            'text': dataset['title'],
-            'url': toolkit.url_for('dataset_read', id=dataset['id'], qualified=True),
-        })
+        href = toolkit.url_for('dataset_read', id=dataset['id'], qualified=True)
+        datasets.append({'text': dataset['title'], 'href': href})
 
     return datasets
