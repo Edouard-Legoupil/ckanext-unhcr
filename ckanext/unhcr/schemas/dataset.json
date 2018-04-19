@@ -18,7 +18,7 @@
         },
         {
             "field_name": "notes",
-            "form_placeholder": "User-generated description of what the dataset is",
+            "form_placeholder": "Some useful notes about the data",
             "form_snippet": "markdown.html",
             "label": "Description",
             "required": true
@@ -30,10 +30,10 @@
             "preset": "tag_string_autocomplete"
         },
         {
-            "field_name": "owner_org",
-            "label": "Organization",
-            "preset": "dataset_organization",
-            "form_snippet": "owner_org.html"
+            "field_name": "license_id",
+            "form_snippet": "license.html",
+            "help_text": "License definitions and additional information can be found at http://opendefinition.org/",
+            "label": "License"
         },
         {
             "display_property": "foaf:homepage",
@@ -44,17 +44,33 @@
             "label": "Project URL"
         },
         {
-            "field_name": "admin_notes",
-            "form_placeholder": "Internal notes about how the dataset has been cleaned or transformed",
-            "form_snippet": "markdown.html",
-            "label": "Admin Notes"
+            "field_name": "owner_org",
+            "label": "Organization",
+            "preset": "dataset_organization",
+            "form_snippet": "owner_org.html"
         },
         {
-            "field_name": "license_id",
-            "form_snippet": "license.html",
-            "help_text": "License definitions and additional information can be found at http://opendefinition.org/",
-            "label": "License"
+            "field_name": "data_sensitivity",
+            "help_text": "Apply to both Anonymized and  Personally identifiable data",
+            "label": "Data sensitivity",
+            "preset": "select",
+            "choices": [
+                {
+                    "label": "Yes",
+                    "value": "yes"
+                },
+                {
+                    "label": "No",
+                    "value": "no"
+                }
+            ]
         },
+        {
+            "field_name": "original_id",
+            "help_text": "If the dataset already has an ID from the source org, DDI, etc...",
+            "label": "Original ID"
+        },
+
         {
             "field_name": "source_organizations",
             "help_text": "Which organization owns / collected the data",
@@ -62,10 +78,174 @@
             "preset": "multiple_select",
             "required": true,
             "choices": [
-                {
-                    "label": "UN",
-                    "value": "un"
-                }
+				{
+					"label": "Action contre la faim",
+					"value": "acf"
+				},
+				{
+					"label": "Agency for Technical Cooperation and Development",
+					"value": "acted"
+				},
+				{
+					"label": "CARE International",
+					"value": "care"
+				},
+				{
+					"label": "Caritas",
+					"value": "caritas"
+				},
+				{
+					"label": "Danish Refugee Council",
+					"value": "drc"
+				},
+				{
+					"label": "ECHO",
+					"value": "echo"
+				},
+				{
+					"label": "European Union (EU)",
+					"value": "eu"
+				},
+				{
+					"label": "Food and Agriculture Organization",
+					"value": "fao"
+				},
+				{
+					"label": "iMMAP",
+					"value": "immap"
+				},
+				{
+					"label": "INTERSOS",
+					"value": "intersos"
+				},
+				{
+					"label": "International Organization for Migration",
+					"value": "iom"
+				},
+				{
+					"label": "MapAction",
+					"value": "mapaction"
+				},
+				{
+					"label": "Mercy Corps",
+					"value": "mc"
+				},
+				{
+					"label": "Norwegian Refugee Council ",
+					"value": "nrc"
+				},
+				{
+					"label": "Office of the High Commissioner for Human Rights",
+					"value": "ohchr"
+				},
+				{
+					"label": "REACH",
+					"value": "reach"
+				},
+				{
+					"label": "Save the Children International",
+					"value": "sci"
+				},
+				{
+					"label": "United Nations Assistance Mission for Iraq",
+					"value": "unami"
+				},
+				{
+					"label": "United Nations Development Programme",
+					"value": "undp"
+				},
+				{
+					"label": "United Nations Educational, Scientific and Cultural Organization",
+					"value": "unesco"
+				},
+				{
+					"label": "Union Nationale des Femmes de Djibouti",
+					"value": "unfd"
+				},
+				{
+					"label": "United Nations Populations Fund",
+					"value": "unfpa"
+				},
+				{
+					"label": "UN-HABITAT",
+					"value": "unhabitat"
+				},
+				{
+					"label": "United Nations Humanitarian Air Service",
+					"value": "unhas"
+				},
+				{
+					"label": "United Nations High Commissioner for Refugees",
+					"value": "unhcr"
+				},
+				{
+					"label": "United Nations Children's Fund",
+					"value": "unicef"
+				},
+				{
+					"label": "United Nations Industrial Development Organization",
+					"value": "unido"
+				},
+				{
+					"label": "UNITAR/UNOSAT",
+					"value": "unitar-unosat"
+				},
+				{
+					"label": "United Nations Mine Action Coordination Centre",
+					"value": "unmacc"
+				},
+				{
+					"label": "United Nations Mission in Liberia",
+					"value": "unmil"
+				},
+				{
+					"label": "United Nations Mission in South Sudan",
+					"value": "unmiss"
+				},
+				{
+					"label": "United Nations Office for the Coordination of Humanitarian Affairs",
+					"value": "unocha"
+				},
+				{
+					"label": "United Nations Office for Project Services",
+					"value": "unops"
+				},
+				{
+					"label": "UN Office for West Africa and the Sahel",
+					"value": "unowas"
+				},
+				{
+					"label": "United Nations Relief and Works Agency ",
+					"value": "unrwa"
+				},
+				{
+					"label": "UN Security Council",
+					"value": "unsc"
+				},
+				{
+					"label": "UNV",
+					"value": "unv"
+				},
+				{
+					"label": "UN Women",
+					"value": "unwomen"
+				},
+				{
+					"label": "World food Programme - Programme Alimentaire Mondial",
+					"value": "wfp"
+				},
+				{
+					"label": "World Health Organization",
+					"value": "who"
+				},
+				{
+					"label": "World Bank",
+					"value": "world-bank"
+				},
+				{
+					"label": "CartONG",
+					"value": "cartong"
+				}
             ]
         },
         {
@@ -223,51 +403,41 @@
             "field_name": "process_status",
             "help_text": "Indicates the processing stage of the data. 'Raw' means that the data has not been cleaned since collection. 'In process' means that it is being cleaned. 'Final' means that the dataset is final and ready for use in analytical products",
             "label": "Dataset Process Status",
-            "form_snippet": null
-        },
-        {
-            "field_name": "archived",
-            "help_text": "Allows users to indicate if the dataset is archived or active",
-            "label": "Archived",
-            "preset": "select",
-            "required": true,
+            "form_snippet": null,
+            "display_snippet": "select.html",
             "choices": [
                 {
-                    "label": "No",
-                    "value": "False"
+                    "label": "Raw",
+                    "value": "raw"
                 },
                 {
-                    "label": "Yes",
-                    "value": "True"
+                    "label": "In Process",
+                    "value": "in_process"
+                },
+                {
+                    "label": "Final",
+                    "value": "final"
                 }
             ]
+
         },
         {
             "field_name": "identifiability",
             "help_text": "Indicates if personally identifiable data is contained in the dataset",
             "label": "Identifiability",
-            "form_snippet": null
-        },
-        {
-            "field_name": "data_sensitivity",
-            "help_text": "Apply to both Anonymized and  Personally identifiable data",
-            "label": "Data sensitivity",
-            "preset": "select",
+            "form_snippet": null,
+            "display_snippet": "select.html",
             "choices": [
                 {
-                    "label": "Yes",
-                    "value": "yes"
+                    "label": "Anonymized",
+                    "value": "anonymized"
                 },
                 {
-                    "label": "No",
-                    "value": "no"
+                    "label": "Personally identifiable",
+                    "value": "personally_identifiable"
                 }
             ]
-        },
-        {
-            "field_name": "original_id",
-            "help_text": "If the dataset already has an ID from the source org, DDI, etc...",
-            "label": "Original ID"
+
         },
         {
             "field_name": "data_collection_technique",
@@ -352,6 +522,29 @@
                     "value": "other"
                 }
             ]
+        },
+        {
+            "field_name": "archived",
+            "help_text": "Allows users to indicate if the dataset is archived or active",
+            "label": "Archived",
+            "preset": "select",
+            "required": true,
+            "choices": [
+                {
+                    "label": "No",
+                    "value": "False"
+                },
+                {
+                    "label": "Yes",
+                    "value": "True"
+                }
+            ]
+        },
+        {
+            "field_name": "admin_notes",
+            "form_placeholder": "Internal notes about how the dataset has been cleaned or transformed. These are stored but not indexed.",
+            "form_snippet": "markdown.html",
+            "label": "Admin Notes"
         }
     ],
     "resource_fields": [

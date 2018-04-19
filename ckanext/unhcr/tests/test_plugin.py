@@ -113,7 +113,7 @@ def _create_org_dict(user, groups=[]):
         'status': u'ok',
         'name': u'data-container',
         'title': u'data-container',
-        'country': u'south_africa',
+        'country': u'RSA',
         'notes': u'',
         'groups': groups,
         'geographic_area': u'southern_africa',
