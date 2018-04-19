@@ -17,16 +17,23 @@
             "preset": "dataset_slug"
         },
         {
+            "field_name": "notes",
+            "form_placeholder": "Some useful notes about the data",
+            "form_snippet": "markdown.html",
+            "label": "Description",
+            "required": true
+        },
+        {
             "field_name": "tag_string",
             "form_placeholder": "eg. economy, mental health, government",
             "label": "Tags",
             "preset": "tag_string_autocomplete"
         },
         {
-            "field_name": "owner_org",
-            "label": "Organization",
-            "preset": "dataset_organization",
-            "form_snippet": "owner_org.html"
+            "field_name": "license_id",
+            "form_snippet": "license.html",
+            "help_text": "License definitions and additional information can be found at http://opendefinition.org/",
+            "label": "License"
         },
         {
             "display_property": "foaf:homepage",
@@ -36,6 +43,34 @@
             "help_text": "Website URL associated with this data project (if applicable)",
             "label": "Project URL"
         },
+        {
+            "field_name": "owner_org",
+            "label": "Organization",
+            "preset": "dataset_organization",
+            "form_snippet": "owner_org.html"
+        },
+        {
+            "field_name": "data_sensitivity",
+            "help_text": "Apply to both Anonymized and  Personally identifiable data",
+            "label": "Data sensitivity",
+            "preset": "select",
+            "choices": [
+                {
+                    "label": "Yes",
+                    "value": "yes"
+                },
+                {
+                    "label": "No",
+                    "value": "no"
+                }
+            ]
+        },
+        {
+            "field_name": "original_id",
+            "help_text": "If the dataset already has an ID from the source org, DDI, etc...",
+            "label": "Original ID"
+        },
+
         {
             "field_name": "source_organizations",
             "help_text": "Which organization owns / collected the data",
@@ -310,13 +345,6 @@
             ]
         },
         {
-            "field_name": "notes",
-            "form_placeholder": "User-generated description of what the dataset is",
-            "form_snippet": "markdown.html",
-            "label": "Description",
-            "required": true
-        },
-        {
             "field_name": "operational_purpose_of_data",
             "help_text": "Classification of the type of data contained in the file",
             "label": "Operational purpose of data",
@@ -375,57 +403,41 @@
             "field_name": "process_status",
             "help_text": "Indicates the processing stage of the data. 'Raw' means that the data has not been cleaned since collection. 'In process' means that it is being cleaned. 'Final' means that the dataset is final and ready for use in analytical products",
             "label": "Dataset Process Status",
-            "form_snippet": null
-        },
-        {
-            "field_name": "archived",
-            "help_text": "Allows users to indicate if the dataset is archived or active",
-            "label": "Archived",
-            "preset": "select",
-            "required": true,
+            "form_snippet": null,
+            "display_snippet": "select.html",
             "choices": [
                 {
-                    "label": "No",
-                    "value": "False"
+                    "label": "Raw",
+                    "value": "raw"
                 },
                 {
-                    "label": "Yes",
-                    "value": "True"
+                    "label": "In Process",
+                    "value": "in_process"
+                },
+                {
+                    "label": "Final",
+                    "value": "final"
                 }
             ]
+
         },
         {
             "field_name": "identifiability",
             "help_text": "Indicates if personally identifiable data is contained in the dataset",
             "label": "Identifiability",
-            "form_snippet": null
-        },
-        {
-            "field_name": "admin_notes",
-            "form_placeholder": "Internal notes about how the dataset has been cleaned or transformed",
-            "form_snippet": "markdown.html",
-            "label": "Admin Notes"
-        },
-        {
-            "field_name": "data_sensitivity",
-            "help_text": "Apply to both Anonymized and  Personally identifiable data",
-            "label": "Data sensitivity",
-            "preset": "select",
+            "form_snippet": null,
+            "display_snippet": "select.html",
             "choices": [
                 {
-                    "label": "Yes",
-                    "value": "yes"
+                    "label": "Anonymized",
+                    "value": "anonymized"
                 },
                 {
-                    "label": "No",
-                    "value": "no"
+                    "label": "Personally identifiable",
+                    "value": "personally_identifiable"
                 }
             ]
-        },
-        {
-            "field_name": "original_id",
-            "help_text": "If the dataset already has an ID from the source org, DDI, etc...",
-            "label": "Original ID"
+
         },
         {
             "field_name": "data_collection_technique",
@@ -522,6 +534,29 @@
             "preset": "linked_datasets",
             "help_text": "help text",
             "label": "Linked Datasets"
+        },
+        {
+            "field_name": "archived",
+            "help_text": "Allows users to indicate if the dataset is archived or active",
+            "label": "Archived",
+            "preset": "select",
+            "required": true,
+            "choices": [
+                {
+                    "label": "No",
+                    "value": "False"
+                },
+                {
+                    "label": "Yes",
+                    "value": "True"
+                }
+            ]
+        },
+        {
+            "field_name": "admin_notes",
+            "form_placeholder": "Internal notes about how the dataset has been cleaned or transformed. These are stored but not indexed.",
+            "form_snippet": "markdown.html",
+            "label": "Admin Notes"
         }
     ],
     "resource_fields": [
@@ -573,12 +608,6 @@
                     "value": "analytical_product"
                 }
             ]
-        },
-        {
-            "field_name": "description",
-            "form_placeholder": "Some useful notes about the data",
-            "form_snippet": "markdown.html",
-            "label": "Description"
         },
         {
             "field_name": "format",
