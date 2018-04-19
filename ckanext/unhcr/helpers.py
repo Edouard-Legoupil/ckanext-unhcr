@@ -68,7 +68,7 @@ def get_linked_datasets_options(exclude_id=None):
         for package in container['packages']:
             if package['id'] == exclude_id:
                 continue
-            options.append({'text': package['name'], 'value': package['id']})
+            options.append({'text': package['title'], 'value': package['id']})
 
     return options
 
