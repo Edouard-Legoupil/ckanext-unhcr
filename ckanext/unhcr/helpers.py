@@ -55,11 +55,11 @@ def page_authorized():
                 ]))
 
 
-def get_linked_datasets_options(exclude_id=None):
+def get_linked_datasets_for_form(exclude_id=None):
     context = {'model': model}
 
-    # Get options
-    options = []
+    # Get datasets
+    datasets = []
     get_containers = toolkit.get_action('organization_list_for_user')
     get_container = toolkit.get_action('organization_show')
     containers = get_containers(context, {'id': toolkit.c.userobj.id})
@@ -68,19 +68,22 @@ def get_linked_datasets_options(exclude_id=None):
         for package in container['packages']:
             if package['id'] == exclude_id:
                 continue
-            options.append({'text': package['title'], 'value': package['id']})
+            datasets.append({'text': package['title'], 'value': package['id']})
 
-    return options
+    return datasets
 
 
-def get_linked_datasets_names(ids):
+def get_linked_datasets_for_display(value):
     context = {'model': model}
 
-    # Get names
-    names = []
-    ids = ids if isinstance(ids, list) else ids.strip('{}').split(',')
+    # Get datasets
+    datasets = []
+    ids = value if isinstance(value, list) else value.strip('{}').split(',')
     for id in ids:
         dataset = toolkit.get_action('package_show')(context, {'id': id})
-        names.append(dataset['name'])
+        datasets.append({
+            'text': dataset['title'],
+            'url': toolkit.url_for('dataset_read', id=dataset['id'], qualified=True),
+        })
 
-    return names
+    return datasets
