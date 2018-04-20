@@ -94,7 +94,7 @@ def get_linked_datasets_for_display(value):
     ids = value if isinstance(value, list) else value.strip('{}').split(',')
     for id in ids:
         dataset = toolkit.get_action('package_show')(context, {'id': id})
-        href = toolkit.url_for('dataset_read', id=dataset['id'], qualified=True)
+        href = toolkit.url_for('dataset_read', id=dataset['name'], qualified=True)
         datasets.append({'text': dataset['title'], 'href': href})
 
     return datasets
