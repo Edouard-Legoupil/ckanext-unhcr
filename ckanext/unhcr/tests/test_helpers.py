@@ -64,15 +64,17 @@ class TestHelpers(FunctionalTestBase):
         assert_equals(linked_datasets, [])
 
     def test_get_linked_datasets_for_display_one(self):
+        url = os.environ.get('CKAN_SITE_URL', 'http://test.ckan.net')
         user = core_factories.User()
         dataset = factories.Dataset(name='name', title='title')
         context = {'model': model, 'user': user['name']}
         linked_datasets = get_linked_datasets_for_display(dataset['id'], context=context)
         assert_equals(linked_datasets, [
-            {'href': '%s/dataset/name' % os.environ['CKAN_SITE_URL'], 'text': 'title'},
+            {'href': '%s/dataset/name' % url, 'text': 'title'},
         ])
 
     def test_get_linked_datasets_for_display_many(self):
+        url = os.environ.get('CKAN_SITE_URL', 'http://test.ckan.net')
         user = core_factories.User()
         dataset1 = factories.Dataset(name='name1', title='title1')
         dataset2 = factories.Dataset(name='name2', title='title2')
@@ -80,6 +82,6 @@ class TestHelpers(FunctionalTestBase):
         linked_datasets = get_linked_datasets_for_display(
             '{%s,%s}' % (dataset1['id'], dataset2['id']), context=context)
         assert_equals(linked_datasets, [
-            {'href': '%s/dataset/name1' % os.environ['CKAN_SITE_URL'], 'text': 'title1'},
-            {'href': '%s/dataset/name2' % os.environ['CKAN_SITE_URL'], 'text': 'title2'},
+            {'href': '%s/dataset/name1' % url, 'text': 'title1'},
+            {'href': '%s/dataset/name2' % url, 'text': 'title2'},
         ])
