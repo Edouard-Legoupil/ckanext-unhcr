@@ -70,20 +70,28 @@ def get_linked_datasets_for_form(selected_ids=[], exclude_ids=[]):
     search = search_datasets(context, {
         'fq': ' OR '.join(fq_list),
         'include_private': True,
+        'sort': 'organization asc, title asc',
     })
 
     # Get datasets
-    datasets = []
+    orgs = []
+    current_org = None
     selected_ids = selected_ids if isinstance(selected_ids, list) else selected_ids.strip('{}').split(',')
     for package in search['results']:
+
         if package['id'] in exclude_ids:
             continue
+        if package['owner_org'] != current_org:
+            current_org = package['owner_org']
+
+            orgs.append({'text': package['organization']['title'], 'children': []})
+
         dataset = {'text': package['title'], 'value': package['id']}
         if package['id'] in selected_ids:
             dataset['selected'] = 'selected'
-        datasets.append(dataset)
+        orgs[-1]['children'].append(dataset)
 
-    return datasets
+    return orgs
 
 
 def get_linked_datasets_for_display(value):
