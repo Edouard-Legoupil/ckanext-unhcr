@@ -2,7 +2,7 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from ckan.lib.plugins import DefaultTranslation
 
-from ckanext.unhcr import actions, auth, helpers, jobs
+from ckanext.unhcr import actions, auth, helpers, jobs, validators
 
 
 class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
@@ -14,6 +14,7 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
     plugins.implements(plugins.IAuthFunctions)
     plugins.implements(plugins.IActions)
     plugins.implements(plugins.IRoutes, inherit=True)
+    plugins.implements(plugins.IValidators)
 
     # IConfigurer
 
@@ -58,6 +59,8 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
         return {
             'render_tree': helpers.render_tree,
             'page_authorized': helpers.page_authorized,
+            'get_linked_datasets_for_form': helpers.get_linked_datasets_for_form,
+            'get_linked_datasets_for_display': helpers.get_linked_datasets_for_display,
         }
 
     # IPackageController
@@ -86,4 +89,11 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
     def get_actions(self):
         return {
             'organization_create': actions.organization_create,
+        }
+
+    # IValidators
+
+    def get_validators(self):
+        return {
+            'linked_datasets_validator': validators.linked_datasets,
         }

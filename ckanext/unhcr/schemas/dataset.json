@@ -524,6 +524,19 @@
             ]
         },
         {
+            "field_name": "license_id",
+            "form_snippet": "license.html",
+            "help_text": "License definitions and additional information can be found at http://opendefinition.org/",
+            "label": "License"
+        },
+        {
+            "field_name": "linked_datasets",
+            "preset": "linked_datasets",
+            "help_text": "help text",
+            "label": "Linked Datasets",
+            "help_text": "Links to other RIDL datasets. It supports multiple selections"
+        },
+        {
             "field_name": "archived",
             "help_text": "Allows users to indicate if the dataset is archived or active",
             "label": "Archived",

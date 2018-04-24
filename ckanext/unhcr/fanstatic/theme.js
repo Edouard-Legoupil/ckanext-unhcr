@@ -33,3 +33,12 @@ $( document ).ready(function() {
   // auto expand parents of highlighted
   $(".hierarchy-tree-top .highlighted").parents(".closed").removeClass("closed").addClass("open").children(".hierarchy-tree").removeClass("collapse");
 });
+
+$( document ).ready(function() {
+
+  // Activate select2 widget
+  $('#field-linked-datasets').select2({
+    placeholder: 'Click to get a drop-down list or start typing a dataset title'
+  });
+
+});
