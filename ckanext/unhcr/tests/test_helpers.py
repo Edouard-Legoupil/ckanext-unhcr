@@ -1,3 +1,4 @@
+import os
 from ckan import model
 from ckan.tests import factories as core_factories
 from nose.tools import assert_raises, assert_equals
@@ -68,7 +69,7 @@ class TestHelpers(FunctionalTestBase):
         context = {'model': model, 'user': user['name']}
         linked_datasets = get_linked_datasets_for_display(dataset['id'], context=context)
         assert_equals(linked_datasets, [
-            {'href': 'http://ckan-dev:5000/dataset/name', 'text': 'title'},
+            {'href': '%s/dataset/name' % os.environ['CKAN_SITE_URL'], 'text': 'title'},
         ])
 
     def test_get_linked_datasets_for_display_many(self):
@@ -79,6 +80,6 @@ class TestHelpers(FunctionalTestBase):
         linked_datasets = get_linked_datasets_for_display(
             '{%s,%s}' % (dataset1['id'], dataset2['id']), context=context)
         assert_equals(linked_datasets, [
-            {'href': 'http://ckan-dev:5000/dataset/name1', 'text': 'title1'},
-            {'href': 'http://ckan-dev:5000/dataset/name2', 'text': 'title2'},
+            {'href': '%s/dataset/name1' % os.environ['CKAN_SITE_URL'], 'text': 'title1'},
+            {'href': '%s/dataset/name2' % os.environ['CKAN_SITE_URL'], 'text': 'title2'},
         ])
