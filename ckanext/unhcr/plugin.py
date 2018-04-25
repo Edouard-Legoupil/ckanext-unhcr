@@ -15,6 +15,7 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
     plugins.implements(plugins.IActions)
     plugins.implements(plugins.IValidators)
     plugins.implements(plugins.IRoutes, inherit=True)
+    plugins.implements(plugins.IValidators)
 
     # IConfigurer
 
@@ -59,6 +60,8 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
         return {
             'render_tree': helpers.render_tree,
             'page_authorized': helpers.page_authorized,
+            'get_linked_datasets_for_form': helpers.get_linked_datasets_for_form,
+            'get_linked_datasets_for_display': helpers.get_linked_datasets_for_display,
         }
 
     # IPackageController
@@ -94,4 +97,5 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
     def get_validators(self):
         return {
             'ignore_if_attachement': validators.ignore_if_attachement,
+            'linked_datasets_validator': validators.linked_datasets,
         }

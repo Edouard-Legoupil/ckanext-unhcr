@@ -1,0 +1,15 @@
+{
+  "scheming_presets_version": 1,
+  "about": "Presets related to the UNHCR project",
+  "about_url": "",
+  "presets": [
+    {
+      "preset_name": "linked_datasets",
+      "values": {
+        "validators": "ignore_missing linked_datasets_validator",
+        "form_snippet": "linked_datasets.html",
+        "display_snippet": "linked_datasets.html"
+      }
+    }
+  ]
+}
