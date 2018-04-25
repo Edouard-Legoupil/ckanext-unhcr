@@ -55,13 +55,14 @@ def page_authorized():
                 ]))
 
 
-def get_linked_datasets_for_form(selected_ids=[], exclude_ids=[]):
-    context = {'model': model}
+def get_linked_datasets_for_form(selected_ids=[], exclude_ids=[], context=None, user_id=None):
+    context = context or {'model': model}
+    user_id = user_id or toolkit.c.userobj.id
 
     # Prepare search query
     fq_list = []
     get_containers = toolkit.get_action('organization_list_for_user')
-    containers = get_containers(context, {'id': toolkit.c.userobj.id})
+    containers = get_containers(context, {'id': user_id})
     for container in containers:
         fq_list.append('owner_org:{}'.format(container['id']))
 
@@ -94,15 +95,16 @@ def get_linked_datasets_for_form(selected_ids=[], exclude_ids=[]):
     return orgs
 
 
-def get_linked_datasets_for_display(value):
-    context = {'model': model}
+def get_linked_datasets_for_display(value, context=None):
+    context = context or {'model': model}
 
     # Get datasets
     datasets = []
-    ids = value if isinstance(value, list) else value.strip('{}').split(',')
-    for id in ids:
-        dataset = toolkit.get_action('package_show')(context, {'id': id})
-        href = toolkit.url_for('dataset_read', id=dataset['name'], qualified=True)
-        datasets.append({'text': dataset['title'], 'href': href})
+    if value:
+        ids = value if isinstance(value, list) else value.strip('{}').split(',')
+        for id in ids:
+            dataset = toolkit.get_action('package_show')(context, {'id': id})
+            href = toolkit.url_for('dataset_read', id=dataset['name'], qualified=True)
+            datasets.append({'text': dataset['title'], 'href': href})
 
     return datasets
