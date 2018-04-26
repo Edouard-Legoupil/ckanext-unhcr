@@ -32,6 +32,7 @@ module.exports = function(grunt) {
           'ckanext/unhcr/src/js/main.js',
           'ckanext/unhcr/src/js/hierarchy.js',
           'ckanext/unhcr/src/js/linked-datasets.js',
+          'ckanext/unhcr/src/js/module-resource-type.js',
         ],
         dest: 'ckanext/unhcr/fanstatic/theme.js',
       },

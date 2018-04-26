@@ -7,11 +7,8 @@ log = logging.getLogger(__name__)
 
 # Module API
 
-
 def ignore_if_attachement(key, data, errors, context):
-
     index = key[1]
-
     if _is_attachement(index, data):
         data.pop(key, None)
         raise toolkit.StopOnError

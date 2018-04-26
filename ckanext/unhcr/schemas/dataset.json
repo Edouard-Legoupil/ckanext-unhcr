@@ -564,6 +564,7 @@
         {
             "field_name": "type",
             "label": "Resource type",
+            "form_snippet": "resource_type.html",
             "preset": "select",
             "required": true,
             "choices": [
@@ -646,6 +647,7 @@
             "help_text": "Indicates if the resource has HXL hashtags",
             "label": "HXL-ated",
             "preset": "select",
+            "validators": "ignore_if_attachement scheming_required scheming_choices",
             "choices": [
                 {
                     "label": "No",
