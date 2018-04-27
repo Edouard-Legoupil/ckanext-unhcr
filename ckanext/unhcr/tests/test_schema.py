@@ -9,16 +9,16 @@ from ckanext.unhcr.tests import factories
 
 class TestResourceFields(FunctionalTestBase):
 
-    def test_file_attachement_fields(self):
+    def test_file_ment_fields(self):
 
         dataset = factories.Dataset()
 
         resource = {
-            'name': 'Test File attachement',
+            'name': 'Test File attachment',
             'url': 'http://example.com/doc.pdf',
             'format': 'PDF',
             'description': 'Some description',
-            'type': 'attachement',
+            'type': 'attachment',
         }
 
         dataset['resources'] = [resource]
@@ -61,11 +61,11 @@ class TestResourceFields(FunctionalTestBase):
         dataset = factories.Dataset()
 
         resource1 = {
-            'name': 'Test File attachement',
+            'name': 'Test File attachment',
             'url': 'http://example.com/doc.pdf',
             'format': 'PDF',
             'description': 'Some description',
-            'type': 'attachement',
+            'type': 'attachment',
         }
         resource2 = {
             'name': 'Test Data file',

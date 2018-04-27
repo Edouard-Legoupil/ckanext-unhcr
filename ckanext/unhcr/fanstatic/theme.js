@@ -60,7 +60,7 @@ this.ckan.module('resource-type', function ($) {
 
       // Add event listeners
       $('button.btn-data', this.field).click(this._onDataButtonClick.bind(this))
-      $('button.btn-attachement', this.field).click(this._onAttachementButtonClick.bind(this))
+      $('button.btn-attachment', this.field).click(this._onAttachmentButtonClick.bind(this))
       $('button:contains("Previous")').click(this._onPreviousButtonClick.bind(this))
 
       // Emit initialized
@@ -73,8 +73,8 @@ this.ckan.module('resource-type', function ($) {
     _onIntialized: function () {
       if (this.options.value === 'data') {
         this._onDataButtonClick()
-      } else if (this.options.value === 'attachement') {
-        this._onAttachementButtonClick()
+      } else if (this.options.value === 'attachment') {
+        this._onAttachmentButtonClick()
       } else {
         this.field.nextAll().hide()
         this.field.show()
@@ -88,12 +88,12 @@ this.ckan.module('resource-type', function ($) {
       this.input.val('data')
     },
 
-    _onAttachementButtonClick: function (ev) {
+    _onAttachmentButtonClick: function (ev) {
       if (ev) ev.preventDefault()
       this.field.hide()
       this.field.nextAll().show()
       $('#field-format').parents('.control-group').nextAll('.control-group').hide()
-      this.input.val('attachement')
+      this.input.val('attachment')
     },
 
     _onPreviousButtonClick: function (ev) {

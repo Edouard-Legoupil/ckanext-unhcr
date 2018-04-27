@@ -96,6 +96,6 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
 
     def get_validators(self):
         return {
-            'ignore_if_attachement': validators.ignore_if_attachement,
+            'ignore_if_attachment': validators.ignore_if_attachment,
             'linked_datasets_validator': validators.linked_datasets,
         }

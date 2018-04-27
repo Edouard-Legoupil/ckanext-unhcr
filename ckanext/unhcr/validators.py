@@ -7,9 +7,9 @@ log = logging.getLogger(__name__)
 
 # Module API
 
-def ignore_if_attachement(key, data, errors, context):
+def ignore_if_attachment(key, data, errors, context):
     index = key[1]
-    if _is_attachement(index, data):
+    if _is_attachment(index, data):
         data.pop(key, None)
         raise toolkit.StopOnError
 
@@ -28,12 +28,12 @@ def linked_datasets(value, context):
 
 # Internal
 
-def _is_attachement(index, data):
+def _is_attachment(index, data):
     for field, value in data.iteritems():
         if (field[0] == 'resources' and
                 field[1] == index and
                 field[2] == 'type' and
-                value == 'attachement'):
+                value == 'attachment'):
             return True
     return False
 
