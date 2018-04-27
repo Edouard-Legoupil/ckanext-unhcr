@@ -4664,3 +4664,9 @@ msgstr "No followers"
 #: ckan/templates/user/snippets/user_search.html:5
 msgid "Search Users"
 msgstr "Search Users"
+
+
+# Added manually as these are in ckanext-scheming:
+msgid "Are you sure you want to delete this Organization?"
+msgstr "Are you sure you want to delete this Data Container?"
+
