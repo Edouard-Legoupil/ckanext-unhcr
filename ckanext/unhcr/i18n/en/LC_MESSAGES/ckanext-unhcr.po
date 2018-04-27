@@ -1074,11 +1074,11 @@ msgstr "Unauthorized to read package %s"
 
 #: ckan/controllers/package.py:444
 msgid "CKAN Dataset Revision History"
-msgstr "CKAN Dataset Revision History"
+msgstr "RIDL Dataset Revision History"
 
 #: ckan/controllers/package.py:447
 msgid "Recent changes to CKAN Dataset: "
-msgstr "Recent changes to CKAN Dataset: "
+msgstr "Recent changes to RIDL Dataset: "
 
 #: ckan/controllers/package.py:503
 msgid "Unauthorized to create a package"
@@ -1183,11 +1183,11 @@ msgstr "No preview has been defined."
 
 #: ckan/controllers/revision.py:44
 msgid "CKAN Repository Revision History"
-msgstr "CKAN Repository Revision History"
+msgstr "RIDL Repository Revision History"
 
 #: ckan/controllers/revision.py:46
 msgid "Recent changes to the CKAN repository."
-msgstr "Recent changes to the CKAN repository."
+msgstr "Recent changes to the RIDL repository."
 
 #: ckan/controllers/revision.py:110
 #, python-format
@@ -2697,7 +2697,7 @@ msgstr "Update Config"
 
 #: ckan/templates/admin/config.html:26
 msgid "CKAN config options"
-msgstr "CKAN config options"
+msgstr "RIDL config options"
 
 #: ckan/templates/admin/config.html:33
 #, python-format
@@ -3517,7 +3517,7 @@ msgid ""
 "with a description and other information, at a fixed URL. Datasets are what "
 "users see when searching for data. "
 msgstr ""
-" A CKAN Dataset is a collection of data resources (such as files), together "
+" A RIDL Dataset is a collection of data resources (such as files), together "
 "with a description and other information, at a fixed URL. Datasets are what "
 "users see when searching for data. "
 
@@ -4415,7 +4415,7 @@ msgstr "Account Info"
 msgid ""
 " Your profile lets other CKAN users know about who you are and what you do. "
 msgstr ""
-" Your profile lets other CKAN users know about who you are and what you do. "
+" Your profile lets other RIDL users know about who you are and what you do. "
 
 #: ckan/templates/user/edit_user_form.html:7
 msgid "Change details"
