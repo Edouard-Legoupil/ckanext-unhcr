@@ -3,6 +3,7 @@
     {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=(pkg.resources|selectattr("type", "equalto", "data")) %}
     {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=(pkg.resources|selectattr("type", "equalto", "attachment")) %}
     <script>
+      // It allows us to overcome the snippet limitation with the heading contents
       document.querySelectorAll('#dataset-resources > h3')[0].textContent = 'Data Files'
       document.querySelectorAll('#dataset-resources > h3')[1].textContent = 'File Attachments'
     </script>
