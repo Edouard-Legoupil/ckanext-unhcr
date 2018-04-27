@@ -14,8 +14,9 @@ this.ckan.module('resource-type', function ($) {
       this.input = $('input', this.field)
 
       // Add event listeners
-      $('.btn-data', this.field).click(this._onDataButtonClick.bind(this))
-      $('.btn-attachement', this.field).click(this._onAttachementButtonClick.bind(this))
+      $('button.btn-data', this.field).click(this._onDataButtonClick.bind(this))
+      $('button.btn-attachement', this.field).click(this._onAttachementButtonClick.bind(this))
+      $('button:contains("Previous")').click(this._onPreviousButtonClick.bind(this))
 
       // Emit initialized
       this._onIntialized()
@@ -48,6 +49,11 @@ this.ckan.module('resource-type', function ($) {
       this.field.nextAll().show()
       $('#field-format').parents('.control-group').nextAll('.control-group').hide()
       this.input.val('attachement')
+    },
+
+    _onPreviousButtonClick: function (ev) {
+      if (ev) ev.preventDefault()
+      this._onIntialized()
     },
 
   };
