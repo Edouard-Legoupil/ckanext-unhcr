@@ -1,0 +1,9 @@
+{% ckan_extends %}
+  {% block package_resources %}
+    {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=(pkg.resources|selectattr("type", "equalto", "data")) %}
+    {% snippet "package/snippets/resources_list.html", pkg=pkg, resources=(pkg.resources|selectattr("type", "equalto", "attachment")) %}
+    <script>
+      document.querySelectorAll('#dataset-resources > h3')[0].textContent = 'Data Files'
+      document.querySelectorAll('#dataset-resources > h3')[1].textContent = 'File Attachments'
+    </script>
+  {% endblock %}
