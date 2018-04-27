@@ -31,7 +31,7 @@
         },
         {
             "field_name": "country",
-            "label": "Country",
+            "label": "Country. Multiple values are allowed.",
             "preset": "multiple_select",
             "required": true,
             "choices": [
@@ -922,7 +922,7 @@
         },
         {
             "field_name": "sectoral_area",
-            "help_text": "The sectoral areas covered by the datasets included within",
+            "help_text": "The sectoral areas covered by the datasets included within. Multiple values are allowed.",
             "label": "Sectoral areas included",
             "preset": "multiple_select",
             "choices": [
