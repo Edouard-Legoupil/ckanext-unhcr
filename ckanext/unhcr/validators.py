@@ -1,6 +1,7 @@
 import logging
 from ckan.plugins.toolkit import Invalid
 from ckanext.unhcr.helpers import get_linked_datasets_for_form
+from ckanext.unhcr import utils
 log = logging.getLogger(__name__)
 
 
@@ -9,7 +10,7 @@ log = logging.getLogger(__name__)
 def linked_datasets(value, context):
 
     # Check if the user has access to the linked datasets
-    selected = value if isinstance(value, list) else value.strip('{}').split(',')
+    selected = utils.normalize_list(value)
     allowed = _get_allowed_linked_datasets()
     for id in selected:
         if id not in allowed:

@@ -1,5 +1,11 @@
+import logging
+from ckan import model
+from ckanext.unhcr import utils
 import ckan.plugins.toolkit as toolkit
+log = logging.getLogger(__name__)
 
+
+# Module API
 
 def process_dataset_fields(package_id):
 
@@ -14,6 +20,29 @@ def process_dataset_fields(package_id):
     package_update = toolkit.get_action('package_update')
     package_update({'job': True}, package)
 
+
+def process_dataset_links_on_create(data_dict):
+    log.debug(data_dict)
+
+
+def process_dataset_links_on_update(data_dict):
+    context = {'model': model}
+
+    # Add back references to the linked datasets
+    own_id = data_dict['id']
+    for link_id in utils.normalize_list(data_dict.get('linked_datasets', [])):
+        package = toolkit.get_action('package_show')(context, {'id': link_id})
+        back_ids = utils.normalize_list(package.get('linked_datasets', []))
+        if own_id not in back_ids:
+            package['linked_datasets'] = back_ids + [own_id]
+            toolkit.get_action('package_update')(context, package)
+
+
+def process_dataset_links_on_delete(data_dict):
+    log.debug(data_dict)
+
+
+# Internal
 
 def _modify_package(package):
 
