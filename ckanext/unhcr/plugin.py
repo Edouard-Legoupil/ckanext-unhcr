@@ -75,14 +75,14 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
             toolkit.enqueue_job(jobs.process_dataset_fields, [data_dict['id']])
             toolkit.enqueue_job(jobs.process_dataset_links_on_create, [data_dict])
 
+    def after_delete(self, context, data_dict):
+        if not context.get('job'):
+            toolkit.enqueue_job(jobs.process_dataset_links_on_delete, [data_dict])
+
     def after_update(self, context, data_dict):
         if not context.get('job'):
             toolkit.enqueue_job(jobs.process_dataset_fields, [data_dict['id']])
             toolkit.enqueue_job(jobs.process_dataset_links_on_update, [data_dict])
-
-    def after_delete(self, context, data_dict):
-        if not context.get('job'):
-            toolkit.enqueue_job(jobs.process_dataset_links_on_delete, [data_dict])
 
     # IAuthFunctions
 

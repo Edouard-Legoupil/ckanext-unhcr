@@ -22,16 +22,15 @@ def process_dataset_fields(package_id):
 
 
 def process_dataset_links_on_create(data_dict):
-    _add_back_references_to_linked_datasets(data_dict)
-
-
-def process_dataset_links_on_update(data_dict):
-    _add_back_references_to_linked_datasets(data_dict)
-    # TODO: remove deleted back references
+    _create_back_references_on_linked_datasets(data_dict)
 
 
 def process_dataset_links_on_delete(data_dict):
-    _remove_back_references_from_linked_datasets(data_dict)
+    _delete_back_references_from_linked_datasets(data_dict)
+
+
+def process_dataset_links_on_update(data_dict):
+    _update_back_references_on_linked_datasets(data_dict)
 
 
 # Internal
@@ -82,25 +81,50 @@ def _modify_weighted_field(package, key, weights):
     return package
 
 
-def _add_back_references_to_linked_datasets(data_dict):
-    context = {'model': model}
-    own_id = data_dict['id']
-    for link_id in utils.normalize_list(data_dict.get('linked_datasets', [])):
-        link_package = toolkit.get_action('package_show')(context, {'id': link_id})
-        back_ids = utils.normalize_list(link_package.get('linked_datasets', []))
-        if own_id not in back_ids:
-            package['linked_datasets'] = back_ids + [own_id]
-            toolkit.get_action('package_update')(context, package)
+def _create_back_references_on_linked_datasets(data_dict, whitelist=None):
+    context = {'model': model, 'job': True}
+    package_id = data_dict['id']
+    for link_package_id in utils.normalize_list(data_dict.get('linked_datasets', [])):
+        if whitelist is not None and link_package_id not in whitelist:
+            continue
+        link_package = toolkit.get_action('package_show')(context, {'id': link_package_id})
+        back_package_ids = utils.normalize_list(link_package.get('linked_datasets', []))
+        if package_id not in back_package_ids:
+            link_package['linked_datasets'] = back_package_ids + [package_id]
+            toolkit.get_action('package_update')(context, link_package)
 
 
-def _remove_back_references_from_linked_datasets(data_dict):
-    context = {'model': model}
-    own_id = data_dict['id']
-    own_package = toolkit.get_action('package_show')(context, {'id': own_id})
-    for link_id in utils.normalize_list(own_package.get('linked_datasets', [])):
-        link_package = toolkit.get_action('package_show')(context, {'id': link_id})
-        back_ids = utils.normalize_list(link_package.get('linked_datasets', []))
-        if own_id in back_ids:
-            back_ids.remove(own_id)
-            package['linked_datasets'] = back_ids
-            toolkit.get_action('package_update')(context, package)
+def _delete_back_references_from_linked_datasets(data_dict, whitelist=None):
+    context = {'model': model, 'job': True}
+    package_id = data_dict['id']
+    package = toolkit.get_action('package_show')(context, {'id': package_id})
+    for link_package_id in utils.normalize_list(package.get('linked_datasets', [])):
+        if whitelist is not None and link_package_id not in whitelist:
+            continue
+        link_package = toolkit.get_action('package_show')(context, {'id': link_package_id})
+        back_package_ids = utils.normalize_list(link_package.get('linked_datasets', []))
+        if package_id in back_package_ids:
+            back_package_ids.remove(package_id)
+            link_package['linked_datasets'] = back_package_ids
+            toolkit.get_action('package_update')(context, link_package)
+
+
+def _update_back_references_on_linked_datasets(data_dict):
+    context = {'model': model, 'job': True}
+
+    # Prepare
+    package_id = data_dict['id']
+    package = toolkit.get_action('package_show')(context, {'id': package_id})
+    # TODO: it doesn't work because the following lists are always the same
+    old_link_package_ids = utils.normalize_list(package.get('linked_datasets', []))
+    new_link_package_ids = utils.normalize_list(data_dict.get('linked_datasets', []))
+
+    # Create
+    created_link_package_ids = set(new_link_package_ids).difference(old_link_package_ids)
+    if created_link_package_ids:
+        _create_back_references_on_linked_datasets(data_dict, whitelist=created_link_package_ids)
+
+    # Delete
+    removed_link_package_ids = set(old_link_package_ids).difference(new_link_package_ids)
+    if removed_link_package_ids:
+        _delete_back_references_from_linked_datasets({'id': package_id}, whitelist=removed_link_package_ids)

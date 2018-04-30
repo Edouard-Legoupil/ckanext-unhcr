@@ -8,6 +8,8 @@ log = logging.getLogger(__name__)
 # Module API
 
 def linked_datasets(value, context):
+    if context.get('job'):
+        return value
 
     # Check if the user has access to the linked datasets
     selected = utils.normalize_list(value)
