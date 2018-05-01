@@ -73,17 +73,18 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
     def after_create(self, context, data_dict):
         if not context.get('job'):
             toolkit.enqueue_job(jobs.process_dataset_fields, [data_dict['id']])
-            toolkit.enqueue_job(jobs.process_dataset_links_on_create, [data_dict])
+            toolkit.enqueue_job(jobs.process_dataset_links_on_create, [data_dict['id']])
 
     def after_delete(self, context, data_dict):
         if not context.get('job'):
-            toolkit.enqueue_job(jobs.process_dataset_links_on_delete, [data_dict])
+            toolkit.enqueue_job(jobs.process_dataset_links_on_delete, [data_dict['id']])
 
     def after_update(self, context, data_dict):
         if not context.get('job'):
-            old_data_dict = toolkit.get_action('package_show')(context, {'id': data_dict['id']})
+            # TODO: It doesn't work because changes are already commited
+            prev_package = toolkit.get_action('package_show')(context, {'id': data_dict['id']})
+            toolkit.enqueue_job(jobs.process_dataset_links_on_update, [data_dict['id'], prev_package])
             toolkit.enqueue_job(jobs.process_dataset_fields, [data_dict['id']])
-            toolkit.enqueue_job(jobs.process_dataset_links_on_update, [old_data_dict, data_dict])
 
     # IAuthFunctions
 
