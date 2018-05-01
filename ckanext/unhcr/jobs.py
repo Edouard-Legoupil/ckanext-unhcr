@@ -55,11 +55,6 @@ def process_dataset_links_on_update(package_id, prev_package):
     next_package = toolkit.get_action('package_show')(context, {'id': package_id})
     prev_link_package_ids = utils.normalize_list(prev_package.get('linked_datasets', []))
     next_link_package_ids = utils.normalize_list(next_package.get('linked_datasets', []))
-    log.debug('---')
-    log.debug(prev_link_package_ids)
-    log.debug('---')
-    log.debug(next_link_package_ids)
-    log.debug('---')
     created_link_package_ids = set(next_link_package_ids).difference(prev_link_package_ids)
     removed_link_package_ids = set(prev_link_package_ids).difference(next_link_package_ids)
 
