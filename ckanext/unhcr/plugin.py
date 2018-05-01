@@ -81,8 +81,9 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
 
     def after_update(self, context, data_dict):
         if not context.get('job'):
+            old_data_dict = toolkit.get_action('package_show')(context, {'id': data_dict['id']})
             toolkit.enqueue_job(jobs.process_dataset_fields, [data_dict['id']])
-            toolkit.enqueue_job(jobs.process_dataset_links_on_update, [data_dict])
+            toolkit.enqueue_job(jobs.process_dataset_links_on_update, [old_data_dict, data_dict])
 
     # IAuthFunctions
 
