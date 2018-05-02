@@ -1,8 +1,10 @@
+import logging
+from ckan import model
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from ckan.lib.plugins import DefaultTranslation
-
 from ckanext.unhcr import actions, auth, helpers, jobs, validators
+log = logging.getLogger(__name__)
 
 
 class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
@@ -81,9 +83,7 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
 
     def after_update(self, context, data_dict):
         if not context.get('job'):
-            # TODO: It doesn't work because changes are already commited
-            prev_package = toolkit.get_action('package_show')(context, {'id': data_dict['id']})
-            toolkit.enqueue_job(jobs.process_dataset_links_on_update, [data_dict['id'], prev_package])
+            toolkit.enqueue_job(jobs.process_dataset_links_on_update, [data_dict['id']])
             toolkit.enqueue_job(jobs.process_dataset_fields, [data_dict['id']])
 
     # IAuthFunctions

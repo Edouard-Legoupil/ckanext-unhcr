@@ -48,15 +48,13 @@ def process_dataset_links_on_delete(package_id, whitelist=None):
             toolkit.get_action('package_update')(context, link_package)
 
 
-def process_dataset_links_on_update(package_id, prev_package):
+def process_dataset_links_on_update(package_id):
     context = {'model': model, 'job': True}
 
     # Prepare
-    next_package = toolkit.get_action('package_show')(context, {'id': package_id})
-    prev_link_package_ids = utils.normalize_list(prev_package.get('linked_datasets', []))
-    next_link_package_ids = utils.normalize_list(next_package.get('linked_datasets', []))
-    created_link_package_ids = set(next_link_package_ids).difference(prev_link_package_ids)
-    removed_link_package_ids = set(prev_link_package_ids).difference(next_link_package_ids)
+    link_package_ids = _get_link_package_ids_from_revisions(package_id)
+    created_link_package_ids = set(link_package_ids['next']).difference(link_package_ids['prev'])
+    removed_link_package_ids = set(link_package_ids['prev']).difference(link_package_ids['next'])
 
     # Create
     if created_link_package_ids:
@@ -113,3 +111,29 @@ def _modify_weighted_field(package, key, weights):
         if resource_weight > package_weight:
             package[key] = resource[key]
     return package
+
+
+def _get_link_package_ids_from_revisions(package_id):
+
+    # Get revisions
+    revisions = (model.Session.query(model.PackageExtraRevision)
+        .filter(model.PackageExtraRevision.package_id == package_id,
+                model.PackageExtraRevision.key == 'linked_datasets')
+        .order_by(model.PackageExtraRevision.revision_timestamp)
+        .all())
+
+    # Prev revision
+    prev = []
+    if len(revisions) >= 2:
+        revision = revisions[-2]
+        if revision.state == 'active':
+            prev = utils.normalize_list(revision.value)
+
+    # Next revision
+    next = []
+    if len(revisions) >= 1:
+        revision = revisions[-1]
+        if revision.state == 'active':
+            next = utils.normalize_list(revision.value)
+
+    return {'prev': prev, 'next': next}
