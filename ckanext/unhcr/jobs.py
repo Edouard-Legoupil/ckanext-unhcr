@@ -21,12 +21,16 @@ def process_dataset_fields(package_id):
     package_update({'job': True}, package)
 
 
-def process_dataset_links_on_create(package_id, whitelist=None):
+def process_dataset_links_on_create(package_id, link_package_ids=None):
     context = {'model': model, 'job': True}
-    package = toolkit.get_action('package_show')(context, {'id': package_id})
-    for link_package_id in utils.normalize_list(package.get('linked_datasets', [])):
-        if whitelist is not None and link_package_id not in whitelist:
-            continue
+
+    # Get linked packages
+    if link_package_ids is None:
+        package = toolkit.get_action('package_show')(context, {'id': package_id})
+        link_package_ids = utils.normalize_list(package.get('linked_datasets', []))
+
+    # Create back references
+    for link_package_id in link_package_ids:
         link_package = toolkit.get_action('package_show')(context, {'id': link_package_id})
         back_package_ids = utils.normalize_list(link_package.get('linked_datasets', []))
         if package_id not in back_package_ids:
@@ -34,12 +38,16 @@ def process_dataset_links_on_create(package_id, whitelist=None):
             toolkit.get_action('package_update')(context, link_package)
 
 
-def process_dataset_links_on_delete(package_id, whitelist=None):
+def process_dataset_links_on_delete(package_id, link_package_ids=None):
     context = {'model': model, 'job': True}
-    package = toolkit.get_action('package_show')(context, {'id': package_id})
-    for link_package_id in utils.normalize_list(package.get('linked_datasets', [])):
-        if whitelist is not None and link_package_id not in whitelist:
-            continue
+
+    # Get linked packages
+    if link_package_ids is None:
+        package = toolkit.get_action('package_show')(context, {'id': package_id})
+        link_package_ids = utils.normalize_list(package.get('linked_datasets', []))
+
+    # Delete back references
+    for link_package_id in link_package_ids:
         link_package = toolkit.get_action('package_show')(context, {'id': link_package_id})
         back_package_ids = utils.normalize_list(link_package.get('linked_datasets', []))
         if package_id in back_package_ids:
@@ -56,13 +64,9 @@ def process_dataset_links_on_update(package_id):
     created_link_package_ids = set(link_package_ids['next']).difference(link_package_ids['prev'])
     removed_link_package_ids = set(link_package_ids['prev']).difference(link_package_ids['next'])
 
-    # Create
-    if created_link_package_ids:
-        process_dataset_links_on_create(package_id, whitelist=created_link_package_ids)
-
-    # Delete
-    if removed_link_package_ids:
-        process_dataset_links_on_delete(package_id, whitelist=removed_link_package_ids)
+    # Create/delete
+    process_dataset_links_on_create(package_id, link_package_ids=created_link_package_ids)
+    process_dataset_links_on_delete(package_id, link_package_ids=removed_link_package_ids)
 
 
 # Internal
