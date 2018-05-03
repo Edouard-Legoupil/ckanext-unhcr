@@ -1,10 +1,18 @@
 import logging
+from ckan.plugins import toolkit
 from ckan.plugins.toolkit import Invalid
 from ckanext.unhcr.helpers import get_linked_datasets_for_form
 log = logging.getLogger(__name__)
 
 
 # Module API
+
+def ignore_if_attachment(key, data, errors, context):
+    index = key[1]
+    if _is_attachment(index, data):
+        data.pop(key, None)
+        raise toolkit.StopOnError
+
 
 def linked_datasets(value, context):
 
@@ -19,6 +27,16 @@ def linked_datasets(value, context):
 
 
 # Internal
+
+def _is_attachment(index, data):
+    for field, value in data.iteritems():
+        if (field[0] == 'resources' and
+                field[1] == index and
+                field[2] == 'type' and
+                value == 'attachment'):
+            return True
+    return False
+
 
 # TODO:
 # it could be better to extract core linked datasets

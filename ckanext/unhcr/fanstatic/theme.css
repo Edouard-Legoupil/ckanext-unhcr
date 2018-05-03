@@ -1914,3 +1914,15 @@ input[type=checkbox] {
 input[type=radio].checkbox-onown, input[type=checkbox].checkbox-onown {
   top: 0;
 }
+
+i {
+  margin-right: 5px;
+}
+
+.resource_type {
+  margin-top: 20px
+}
+
+.resource_type > p {
+  margin-top: 5px;
+}

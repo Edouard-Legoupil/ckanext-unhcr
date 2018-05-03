@@ -9,4 +9,14 @@ input[type=checkbox] {
   }
 }
 
+i {
+  margin-right: 5px;
+}
 
+.resource_type {
+  margin-top: 20px;
+
+  & > p {
+    margin-top: 5px;
+  }
+}

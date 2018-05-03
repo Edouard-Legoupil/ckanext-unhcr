@@ -556,6 +556,23 @@
     ],
     "resource_fields": [
         {
+            "field_name": "type",
+            "label": "Resource type",
+            "form_snippet": "resource_type.html",
+            "preset": "select",
+            "required": true,
+            "choices": [
+                {
+                    "label": "Data file",
+                    "value": "data"
+                },
+                {
+                    "label": "Additional attachment",
+                    "value": "attachment"
+                }
+            ]
+        },
+        {
             "field_name": "url",
             "label": "URL",
             "preset": "resource_url_upload"
@@ -566,21 +583,35 @@
             "label": "Name"
         },
         {
+            "field_name": "description",
+            "form_placeholder": "Some useful notes about the data",
+            "form_snippet": "markdown.html",
+            "label": "Description"
+        },
+        {
+            "field_name": "format",
+            "label": "Format",
+            "preset": "resource_format_autocomplete"
+        },
+        {
             "field_name": "date_range_start",
             "label": "Date collection first date",
             "preset": "date",
+            "validators": "ignore_if_attachment scheming_required isodate convert_to_json_if_date",
             "required": true
         },
         {
             "field_name": "date_range_end",
             "label": "Date collection last date",
             "preset": "date",
+            "validators": "ignore_if_attachment scheming_required isodate convert_to_json_if_date",
             "required": true
         },
         {
             "field_name": "version",
             "form_placeholder": "0",
             "label": "Version",
+            "validators": "ignore_if_attachment scheming_required",
             "required": true
         },
         {
@@ -588,6 +619,7 @@
             "help_text": "Indicates what is contained in the file",
             "label": "File Type",
             "preset": "select",
+            "validators": "ignore_if_attachment scheming_required scheming_choices",
             "required": true,
             "choices": [
                 {
@@ -605,15 +637,11 @@
             ]
         },
         {
-            "field_name": "format",
-            "label": "Format",
-            "preset": "resource_format_autocomplete"
-        },
-        {
             "field_name": "hxl-ated",
             "help_text": "Indicates if the resource has HXL hashtags",
             "label": "HXL-ated",
             "preset": "select",
+            "validators": "ignore_if_attachment scheming_required scheming_choices",
             "choices": [
                 {
                     "label": "No",
@@ -630,6 +658,7 @@
             "help_text": "Indicates the processing stage of the data. 'Raw' means that the data has not been cleaned since collection. 'In process' means that it is being cleaned. 'Final' means that the dataset is final and ready for use in analytical products",
             "label": "File Process Status",
             "preset": "select",
+            "validators": "ignore_if_attachment scheming_required scheming_choices",
             "required": true,
             "choices": [
                 {
@@ -651,6 +680,7 @@
             "help_text": "Indicates if personally identifiable data is contained in the dataset",
             "label": "Identifiability",
             "preset": "select",
+            "validators": "ignore_if_attachment scheming_required scheming_choices",
             "required": true,
             "choices": [
                 {

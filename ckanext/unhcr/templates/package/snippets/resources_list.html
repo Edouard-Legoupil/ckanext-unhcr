@@ -1,0 +1,31 @@
+{#
+Renders a list of resources with icons and view links.
+
+pkg - A package object that the resources belong to.
+type - A resource type on of `data` and `attachment`.
+
+Example:
+
+  {% snippet "package/snippets/resources_list.html", pkg=pkg, type='data|attachment' %}
+
+#}
+{% set resources = pkg.resources|selectattr("type", "equalto", type)|list %}
+{% if resources %}
+  <section id="dataset-resources" class="resources">
+    {% if type == 'data' %}
+      <h3>Data Files</h3>
+    {% elif type == 'attachment' %}
+      <h3>File Attachments</h3>
+    {% endif %}
+    {% block resource_list %}
+      <ul class="{% block resource_list_class %}resource-list{% endblock %}">
+        {% block resource_list_inner %}
+          {% set can_edit = h.check_access('package_update', {'id':pkg.id }) %}
+          {% for resource in resources %}
+            {% snippet 'package/snippets/resource_item.html', pkg=pkg, res=resource, can_edit=can_edit %}
+          {% endfor %}
+        {% endblock %}
+      </ul>
+    {% endblock %}
+  </section>
+{% endif %}

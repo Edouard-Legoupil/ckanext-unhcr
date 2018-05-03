@@ -13,6 +13,7 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
     plugins.implements(plugins.IPackageController, inherit=True)
     plugins.implements(plugins.IAuthFunctions)
     plugins.implements(plugins.IActions)
+    plugins.implements(plugins.IValidators)
     plugins.implements(plugins.IRoutes, inherit=True)
     plugins.implements(plugins.IValidators)
 
@@ -95,5 +96,6 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
 
     def get_validators(self):
         return {
+            'ignore_if_attachment': validators.ignore_if_attachment,
             'linked_datasets_validator': validators.linked_datasets,
         }
