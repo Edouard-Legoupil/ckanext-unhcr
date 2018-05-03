@@ -17,4 +17,11 @@
     </div>
   {% endif %}
   {{ super() }}
+  <script>
+     var message = document.createElement("p");
+     var actions = document.getElementsByClassName('form-actions')[0];
+     message.className = 'control-required-message'
+     message.innerHTML = '<span class="control-required">*</span> Required field';
+     actions.insertBefore(message, actions.getElementsByClassName('btn-primary')[0]);
+  </script>
 {% endblock %}
