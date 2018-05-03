@@ -2,6 +2,7 @@ import logging
 from ckan.plugins import toolkit
 from ckan.plugins.toolkit import Invalid
 from ckanext.unhcr.helpers import get_linked_datasets_for_form
+from ckanext.unhcr import utils
 log = logging.getLogger(__name__)
 
 
@@ -15,9 +16,11 @@ def ignore_if_attachment(key, data, errors, context):
 
 
 def linked_datasets(value, context):
+    if context.get('job'):
+        return value
 
     # Check if the user has access to the linked datasets
-    selected = value if isinstance(value, list) else value.strip('{}').split(',')
+    selected = utils.normalize_list(value)
     allowed = _get_allowed_linked_datasets()
     for id in selected:
         if id not in allowed:

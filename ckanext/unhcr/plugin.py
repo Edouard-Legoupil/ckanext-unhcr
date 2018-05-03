@@ -1,8 +1,10 @@
+import logging
+from ckan import model
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from ckan.lib.plugins import DefaultTranslation
-
 from ckanext.unhcr import actions, auth, helpers, jobs, validators
+log = logging.getLogger(__name__)
 
 
 class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
@@ -74,9 +76,15 @@ class UnhcrPlugin(plugins.SingletonPlugin, DefaultTranslation):
     def after_create(self, context, data_dict):
         if not context.get('job'):
             toolkit.enqueue_job(jobs.process_dataset_fields, [data_dict['id']])
+            toolkit.enqueue_job(jobs.process_dataset_links_on_create, [data_dict['id']])
+
+    def after_delete(self, context, data_dict):
+        if not context.get('job'):
+            toolkit.enqueue_job(jobs.process_dataset_links_on_delete, [data_dict['id']])
 
     def after_update(self, context, data_dict):
         if not context.get('job'):
+            toolkit.enqueue_job(jobs.process_dataset_links_on_update, [data_dict['id']])
             toolkit.enqueue_job(jobs.process_dataset_fields, [data_dict['id']])
 
     # IAuthFunctions

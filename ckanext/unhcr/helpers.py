@@ -1,6 +1,7 @@
 import logging
 from ckan import model
 from ckan.plugins import toolkit
+from ckanext.unhcr import utils
 log = logging.getLogger(__name__)
 
 
@@ -100,11 +101,10 @@ def get_linked_datasets_for_display(value, context=None):
 
     # Get datasets
     datasets = []
-    if value:
-        ids = value if isinstance(value, list) else value.strip('{}').split(',')
-        for id in ids:
-            dataset = toolkit.get_action('package_show')(context, {'id': id})
-            href = toolkit.url_for('dataset_read', id=dataset['name'], qualified=True)
-            datasets.append({'text': dataset['title'], 'href': href})
+    ids = utils.normalize_list(value)
+    for id in ids:
+        dataset = toolkit.get_action('package_show')(context, {'id': id})
+        href = toolkit.url_for('dataset_read', id=dataset['name'], qualified=True)
+        datasets.append({'text': dataset['title'], 'href': href})
 
     return datasets
