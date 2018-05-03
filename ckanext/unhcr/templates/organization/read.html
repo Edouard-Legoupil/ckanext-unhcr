@@ -21,5 +21,9 @@
 {% block primary_content_inner %}
   {% if c.group_dict.state == 'active' %}
     {{ super() }}
+    <script>
+       var element = document.getElementById('include_children').nextSibling;
+       element.textContent = 'Include Children Data Containers'
+    </script>
   {% endif %}
 {% endblock %}
