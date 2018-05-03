@@ -21,8 +21,8 @@ def process_dataset_fields(package_id):
     package_update({'job': True}, package)
 
 
-def process_dataset_links_on_create(package_id):
-    context = {'model': model, 'job': True}
+def process_dataset_links_on_create(package_id, context=None):
+    context = context or {'model': model, 'job': True}
 
     # Create back references
     package = toolkit.get_action('package_show')(context, {'id': package_id})

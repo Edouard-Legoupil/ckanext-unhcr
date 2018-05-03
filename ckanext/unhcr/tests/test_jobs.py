@@ -1,4 +1,11 @@
+from ckan import model
+import ckan.plugins.toolkit as toolkit
+from ckanext.unhcr.tests import factories
+from ckan.tests import factories as core_factories
+from nose.tools import assert_raises, assert_equals
+from ckan.tests.helpers import call_action, FunctionalTestBase
 from ckanext.unhcr.jobs import _modify_package
+from ckanext.unhcr import jobs
 
 
 # date_range
@@ -147,3 +154,19 @@ def test_modify_package_privacy_default():
     })
     assert package['identifiability'] == None
     assert package['private'] == False
+
+
+# linked datasets
+
+def test_process_dataset_links_on_create():
+    context = {'model': model, 'ignore_auth': True, 'job': True}
+    sysadmin = core_factories.Sysadmin(id='sadfasf')
+
+    # Linked dataset2 to dataset1
+    dataset1 = factories.Dataset(id='id1')
+    dataset2 = factories.Dataset(id='id2', linked_datasets=['id1'])
+    jobs.process_dataset_links_on_create('id2', context=context)
+
+    # Check back reference
+    dataset1 = toolkit.get_action('package_show')(context, {'id': 'id1'})
+    assert_equal(dataset1['linked_datasets'], ['id2'])
