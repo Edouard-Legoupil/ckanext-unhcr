@@ -22,8 +22,9 @@
   {% if c.group_dict.state == 'active' %}
     {{ super() }}
     <script>
-       var element = document.getElementById('include_children').nextSibling;
-       element.textContent = 'Include Children Data Containers'
+      // Here we update a message text hard-coded in ckanext-hierarchy plugin
+      var element = document.getElementById('include_children').nextSibling;
+      element.textContent = 'Include Children Data Containers'
     </script>
   {% endif %}
 {% endblock %}
