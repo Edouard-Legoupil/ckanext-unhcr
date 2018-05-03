@@ -446,6 +446,10 @@
             "required": true,
             "choices": [
                 {
+                    "label": "Not specified",
+                    "value": "notspecified"
+                },
+                {
                     "label": "Interview",
                     "value": "interview"
                 },
