@@ -160,9 +160,8 @@ def test_modify_package_privacy_default():
 
 def test_process_dataset_links_on_create():
     context = {'model': model, 'ignore_auth': True, 'job': True}
-    sysadmin = core_factories.Sysadmin(id='sadfasf')
 
-    # Linked dataset2 to dataset1
+    # Create links
     dataset1 = factories.Dataset(id='id1')
     dataset2 = factories.Dataset(id='id2', linked_datasets=['id1'])
     jobs.process_dataset_links_on_create('id2', context=context)
@@ -170,3 +169,78 @@ def test_process_dataset_links_on_create():
     # Check back reference
     dataset1 = toolkit.get_action('package_show')(context, {'id': 'id1'})
     assert_equal(dataset1['linked_datasets'], ['id2'])
+
+
+def test_process_dataset_links_on_create_extend_existent():
+    context = {'model': model, 'ignore_auth': True, 'job': True}
+
+    # Create links
+    dataset1 = factories.Dataset(id='id0')
+    dataset1 = factories.Dataset(id='id1', linked_datasets=['id0'])
+    dataset2 = factories.Dataset(id='id2', linked_datasets=['id1'])
+    jobs.process_dataset_links_on_create('id2', context=context)
+
+    # Check back reference
+    dataset1 = toolkit.get_action('package_show')(context, {'id': 'id1'})
+    assert_equal(dataset1['linked_datasets'], ['id0', 'id2'])
+
+
+def test_process_dataset_links_on_delete():
+    context = {'model': model, 'ignore_auth': True, 'job': True}
+
+    # Create links
+    dataset1 = factories.Dataset(id='id1', linked_datasets=['id2'])
+    dataset2 = factories.Dataset(id='id2', linked_datasets=['id1'])
+    jobs.process_dataset_links_on_delete('id2', context=context)
+
+    # Check back reference
+    dataset1 = toolkit.get_action('package_show')(context, {'id': 'id1'})
+    assert_equal(dataset1['linked_datasets'], [])
+
+
+def test_process_dataset_links_on_delete_no_links():
+    context = {'model': model, 'ignore_auth': True, 'job': True}
+
+    # Create links
+    dataset1 = factories.Dataset(id='id0')
+    dataset1 = factories.Dataset(id='id1', linked_datasets=['id0'])
+    dataset2 = factories.Dataset(id='id2')
+    jobs.process_dataset_links_on_delete('id2', context=context)
+
+    # Check back reference
+    dataset1 = toolkit.get_action('package_show')(context, {'id': 'id1'})
+    assert_equal(dataset1['linked_datasets'], ['id0'])
+
+
+def test_process_dataset_links_on_update():
+    context = {'model': model, 'ignore_auth': True, 'job': True}
+
+    # Create links
+    dataset0 = factories.Dataset(id='id0')
+    dataset1 = factories.Dataset(id='id1', linked_datasets=['id2'])
+    dataset2 = factories.Dataset(id='id2', linked_datasets=['id1'])
+    dataset2['linked_datasets'] = ['id0']
+    toolkit.get_action('package_update')(context, dataset2)
+    jobs.process_dataset_links_on_update('id2', context=context)
+
+    # Check back reference
+    dataset1 = toolkit.get_action('package_show')(context, {'id': 'id1'})
+    assert_equal(dataset0['linked_datasets'], ['id2'])
+    assert_equal(dataset1['linked_datasets'], [])
+
+
+def test_process_dataset_links_on_update_remove_all():
+    context = {'model': model, 'ignore_auth': True, 'job': True}
+
+    # Create links
+    dataset0 = factories.Dataset(id='id0', linked_datasets=['id2'])
+    dataset1 = factories.Dataset(id='id1', linked_datasets=['id2'])
+    dataset2 = factories.Dataset(id='id2', linked_datasets=['id0', 'id1'])
+    dataset2['linked_datasets'] = []
+    toolkit.get_action('package_update')(context, dataset2)
+    jobs.process_dataset_links_on_update('id2', context=context)
+
+    # Check back reference
+    dataset1 = toolkit.get_action('package_show')(context, {'id': 'id1'})
+    assert_equal(dataset0['linked_datasets'], [])
+    assert_equal(dataset1['linked_datasets'], [])
